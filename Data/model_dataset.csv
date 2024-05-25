@@ -1,0 +1,97 @@
+id,brand,name,weight,os,chipset,memory,ram,main_camera_1,main_camera_2,main_camera_3,selfie_camera,earphone_jack,battery,charging,nfc,price
+1,Oppo,Oppo Reno 11 Pro,181.0,Android 14,Mediatek Dimensity 8200,512,12,50,32.0,8.0,32,True,4600,80.0,True,8999000
+2,Oppo,Oppo Reno 11,182.0,Android 14,Mediatek Dimensity 7050,256,12,50,32.0,8.0,32,False,5000,67.0,True,5999000
+3,Oppo,Oppo Reno 11F,177.0,Android 14,Mediatek Dimensity 7050,256,8,64,8.0,2.0,32,False,5000,67.0,True,4499000
+4,Oppo,Oppo Reno 10,185.0,Android 13,Mediatek Dimensity 7050,256,8,64,32.0,8.0,32,False,5000,67.0,True,5499000
+5,Oppo,Oppo Reno 10 Pro,185.0,Android 13,Qualcomm SM7325 Snapdragon 778G 5G,256,12,50,32.0,8.0,32,False,4600,80.0,True,8499000
+6,Oppo,Oppo Reno 10 Pro+,194.0,Android 13,Qualcomm SM8475 Snapdragon 8+ Gen 1,512,16,50,64.0,8.0,32,False,4700,100.0,True,10499000
+7,Oppo,Oppo Find X7 Ultra,221.0,Android 14,Qualcomm SM8650-AB Snapdragon 8 Gen 3,512,16,50,48.0,12.0,32,False,5000,100.0,True,19999000
+8,Oppo,Oppo Find X7,206.0,Android 14,Mediatek Dimensity 9300,256,16,50,64.0,50.0,32,False,5000,100.0,True,17999000
+9,Oppo,Oppo A98 5G,192.0,Android 13,Qualcomm SM6375 Snapdragon 695 5G,256,8,64,2.0,2.0,32,True,5000,67.0,True,3469000
+10,Oppo,Oppo A60,186.0,Android 14,Qualcomm SM6225 Snapdragon 680 4G,256,8,50,2.0,0.0,8,True,5000,45.0,False,2999000
+11,Oppo,Oppo Find N3,239.0,Android 13,Qualcomm SM8550-AB Snapdragon 8 Gen 2,1024,16,48,64.0,48.0,32,False,4805,67.0,True,25838000
+12,Oppo,Oppo A79,193.0,Android 13,Mediatek Dimensity 6020,256,8,50,2.0,0.0,8,True,5000,33.0,False,3376000
+13,Oppo,Oppo A18,188.0,Android 13,Mediatek MT6769 Helio G85,128,4,8,2.0,0.0,5,True,5000,33.0,False,1499000
+14,Oppo,Oppo A38,190.0,Android 13,Mediatek MT6769 Helio G85,128,6,50,2.0,0.0,5,True,5000,33.0,True,2099000
+15,Oppo,Oppo Pad Neo,538.0,Android 13,Mediatek Helio G99,128,8,8,0.0,0.0,8,False,8000,33.0,False,9999000
+16,Asus,Asus Zenfone 11 Ultra,224.0,Android 14,Qualcomm SM8650-AB Snapdragon 8 Gen 3,512,16,50,32.0,13.0,32,True,5500,65.0,True,19999000
+17,Asus,Asus Zenfone 10,172.0,Android 13,Qualcomm SM8550-AB Snapdragon 8 Gen 2,512,16,50,13.0,0.0,32,True,4300,30.0,True,7539000
+18,Asus,Asus ROG Phone 8 Pro,225.0,Android 14,Qualcomm SM8650-AB Snapdragon 8 Gen 3,1024,24,50,32.0,13.0,32,True,5500,65.0,True,19999000
+19,Asus,Asus ROG Phone 8,225.0,Android 14,Qualcomm SM8650-AB Snapdragon 8 Gen 3,256,12,50,32.0,13.0,32,True,5500,65.0,True,10999000
+20,Infinix,Infinix Smart 8,184.0,Android 13,Unisoc T606,128,4,13,0.08,0.0,8,True,5000,10.0,False,1399000
+21,Infinix,Infinix Smart 8 Pro,189.0,Android 13,Mediatek Helio G36,128,8,50,0.08,0.0,8,True,5000,10.0,False,2499000
+22,Infinix,Infinix GT 20 Pro,194.0,Android 14,Mediatek Dimensity 8200 Ultimate,256,12,108,2.0,2.0,32,False,5000,45.0,True,4399000
+23,Infinix,Infinix Note 40 Pro,196.0,Android 14,Mediatek Dimensity 7020,256,8,108,2.0,2.0,32,False,5000,45.0,True,3699000
+24,Infinix,Infinix Note 40,190.0,Android 14,Mediatek Helio G99 Ultimate,256,8,108,2.0,0.0,32,False,5000,45.0,True,2999000
+25,Infinix,Infinix Hot 40i,190.0,Android 13,Unisoc T606,256,8,50,0.08,0.0,32,True,5000,18.0,True,1799000
+26,Infinix,Infinix Hot 40 Pro,199.0,Android 13,Mediatek Helio G99,256,8,108,2.0,0.08,32,True,5000,33.0,True,2199000
+27,Infinix,Infinix Zero 30 5G,185.0,Android 13,Mediatek Dimensity 8020,256,12,108,13.0,2.0,50,False,5000,68.0,True,4999000
+28,Infinix,Infinix Zero 30 4G,182.0,Android 13,Mediatek Helio G99,256,8,108,2.0,2.0,50,False,5000,45.0,True,3799000
+29,Samsung,Samsung Galaxy A15,200.0,Android 14,Mediatek Dimensity 6100+,256,8,50,5.0,2.0,13,True,5000,25.0,True,3399000
+30,Samsung,Samsung Galaxy A25,197.0,Android 14,Exynos 1280,256,8,50,8.0,2.0,13,True,5000,25.0,True,3999000
+31,Samsung,Samsung Galaxy S24 Ultra,232.0,Android 14,Qualcomm SM8650-AC Snapdragon 8 Gen 3,1024,12,200,10.0,12.0,12,False,5000,45.0,True,27999000
+32,Samsung,Samsung Galaxy S24+,196.0,Android 14,Exynos 2400,512,12,50,10.0,12.0,12,False,4900,45.0,True,18999000
+33,Samsung,Samsung Galaxy S24,167.0,Android 14,Exynos 2400,512,8,50,10.0,12.0,12,False,4000,25.0,True,15999000
+34,Samsung,Samsung Galaxy Z Fold5,253.0,Android 14,Qualcomm SM8550-AC Snapdragon 8 Gen 2,1024,12,50,10.0,12.0,4,False,4400,25.0,True,23999000
+35,Samsung,Samsung Galaxy Z Flip5,187.0,Android 14,Qualcomm SM8550-AC Snapdragon 8 Gen 2,512,8,12,12.0,0.0,10,False,3700,25.0,True,15999000
+36,Samsung,Samsung Galaxy M34,208.0,Android 14,Exynos 1280,256,8,50,8.0,2.0,13,True,6000,25.0,True,3999000
+37,Samsung,Samsung Galaxy M54,199.0,Android 13,Exynos 1380,256,8,108,8.0,2.0,32,False,6000,25.0,True,6499000
+38,Samsung,Samsung Galaxy A05s,194.0,Android 13,Qualcomm SM6225 Snapdragon 680,128,6,50,2.0,2.0,13,True,5000,25.0,True,2199000
+39,Samsung,Samsung Galaxy A55,213.0,Android 14,Exynos 1480,256,12,50,12.0,5.0,32,False,5000,25.0,True,5999000
+40,Samsung,Samsung Galaxy A35,209.0,Android 14,Exynos 1380,256,12,50,8.0,5.0,13,False,5000,25.0,True,4999000
+41,Vivo,Vivo V30e,188.0,Funtouch 14,Qualcomm SM6450 Snapdragon 6 Gen 1,256,8,50,8.0,0.0,32,False,5500,44.0,True,4999000
+42,Vivo,Vivo V30,186.0,Funtouch 14,Qualcomm Snapdragon 7 Gen 3,512,12,50,50.0,0.0,50,False,5000,80.0,True,6999000
+43,Vivo,Vivo V30 Pro,188.0,Funtouch 14,Mediatek Dimensity 8200,512,12,50,50.0,50.0,50,False,5000,80.0,True,8999000
+44,Vivo,Vivo Y27s,192.0,Funtouch 13,Qualcomm SM6225 Snapdragon 680,256,8,50,2.0,0.0,8,True,5000,44.0,True,2699000
+45,Vivo,Vivo Y100,196.0,Funtouch 14,Qualcomm SM6225 Snapdragon 685,256,8,50,2.0,0.0,8,False,5000,80.0,True,3699000
+46,Vivo,Vivo T3x,199.0,Funtouch 14,Qualcomm SM6450 Snapdragon 6 Gen 1,128,8,50,2.0,0.0,8,True,6000,44.0,False,3299000
+47,Vivo,Vivo Y18,185.0,Funtouch 14,Mediatek Helio G85,128,4,50,0.08,0.0,8,True,5000,15.0,False,2999000
+48,Vivo,Vivo V29e,190.0,Funtouch 13,Qualcomm SM6375 Snapdragon 695,256,8,64,8.0,0.0,50,False,4800,44.0,True,4399000
+49,Vivo,Vivo Y17s,186.0,Funtouch 13,Mediatek Helio G85,128,6,50,2.0,0.0,8,True,5000,15.0,False,1799000
+50,Vivo,Vivo V29,186.0,Funtouch 13,Qualcomm SM7325 Snapdragon 778G,512,12,50,8.0,2.0,50,False,4600,80.0,True,6999000
+51,Huawei,Huawei Pura 70 Ultra,226.0,EMUI 14.2,Kirin 9010,1024,16,50,50.0,40.0,13,False,5200,100.0,True,22399000
+52,Huawei,Huawei Pura 70 Pro,220.0,EMUI 14.2,Kirin 9010,1024,12,50,48.0,12.5,13,False,5050,100.0,True,16599000
+53,Huawei,Huawei Pura 70,207.0,EMUI 14.2,Kirin 9010,1024,12,50,12.0,13.0,13,False,4900,66.0,True,12499000
+54,Huawei,Huawei Nova 12s,168.0,EMUI 14,Qualcomm SM7325 Snapdragon 778G,256,8,50,8.0,0.0,60,False,4500,66.0,True,8599000
+55,Huawei,Huawei Nova 12 SE,186.0,EMUI 14,Qualcomm Snapdragon 680,256,8,108,8.0,2.0,32,False,4500,66.0,True,6499000
+56,Huawei,Huawei P60 Pro,200.0,EMUI 13.1,Qualcomm SM8475 Snapdragon 8+ Gen 1,512,12,48,48.0,13.0,13,False,4815,88.0,True,17599000
+57,Huawei,Huawei Mate X3,239.0,EMUI 13.1,Qualcomm SM8475 Snapdragon 8+ Gen 1,512,12,50,12.0,13.0,8,False,4800,66.0,True,31060000
+58,Huawei,Huawei Nova Y72,207.0,EMUI 12,Kirin 710A,128,8,50,2.0,0.0,8,False,6000,22.5,True,4100000
+59,Huawei,Huawei Nova 11 Pro,188.0,EMUI 13,Qualcomm SM7325 Snapdragon 778G,256,8,50,8.0,0.0,60,False,4500,100.0,True,13545000
+60,Huawei,Huawei Nova 11,168.0,EMUI 13,Qualcomm SM7325 Snapdragon 778G,256,8,50,8.0,0.0,60,False,4500,66.0,True,5799000
+61,Apple,iPhone 12,164.0,iOS 14.1,Apple A14 Bionic,256,4,12,12.0,0.0,12,False,2815,20.0,True,8749000
+62,Apple,iPhone 13,174.0,iOS 15,Apple A15 Bionic,512,4,12,12.0,0.0,12,False,3240,20.0,True,10249000
+63,Apple,iPhone SE (3rd gen),144.0,iOS 15.4,Apple A15 Bionic,256,4,12,0.0,0.0,7,False,2018,20.0,True,7999000
+64,Apple,iPhone 14,172.0,iOS 16,Apple A15 Bionic,512,6,12,12.0,0.0,12,False,3279,20.0,True,1224900
+65,Apple,iPhone 14 Plus,203.0,iOS 16,Apple A15 Bionic,512,6,12,12.0,0.0,12,False,4323,20.0,True,13999000
+66,Apple,iPhone 14 Pro,206.0,iOS 16,Apple A16 Bionic,1024,6,48,12.0,12.0,12,False,3200,20.0,True,16999000
+67,Apple,iPhone 14 Pro Max,240.0,iOS 16,Apple A16 Bionic,1024,6,48,12.0,12.0,12,False,4323,20.0,True,17999000
+68,Apple,iPhone 15,171.0,iOS 17,Apple A16 Bionic,512,6,48,12.0,0.0,12,False,3349,20.0,True,14249000
+69,Apple,iPhone 15 Plus,201.0,iOS 17,Apple A16 Bionic,512,6,48,12.0,0.0,12,False,4383,20.0,True,16249000
+70,Apple,iPhone 15 Pro,187.0,iOS 17,Apple A17 Pro,1024,8,48,12.0,12.0,12,False,3274,20.0,True,18999000
+71,Apple,iPhone 15 Pro Max,221.0,iOS 17,Apple A17 Pro,1024,8,48,12.0,12.0,12,False,4441,20.0,True,22999000
+72,Realme,Realme C65,185.0,Android 14,Mediatek Helio G85,256,8,50,2.0,0.0,8,True,5000,45.0,True,2399000
+73,Realme,Realme C55,189.5,Android 13,Mediatek Helio G88,256,8,64,2.0,0.0,8,True,5000,33.0,True,2299000
+74,Realme,Realme C51,186.0,Android 13,Unisoc Tiger T612,256,6,50,0.08,0.0,5,True,5000,33.0,True,1399000
+75,Realme,Realme C51s,182.0,Android 13,Unisoc Tiger T612,128,6,50,0.08,0.0,5,True,5000,33.0,False,1799000
+76,Realme,Realme Note 50,186.0,Android 13,Unisoc Tiger T612,128,4,13,0.08,0.0,5,True,5000,10.0,False,1249000
+77,Realme,Realme C53,182.0,Android 13,Unisoc Tiger T612,256,8,50,0.3,0.0,8,True,5000,33.0,False,1999000
+78,Realme,Realme C67,185.0,Android 14,Qualcomm SM6225 Snapdragon 685,256,8,108,2.0,0.0,8,True,5000,33.0,True,2399000
+79,Realme,Realme 12 Pro+ 5G,196.0,Android 14,Mediatek Snapdragon 7s Gen 2,512,12,50,64.0,8.0,32,False,5000,67.0,True,5999000
+80,Realme,Realme 12+ 5G,190.0,Android 14,Mediatek Dimensity 7050,512,12,50,8.0,2.0,16,True,5000,67.0,True,4199000
+81,Realme,Realme 12 5G,188.0,Android 14,Mediatek Dimensity 6100+,256,8,108,2.0,0.0,8,True,5000,45.0,True,3699000
+82,Realme,Realme 11 Pro+ 5G,183.0,Android 13,Mediatek Dimensity 7050,1024,12,200,8.0,2.0,32,False,5000,100.0,True,6599000
+83,Xiaomi,Xiaomi 14,188.0,Android 14,Qualcomm SM8650-AC Snapdragon 8 Gen 3,256,12,50,50.0,50.0,32,False,4610,90.0,True,11999000
+84,Xiaomi,Xiaomi 13T,193.0,Android 13,Mediatek Dimensity 8200 Ultra,256,12,50,50.0,12.0,20,False,5000,67.0,True,6499000
+85,Xiaomi,Redmi Note 13 Pro+,199.0,Android 13,Mediatek Dimensity 7200 Ultra,512,16,200,8.0,2.0,16,False,5000,120.0,True,5999000
+86,Xiaomi,Redmi Note13 Pro 5G,187.0,Android 13,Qualcomm Snapdragon 7s Gen 2,512,16,200,8.0,2.0,16,True,5100,67.0,True,4399000
+87,Xiaomi,Redmi Note 13 Pro 4G,188.0,Android 13,Mediatek Helio G99 Ultra,512,12,200,8.0,2.0,16,True,5000,67.0,True,3799000
+88,Xiaomi,Redmi Note 13 5G,174.5,Android 13,Mediatek Dimensity 6080,256,12,108,8.0,2.0,16,True,5000,33.0,True,3199000
+89,Xiaomi,Redmi Note 13 4G,188.5,Android 13,Qualcomm SM6225 Snapdragon 685,256,8,108,8.0,2.0,16,True,5000,33.0,True,2799000
+90,Xiaomi,Redmi 13C,192.0,Android 13,Mediatek Helio G85,256,8,50,2.0,0.08,8,True,5000,18.0,True,1499000
+91,Xiaomi,Redmi A3,193.0,Android 14,Mediatek Helio G36,128,6,8,0.08,0.0,5,True,5000,10.0,False,1199000
+92,Xiaomi,Redmi 12,198.5,Android 13,Mediatek Helio G88,256,8,50,8.0,2.0,8,True,5000,18.0,True,1999000
+93,Poco,Poco F5,181.0,Android 13,Qualcomm SM7475-AB Snapdragon 7+ Gen 2,256,8,64,8.0,2.0,16,True,5000,67.0,True,4999000
+94,Poco,Poco X6 Pro 5G,186.0,Android 14,Mediatek Dimensity 8300 Ultra,512,12,64,8.0,2.0,16,False,5000,67.0,True,4999000
+95,Poco,Poco X6 5G,181.0,Android 13,Qualcomm SM7345-AB Snapdragon 7s Gen 2,256,12,64,8.0,2.0,16,True,5100,67.0,True,3999000
+96,Poco,Poco C65,192.0,Android 13,Mediatek Helio G85,256,8,50,2.0,0.08,8,True,5000,18.0,True,1749000
