@@ -1,0 +1,26 @@
+Slicing UI Progress (50 - 60%)
+
+All Figma Page Done
+
+Not Done:
+FrontEnd
+- item_wishlist for recycleView in WishListActivity
+- WishListActivity
+- AboutUsActivity with the itemlist
+- DetailPhoneActivity , bisa menggunakan layout ResultActivity
+- NewArrivalsActivity 
+
+FrontEnd Logic Code
+DarkMode , Authentication using Firebase , 70% QuestActivity(not yet sure how many questions to use and the options due to ML team confirmation)
+
+Minus:
+- Localize not created
+- Hardcoded String
+- Dark mode not done still many to do (background , theme , per design have custom color to delete)
+- Adding a post cannot be a fragment so it is still in ForumFragment as a layout
+- There are some inconsistent item IDs and color
+- Less detailed  due to design using Emulator Pixel 4 API 28
+- Each PNG Image in OnBoardingActivity (MotionLayout), must have a custom xml to facilitate dynamic image localization and sizing
+- Each fragment has a title on the toolbar that is not good enough
+
+

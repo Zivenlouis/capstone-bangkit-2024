@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_background"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:background="@color/transparent"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Settings"
+        android:textAllCaps="false"
+        android:textColor="@color/light_peach"
+        android:textSize="24sp"
+        app:icon="@drawable/ic_back_profile"
+        app:iconTint="@color/light_peach"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/light_peach"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back_profile">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="71dp"
+                android:layout_height="71dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Username"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@id/image_avatar"
+                app:layout_constraintTop_toTopOf="@id/image_avatar" />
+
+            <ImageView
+                android:id="@+id/image_email"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_email"
+                app:layout_constraintStart_toStartOf="@id/text_name"
+                app:layout_constraintTop_toBottomOf="@id/text_name" />
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_avatar"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:gravity="center_horizontal"
+                android:text="ligma@mail.com"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/image_email"
+                app:layout_constraintStart_toEndOf="@id/image_email"
+                app:layout_constraintTop_toTopOf="@id/image_email" />
+
+            <ImageView
+                android:id="@+id/image_date_joined"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_date"
+                app:layout_constraintStart_toStartOf="@id/image_email"
+                app:layout_constraintTop_toBottomOf="@id/image_email" />
+
+            <TextView
+                android:id="@+id/text_date_joined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:gravity="center_horizontal"
+                android:text="Joined August 2024"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/image_date_joined"
+                app:layout_constraintStart_toEndOf="@id/image_date_joined"
+                app:layout_constraintTop_toTopOf="@id/image_date_joined" />
+
+            <View
+                android:id="@+id/divider_guest"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_avatar" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_toggle_darkmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="36dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Toggle Dark Mode"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_darkmode_border"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_guest"
+                tools:ignore="TextSizeCheck" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_darkmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                app:layout_constraintStart_toEndOf="@id/btn_toggle_darkmode"
+                app:layout_constraintTop_toTopOf="@id/btn_toggle_darkmode" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Language"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_localize"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintTop_toBottomOf="@id/btn_toggle_darkmode"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="en"
+                app:layout_constraintBottom_toBottomOf="@id/btn_language"
+                app:layout_constraintEnd_toEndOf="@id/switch_darkmode"
+                app:layout_constraintTop_toTopOf="@id/btn_language" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_reset_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Reset Password"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_reset_pass"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintTop_toBottomOf="@id/btn_language"
+                tools:ignore="TextSizeCheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_about_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="About Us"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_about_us"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintTop_toBottomOf="@id/btn_reset_password"
+                tools:ignore="TextSizeCheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_logout"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintTop_toBottomOf="@id/btn_about_us"
+                tools:ignore="TextSizeCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/text_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="2024 © Auxilium"
+        android:textColor="@color/light_peach"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

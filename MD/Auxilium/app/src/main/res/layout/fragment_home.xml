@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+
+    <!--        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <ImageView
+        android:id="@+id/iv_bg_home_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/profile_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent"
+        android:contentDescription="History Button"
+        android:src="@drawable/profile_home_support"
+        app:icon="@drawable/ic_history"
+        app:layout_constraintEnd_toEndOf="@id/iv_bg_home_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_profile"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/ic_auxilium"
+        app:layout_constraintStart_toStartOf="@id/iv_bg_home_profile"
+        app:layout_constraintTop_toTopOf="@id/iv_bg_home_profile" />
+
+    <TextView
+        android:id="@+id/tv_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Howdy, "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/civ_profile"
+        app:layout_constraintTop_toBottomOf="@id/civ_profile" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Username"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/tv_support"
+        app:layout_constraintTop_toTopOf="@id/tv_support" />
+
+    <TextView
+        android:id="@+id/emotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="👋"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_username"
+        app:layout_constraintStart_toEndOf="@id/tv_username"
+        app:layout_constraintTop_toTopOf="@id/tv_username" />
+
+    <TextView
+        android:id="@+id/tv_support2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Excited to find yout dream phone today?"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tv_support"
+        app:layout_constraintTop_toBottomOf="@id/tv_support"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageView
+        android:id="@+id/iv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/ic_phone"
+        app:layout_constraintStart_toStartOf="@id/tv_support2"
+        app:layout_constraintTop_toBottomOf="@id/tv_support2" />
+
+    <TextView
+        android:id="@+id/tv_user_phones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="UserPhones"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/iv_phone"
+        app:layout_constraintTop_toTopOf="@id/iv_phone"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="|"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tv_user_phones"
+        app:layout_constraintTop_toTopOf="@id/iv_phone"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageView
+        android:id="@+id/iv_wishlist"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_wishlist"
+        app:layout_constraintBottom_toBottomOf="@id/iv_phone"
+        app:layout_constraintStart_toStartOf="@id/divider"
+        app:layout_constraintTop_toTopOf="@id/iv_phone" />
+
+    <TextView
+        android:id="@+id/wishlist_numbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="10 item(s)"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/iv_wishlist"
+        app:layout_constraintTop_toTopOf="@id/iv_wishlist"
+        tools:ignore="TextSizeCheck" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_supercharge_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/light_peach"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Supercharge your search"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:cornerRadius="31dp"
+        app:icon="@drawable/ic_supercharge"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_bg_home_profile" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/light_peach"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_supercharge_search">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_new_arrivals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="New Arrivals 🚀"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_new_arrivals_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:text="The latest phones have landed."
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tv_new_arrivals"
+                app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_new_arrivals"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button_bg"
+                android:contentDescription="New Arrival Button"
+                android:src="@drawable/ic_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals_support"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_recommended_main" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
