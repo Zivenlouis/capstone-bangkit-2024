@@ -11,10 +11,10 @@ export const getUserRatings = async (req, res) => {
 
 export const createUserRatings = async (req, res) => {
     try {
-        const { user_id, community_id, rating } = req.body;
+        const { user_id, smartphone_id, rating } = req.body;
         await UserRatings.create({
             user_id,
-            community_id,
+            smartphone_id,
             rating
         });
         res.json({msg: "UserRatings created successfully"});

@@ -1,4 +1,4 @@
-import Community_image from "../models/Community_imageModel.js";
+import Community_image from "../models/CommunityImageModel.js";
 
 export const getCommunity_image = async (req, res) => {
     try {
@@ -26,6 +26,15 @@ export const createCommunity_image = async (req, res) => {
 export const getCommunity_imageById = async (req, res) => {
     try {
         const community_image = await Community_image.findAll({where: {id: req.params.id}});
+        res.json(community_image);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getCommunity_imageByUserId = async (req, res) => {
+    try {
+        const community_image = await Community_image.findAll({where: {user_id: req.params.user_id}});
         res.json(community_image);
     } catch (error) {
         console.error(error);

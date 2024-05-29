@@ -32,3 +32,14 @@ export const getCommunityById = async (req, res) => {
     }
 }
 
+export const deleteCommunityById = async (req, res) => {
+    try {
+        await Community.destroy({where: {id: req.params.id}});
+        res.json({msg: "Community deleted successfully"});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+
