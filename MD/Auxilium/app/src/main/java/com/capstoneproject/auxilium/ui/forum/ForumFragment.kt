@@ -5,15 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.capstoneproject.auxilium.R
+import com.capstoneproject.auxilium.adapter.ForumAdapter
+import com.capstoneproject.auxilium.adapter.ForumPost
+import com.capstoneproject.auxilium.addpost.AddPostFragment
 import com.capstoneproject.auxilium.databinding.FragmentForumBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ForumFragment : Fragment() {
 
     private var _binding: FragmentForumBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
+    private val forumPosts = listOf(
+        ForumPost(R.drawable.image_small_circle, "User1", "3h", "Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease.", R.drawable.ic_image, 10, 8),
+        ForumPost(R.drawable.image_small_circle, "User2", "5h", "Loving the camera on the new Pixel phone!", R.drawable.ic_image, 20, 15)
+        // Add more forum posts here
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,37 +31,21 @@ class ForumFragment : Fragment() {
         _binding = FragmentForumBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // Initialize bottom sheet behavior
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
-        bottomSheetBehavior.isHideable = true
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN // Initial state is hidden
-        bottomSheetBehavior.peekHeight = 0 // Set initial peek height to 0
-
-        // Set up button click listener for "What's good?" button
         binding.btnAddPost.setOnClickListener {
-            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HIDDEN || bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
-                bottomSheetBehavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO // Set to auto for full height
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            } else {
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-            }
+            val addPostFragment = AddPostFragment()
+            addPostFragment.show(childFragmentManager, "AddPostFragment")
         }
 
-        // Add a callback to adjust peek height when the bottom sheet is hidden
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    bottomSheetBehavior.peekHeight = 100
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                // You can handle onSlide events if needed
-            }
-        })
-
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.rvForumPosts.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = ForumAdapter(forumPosts)
+        }
     }
 
     override fun onDestroyView() {

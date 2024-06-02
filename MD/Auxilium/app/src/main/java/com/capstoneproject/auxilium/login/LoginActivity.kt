@@ -2,9 +2,8 @@ package com.capstoneproject.auxilium.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.capstoneproject.auxilium.MainActivity
+import com.capstoneproject.auxilium.view.MainActivity
 import com.capstoneproject.auxilium.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

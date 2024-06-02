@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dark_background"
-    tools:context=".ProfileActivity">
+    tools:context=".view.profile.ProfileActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_back_profile"
@@ -121,35 +121,11 @@
                 app:layout_constraintTop_toBottomOf="@id/image_avatar" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_toggle_darkmode"
+                android:id="@+id/btn_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="36dp"
-                android:background="@color/transparent"
-                android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Toggle Dark Mode"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:icon="@drawable/ic_darkmode_border"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider_guest"
-                tools:ignore="TextSizeCheck" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_darkmode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/btn_toggle_darkmode"
-                app:layout_constraintTop_toTopOf="@id/btn_toggle_darkmode" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:text="Language"
@@ -158,18 +134,19 @@
                 android:textSize="14sp"
                 app:icon="@drawable/ic_localize"
                 app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
-                app:layout_constraintTop_toBottomOf="@id/btn_toggle_darkmode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_guest"
                 tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:id="@+id/tv_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="158dp"
                 android:text="en"
                 app:layout_constraintBottom_toBottomOf="@id/btn_language"
-                app:layout_constraintEnd_toEndOf="@id/switch_darkmode"
-                app:layout_constraintTop_toTopOf="@id/btn_language" />
+                app:layout_constraintStart_toEndOf="@id/btn_language"
+                app:layout_constraintTop_toTopOf="@id/btn_language"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_reset_password"
@@ -183,7 +160,7 @@
                 android:textSize="14sp"
                 app:icon="@drawable/ic_reset_pass"
                 app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintStart_toStartOf="@id/btn_language"
                 app:layout_constraintTop_toBottomOf="@id/btn_language"
                 tools:ignore="TextSizeCheck" />
 
@@ -199,7 +176,7 @@
                 android:textSize="14sp"
                 app:icon="@drawable/ic_about_us"
                 app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintStart_toStartOf="@id/btn_language"
                 app:layout_constraintTop_toBottomOf="@id/btn_reset_password"
                 tools:ignore="TextSizeCheck" />
 
@@ -215,7 +192,7 @@
                 android:textSize="14sp"
                 app:icon="@drawable/ic_logout"
                 app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="@id/btn_toggle_darkmode"
+                app:layout_constraintStart_toStartOf="@id/btn_language"
                 app:layout_constraintTop_toBottomOf="@id/btn_about_us"
                 tools:ignore="TextSizeCheck" />
 

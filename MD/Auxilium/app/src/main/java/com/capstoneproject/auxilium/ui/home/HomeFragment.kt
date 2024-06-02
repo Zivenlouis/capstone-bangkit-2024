@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.capstoneproject.auxilium.QuestActivity
 import com.capstoneproject.auxilium.databinding.FragmentHomeBinding
+import com.capstoneproject.auxilium.history.HistoryActivity
+import com.capstoneproject.auxilium.view.question.QuestActivity
 
 class HomeFragment : Fragment() {
 
@@ -28,7 +29,12 @@ class HomeFragment : Fragment() {
         // Remove commented-out search bar code if not needed
 
         binding.btnSuperchargeSearch.setOnClickListener {
-            val intent = Intent(requireContext(), QuestActivity::class.java) // Use the new activity name
+            val intent = Intent(requireContext(), QuestActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnHistory.setOnClickListener {
+            val intent = Intent(requireContext(), HistoryActivity::class.java)
             startActivity(intent)
         }
         return root

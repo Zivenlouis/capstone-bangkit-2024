@@ -155,7 +155,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_supercharge_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="21dp"
         android:layout_marginTop="36dp"
         android:backgroundTint="@color/light_peach"
@@ -224,7 +224,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUsers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="horizontal"
                 android:paddingHorizontal="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

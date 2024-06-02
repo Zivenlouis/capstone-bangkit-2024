@@ -66,7 +66,7 @@ dependencies {
 
     // Core Android dependencies
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.annotation:annotation:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
@@ -81,9 +81,9 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     // Lifecycle components
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.1")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
@@ -107,7 +107,7 @@ dependencies {
 
     // Google Play Services
     implementation("com.google.android.gms:play-services-maps:18.2.0")
-    implementation("com.google.android.gms:play-services-location:21.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
     // Paging library
     implementation("androidx.paging:paging-common-ktx:3.3.0")
@@ -162,7 +162,5 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("org.hamcrest:hamcrest-library:2.2")
     androidTestImplementation("org.mockito:mockito-android:5.11.0")
-
-
 
 }

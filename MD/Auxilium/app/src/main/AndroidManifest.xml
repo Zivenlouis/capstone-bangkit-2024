@@ -28,31 +28,38 @@
         android:theme="@style/Theme.Auxilium"
         tools:targetApi="31">
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".history.DetailHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".InferenceLoadingActivity"
+            android:name=".history.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ResultActivity"
+            android:name=".view.profile.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestActivity"
+            android:name=".view.additional.AboutUsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".view.question.InferenceLoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".view.question.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.question.QuestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.additional.SplashScreenActivity"
+            android:exported="true" >   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity
-            android:name=".OnBoardingActivity"
+            android:name=".view.additional.OnBoardingActivity"
             android:exported="true" />
         <activity
             android:name=".login.LoginActivity"
@@ -61,12 +68,12 @@
             android:name=".login.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".view.DetailPhoneActivity"
+            android:name=".database.DetailPhoneActivity"
             android:exported="true" />
 
         <meta-data

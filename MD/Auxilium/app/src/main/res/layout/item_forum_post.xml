@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/transparent"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp">
 
@@ -30,6 +31,7 @@
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_regular"
             android:text="Username"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/civ_forum_post_profile"
             app:layout_constraintTop_toTopOf="@id/civ_forum_post_profile"
@@ -42,6 +44,7 @@
             android:layout_marginStart="186dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:text="3h"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/iv_forum_photo"
             app:layout_constraintTop_toTopOf="@id/tv_forum_username"
@@ -58,6 +61,7 @@
             android:fontFamily="@font/clash_grotesk_light"
             android:justificationMode="inter_word"
             android:text="Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_forum_username"
@@ -92,31 +96,33 @@
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:text="10"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_like_forum"
             app:layout_constraintTop_toTopOf="@id/iv_like_forum"
             tools:ignore="TextSizeCheck" />
 
         <ImageView
-            android:id="@+id/iv_share_forum"
+            android:id="@+id/iv_reply_forum"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_share"
+            android:src="@drawable/ic_reply"
             app:layout_constraintBottom_toBottomOf="@id/iv_like_forum"
             app:layout_constraintStart_toEndOf="@id/tv_likes_forum"
             app:layout_constraintTop_toTopOf="@id/iv_like_forum" />
 
         <TextView
-            android:id="@+id/tv_share_forum"
+            android:id="@+id/tv_reply_forum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:text="8"
+            android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/iv_share_forum"
-            app:layout_constraintTop_toTopOf="@id/iv_share_forum"
+            app:layout_constraintStart_toEndOf="@id/iv_reply_forum"
+            app:layout_constraintTop_toTopOf="@id/iv_reply_forum"
             tools:ignore="TextSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

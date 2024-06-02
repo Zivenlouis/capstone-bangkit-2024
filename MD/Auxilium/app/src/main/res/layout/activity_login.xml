@@ -134,6 +134,7 @@
                     android:id="@+id/ed_email_login"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/light_peach"
                     android:gravity="start|top"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
@@ -142,7 +143,6 @@
                     app:errorEnabled="true"
                     tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <TextView
                 android:id="@+id/tv_password_login"
@@ -176,6 +176,7 @@
                     android:id="@+id/ed_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/light_peach"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:paddingStart="50dp"

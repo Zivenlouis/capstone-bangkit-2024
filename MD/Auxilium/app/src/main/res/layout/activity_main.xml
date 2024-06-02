@@ -7,22 +7,29 @@
     android:layout_height="match_parent"
     android:background="@drawable/dark_background">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/custom_toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="30dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="33dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/ic_auxilium_white"
-        app:menu="@menu/upper_menu" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/custom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:logo="@drawable/ic_auxilium_white"
+            app:menu="@menu/upper_menu" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/nav_card_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,10 +54,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_card_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/custom_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:navGraph="@navigation/mobile_navigation"
         tools:ignore="FragmentTagUsage" />
 
