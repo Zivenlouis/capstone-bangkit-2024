@@ -83,3 +83,37 @@ export const loginUser = async (req, res) => {
     console.error(error);
   }
 };
+
+//create reset password
+export const resetPassword = async (req, res) => {
+  try {
+    const { email, password, confirmPassword } = req.body;
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hashPassword = bcrypt.hashSync(password, salt);
+    await Users.update(
+      { password: hashPassword },
+      {
+        where: {
+          email,
+        },
+      }
+    );
+    res.json({ msg: "Password reset successfully" });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+//create logout
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("refreshToken");
+    res.json({ msg: "Logged out successfully" });
+  } catch (error) {
+    console.error(error);
+  }
+};

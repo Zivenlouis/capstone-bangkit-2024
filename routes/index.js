@@ -5,6 +5,8 @@ import {
   getUsersById,
   createUser,
   loginUser,
+  resetPassword,
+  logout
 } from "../controllers/Users.js";
 import { loginFilter } from "../filters/LoginFilter.js";
 import {
@@ -69,6 +71,7 @@ router.get("/wishlist/user/:user_id", getWishlistByUserId);
 router.get("/user_clicks", getUserClicks);
 router.post("/users", createUser);
 router.post("/login", loginUser);
+router.post("/resetPassword/:id", loginFilter, resetPassword);
 router.post("/community/add", loginFilter, createCommunity);
 router.post("/Community_Images/add", createCommunity_image);
 router.post("/user_ratings/add", createUserRatings);
@@ -77,5 +80,6 @@ router.post("/wishlist/add", createWishlist);
 router.post("/user_clicks/add", createUserClicks);
 router.delete("/community/:id", loginFilter, deleteCommunityById);
 router.delete("/wishlist/:id", deleteWishlistById);
+router.delete("/logout/:id",loginFilter, logout);
 
 export default router;

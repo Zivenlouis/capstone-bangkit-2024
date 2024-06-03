@@ -1,6 +1,5 @@
 import Community from "../models/CommunityModel.js";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+
 
 export const getCommunity = async (req, res) => {
     try {
@@ -40,6 +39,8 @@ export const deleteCommunityById = async (req, res) => {
         console.error(error);
     }
 }
+
+
 
 
 
