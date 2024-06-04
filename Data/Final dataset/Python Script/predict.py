@@ -21,11 +21,12 @@ if __name__ == "__main__":
     
     model = load_collaborative_model()
     user_click = params.get('user_click', [0 for _ in range(PHONE_COUNT)])
-    user_click_input = np.reshape(user_click, (1,PHONE_COUNT))
+    user_click_input = np.reshape(user_click, (1, PHONE_COUNT))
 
     user_rating = params.get('user_rating', [0 for _ in range(PHONE_COUNT)])
-    user_rating_input = np.reshape(user_rating, (1,PHONE_COUNT))
+    user_rating_input = np.reshape(user_rating, (1, PHONE_COUNT))
     user_rating_input = user_rating_input / 5
+    
     result = model.predict([user_rating_input,user_click_input])
     result = result[0]    
     
