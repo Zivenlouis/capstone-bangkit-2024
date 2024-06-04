@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-import os
 
 #Init
 df_phone_dataset = pd.read_csv('phone_dataset.csv')
@@ -45,7 +44,7 @@ def combine_collaborative_model(num_features):
     return model
 
 model = combine_collaborative_model(128)
-model.compile(optimizer='adam', loss='mse')
+model.compile(optimizer='adam', loss=tf.keras.losses.MeanSquaredError())
 click_input = train_clicks.to_numpy().T
 train_ratings = train_ratings/5
 rating_input = train_ratings.to_numpy().T
