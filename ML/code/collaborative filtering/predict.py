@@ -34,6 +34,7 @@ if __name__ == "__main__":
     for i in range(PHONE_COUNT):
         if user_click[i] != 0 or user_rating[i] != 0:
             result[i] = 0
+            
     result = result / max(result)
 
     

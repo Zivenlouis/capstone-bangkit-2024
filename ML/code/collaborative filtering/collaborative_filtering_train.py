@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras.models import model_from_json
 
 #Init
 df_phone_dataset = pd.read_csv('phone_dataset.csv')
@@ -45,6 +46,9 @@ def combine_collaborative_model(num_features):
 
 model = combine_collaborative_model(128)
 model.compile(optimizer='adam', loss=tf.keras.losses.MeanSquaredError())
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
 click_input = train_clicks.to_numpy().T
 train_ratings = train_ratings/5
 rating_input = train_ratings.to_numpy().T
