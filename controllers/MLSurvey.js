@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getTopSmartphonesSurvey = async (req, res) => {
   try {
-    const user_survey = req.params.user_survey;
+    const user_survey = req.body.user_survey;
 
     let phone_count = await Smartphones.count();
 
@@ -12,8 +12,8 @@ export const getTopSmartphonesSurvey = async (req, res) => {
       phone_count: phone_count,
       user_survey: user_survey,
     };
-
-    const response = await axios.post(url_survey, data);
+    console.log(user_survey);
+    const response = await axios.post(url_survey.url_survey, data);
     res.json(response.data);
   } catch (err) {
     console.error(err.message);
