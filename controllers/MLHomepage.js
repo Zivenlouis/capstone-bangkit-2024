@@ -22,32 +22,25 @@ export const getTopSmartphones = async (req, res) => {
       limit: 5,
     });
     let phone_count = await Smartphones.count();
-    phone_count = phone_count.count;
-    const user_click = {};
+    let user_click = new Array(phone_count).fill(0);
+    for (let i = 0; i < user_click_raw.length; i++) {
+      const smartphoneId = user_click_raw[i].smartphone_id;
+      user_click[smartphoneId] = 1;
+    }
 
-    user_click_raw.forEach((click) => {
-      const smartphoneId = click.smartphone_id;
-      if (!user_click[smartphoneId]) {
-        user_click[smartphoneId] = 0;
-      }
-      user_click[smartphoneId]++;
-    });
-
-    const user_rating = {};
-
-    user_rating_raw.forEach((click) => {
-      const smartphoneId = click.smartphone_id;
-      if (!user_rating[smartphoneId]) {
-        user_rating[smartphoneId] = 0;
-      }
-      user_rating[smartphoneId]++;
-    });
+    let user_rating = new Array(phone_count).fill(0);
+    for (let i = 0; i < user_rating_raw.length; i++) {
+      const smartphoneId = user_rating_raw[i].smartphone_id;
+      user_rating[smartphoneId] = 1;
+    }
 
     const data = {
       phone_count: phone_count,
       user_click: user_click,
       user_rating: user_rating,
     };
+
+    // console.log(data);
     const response = await axios.post(url_homepage, data);
     res.json(response.data);
   } catch (err) {
