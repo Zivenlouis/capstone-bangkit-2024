@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_background">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_forum_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:padding="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_forum_post_profile"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="31dp"
+                android:src="@drawable/image_small_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_forum_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/clash_grotesk_regular"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/civ_forum_post_profile"
+                app:layout_constraintTop_toTopOf="@id/civ_forum_post_profile"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_forum_dateposted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="186dp"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:text="3h"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_forum_photo"
+                app:layout_constraintTop_toTopOf="@id/tv_forum_username"
+                tools:ignore="TextSizeCheck" />
+
+
+            <TextView
+                android:id="@+id/tv_forum_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="29dp"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:justificationMode="inter_word"
+                android:text="Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_forum_username"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageView
+                android:id="@+id/iv_forum_photo"
+                android:layout_width="match_parent"
+                android:layout_height="173dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="29dp"
+                android:contentDescription="Forum Picture"
+                android:src="@drawable/ic_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_forum_description" />
+
+            <ImageView
+                android:id="@+id/iv_like_forum"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="18dp"
+                android:src="@drawable/ic_like_border"
+                app:layout_constraintStart_toStartOf="@id/iv_forum_photo"
+                app:layout_constraintTop_toBottomOf="@id/iv_forum_photo" />
+
+            <TextView
+                android:id="@+id/tv_likes_forum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/iv_like_forum"
+                app:layout_constraintTop_toTopOf="@id/iv_like_forum"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageView
+                android:id="@+id/iv_reply_forum"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_reply"
+                app:layout_constraintBottom_toBottomOf="@id/iv_like_forum"
+                app:layout_constraintStart_toEndOf="@id/tv_likes_forum"
+                app:layout_constraintTop_toTopOf="@id/iv_like_forum" />
+
+            <TextView
+                android:id="@+id/tv_reply_forum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/clash_grotesk_light"
+                android:text="8"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/iv_reply_forum"
+                app:layout_constraintTop_toTopOf="@id/iv_reply_forum"
+                tools:ignore="TextSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_forum_replies"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_forum_post"
+        tools:listitem="@layout/item_replies_forum" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="37dp"
+        android:backgroundTint="@color/light_peach"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_add_reply_profile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginVertical="14dp"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/image_small_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_edit_reply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/civ_add_reply_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/ed_add_reply"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/light_peach"
+                        android:fontFamily="@font/clash_grotesk"
+                        android:hint="Reply to this post"
+                        android:inputType="textShortMessage"
+                        android:maxLength="250"
+                        android:maxLines="1"
+                        android:textColorHint="#616161"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_add_replies"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterButton
+                        android:id="@+id/btn_add_replies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        android:backgroundTint="@color/light_peach"
+                        android:contentDescription="Button Add Reply"
+                        android:src="@drawable/ic_add_post"
+                        app:cornerRadius="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
