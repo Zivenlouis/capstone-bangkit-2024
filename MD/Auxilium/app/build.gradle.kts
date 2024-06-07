@@ -27,7 +27,7 @@ android {
                 isReturnDefaultValues = true
             }
         }
-        buildConfigField("String", "BASE_URL", "\"<API LINK>\"")
+        buildConfigField("String", "BASE_URL", "\"https://api-capstone-rho.vercel.app/\"")
     }
 
     buildTypes {

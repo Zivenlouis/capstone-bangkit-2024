@@ -322,9 +322,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommended"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

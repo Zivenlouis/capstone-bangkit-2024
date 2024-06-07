@@ -7,6 +7,8 @@
     android:background="@drawable/dark_background"
     tools:context=".login.LoginActivity">
 
+    <include layout="@layout/progress_bar_loading" />
+
     <ImageView
         android:id="@+id/iv_login_image"
         android:layout_width="wrap_content"
@@ -32,7 +34,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#1A1E1E1E"
@@ -45,77 +47,23 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_login_google"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="22dp"
-                android:layout_marginTop="50dp"
-                android:backgroundTint="@color/transparent"
-                android:text="Sign In with Google"
-                android:textAllCaps="false"
-                android:textColor="@color/light_peach"
-                app:cornerRadius="11dp"
-                app:icon="@drawable/googleg_standard_color_18"
-                app:iconGravity="textStart"
-                app:iconPadding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/light_peach"
-                app:strokeWidth="1dp" />
-
-            <TextView
-                android:id="@+id/tv_or"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/clash_grotesk_regular"
-                android:paddingHorizontal="16dp"
-                android:text="or"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/btn_login_google"
-                app:layout_constraintStart_toStartOf="@id/btn_login_google"
-                app:layout_constraintTop_toBottomOf="@id/btn_login_google" />
-
-            <View
-                android:id="@+id/divider_guest1"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="4dp"
-                android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/tv_or"
-                app:layout_constraintEnd_toStartOf="@id/tv_or"
-                app:layout_constraintStart_toStartOf="@id/btn_login_google"
-                app:layout_constraintTop_toTopOf="@id/tv_or" />
-
-            <View
-                android:id="@+id/divider_guest2"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toBottomOf="@id/tv_or"
-                app:layout_constraintEnd_toEndOf="@id/btn_login_google"
-                app:layout_constraintStart_toEndOf="@id/tv_or"
-                app:layout_constraintTop_toTopOf="@id/tv_or" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp">
 
             <TextView
                 android:id="@+id/tv_email_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="50dp"
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:text="E-mail"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@id/btn_login_google"
-                app:layout_constraintTop_toBottomOf="@id/tv_or" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLogin"
+                android:id="@+id/textInputEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="22dp"
@@ -124,20 +72,21 @@
                 app:boxCornerRadiusBottomStart="11dp"
                 app:boxCornerRadiusTopEnd="11dp"
                 app:boxCornerRadiusTopStart="11dp"
-                app:hintEnabled="true"
-                app:layout_constraintEnd_toEndOf="@id/btn_login_google"
-                app:layout_constraintStart_toStartOf="@id/btn_login_google"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_email_login"
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_email_login"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/light_peach"
-                    android:gravity="start|top"
+                    android:fontFamily="@font/clash_grotesk"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
+                    android:paddingVertical="18dp"
                     android:paddingStart="50dp"
                     android:textColorHint="#616161"
                     app:errorEnabled="true"
@@ -152,8 +101,8 @@
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:text="Password"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@id/btn_login_google"
-                app:layout_constraintTop_toBottomOf="@id/textInputLogin" />
+                app:layout_constraintStart_toStartOf="@id/tv_email_login"
+                app:layout_constraintTop_toBottomOf="@id/textInputEmailLogin" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputPassword"
@@ -165,7 +114,7 @@
                 app:boxCornerRadiusBottomStart="11dp"
                 app:boxCornerRadiusTopEnd="11dp"
                 app:boxCornerRadiusTopStart="11dp"
-                app:hintEnabled="true"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_password_login"
@@ -177,8 +126,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/light_peach"
+                    android:fontFamily="@font/clash_grotesk"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:paddingVertical="18dp"
                     android:paddingStart="50dp"
                     android:textColorHint="#616161"
                     app:errorEnabled="true"
@@ -232,18 +183,6 @@
                 app:layout_constraintStart_toEndOf="@id/tv_additional"
                 app:layout_constraintTop_toTopOf="@id/tv_additional" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ProgressBar
-            android:id="@+id/loginLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:progressBackgroundTint="@color/white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </com.google.android.material.card.MaterialCardView>
 

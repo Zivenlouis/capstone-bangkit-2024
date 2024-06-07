@@ -28,6 +28,9 @@
         android:theme="@style/Theme.Auxilium"
         tools:targetApi="31">
         <activity
+            android:name=".ui.forum.DetailForumActivity"
+            android:exported="false" />
+        <activity
             android:name=".history.DetailHistoryActivity"
             android:exported="false" />
         <activity
@@ -53,25 +56,26 @@
             android:exported="false" />
         <activity
             android:name=".view.additional.SplashScreenActivity"
-            android:exported="true" >   <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+            android:exported="true" />
         <activity
             android:name=".view.additional.OnBoardingActivity"
             android:exported="true" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".login.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true">      </activity>
         <activity
             android:name=".database.DetailPhoneActivity"
             android:exported="true" />

@@ -1,22 +1,33 @@
-Slicing UI Progress (80 - 90%)
-
-All Figma Page Done
+Slicing UI Progress(100%), Auth(100%) and Forum(30%)
+All Figma Desing Slicing Page Done
 
 Not Done:
-FrontEnd
-- RecyclerView
-- Recommended for you HomeFragment 
+- Logic / BackEnd : 
+	- Model
+	- Questionnare
+	- Add, Edit & Delete Forum 
+	- Add, Edit & Delete Avatar , Change Password and Username Cause of Uncompleted API
+	- Detail Phone Pages for Every RecyclerView (30% only layout)
+	- Response Item Cause of Uncompleted API
+	- Else
 
-FrontEnd Logic Code
-DarkMode Last choicee, Authentication and Forum
+Done
+- API Fix
+- All RecyclerView Layout and Adapter
+- Toolbar Fix
+- Alert in Email and Password + Confirm Password
+- Slicing Design Error Fixed
+- Profile : Logout And Localize Access
 
-Minus:
+Minor Detail Flaws:
 - Localize not created
 - Hardcoded String
-- Dark mode excluded
 - There are some inconsistent item IDs and color
 - Less detailed  due to design using Emulator Pixel 4 API 28
-- Phone Mockup PNG
-- Toolbar 
+- Phone Mockup PNG only 1
+- Loading Bar / Progress Bar Logic
+
+Optional / OutofScoped
+DarkMode
 
 

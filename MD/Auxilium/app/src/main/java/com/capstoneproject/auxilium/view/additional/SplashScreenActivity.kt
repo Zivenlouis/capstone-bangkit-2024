@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
             .alpha(1f) // Fade in to 100% opacity
             .setDuration(2000) // Animation duration (2 seconds)
             .withEndAction {
-                // Start LoginActivity after animation
+                // Start com.capstoneproject.auxilium.login.com.capstoneproject.auxilium.login.LoginActivity after animation
                 Handler().postDelayed({
                     val intent = Intent(this, OnBoardingActivity::class.java)
                     startActivity(intent)

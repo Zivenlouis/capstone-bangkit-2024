@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.custom_toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
 
         val navView: BottomNavigationView = binding.navView
 
@@ -60,17 +62,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun showToast(message: String) {
         Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showProgressBar() {
-        binding.mainLoading.visibility = View.VISIBLE
+        findViewById<ProgressBar>(R.id.progress_bar_loading).visibility = View.VISIBLE
     }
 
     private fun hideProgressBar() {
-        binding.mainLoading.visibility = View.GONE
+        findViewById<ProgressBar>(R.id.progress_bar_loading).visibility = View.GONE
     }
 }

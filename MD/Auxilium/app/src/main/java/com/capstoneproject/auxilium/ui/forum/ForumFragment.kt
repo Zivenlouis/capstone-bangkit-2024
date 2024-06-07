@@ -1,50 +1,60 @@
 package com.capstoneproject.auxilium.ui.forum
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.auxilium.R
-import com.capstoneproject.auxilium.adapter.ForumAdapter
-import com.capstoneproject.auxilium.adapter.ForumPost
 import com.capstoneproject.auxilium.addpost.AddPostFragment
 import com.capstoneproject.auxilium.databinding.FragmentForumBinding
+import com.capstoneproject.auxilium.login.UserPreference
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 class ForumFragment : Fragment() {
 
     private var _binding: FragmentForumBinding? = null
     private val binding get() = _binding!!
-
-    private val forumPosts = listOf(
-        ForumPost(R.drawable.image_small_circle, "User1", "3h", "Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease.", R.drawable.ic_image, 10, 8),
-        ForumPost(R.drawable.image_small_circle, "User2", "5h", "Loving the camera on the new Pixel phone!", R.drawable.ic_image, 20, 15)
-        // Add more forum posts here
-    )
+    private lateinit var viewModel: ForumViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentForumBinding.inflate(inflater, container, false)
-        val view = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.btnAddPost.setOnClickListener {
             val addPostFragment = AddPostFragment()
             addPostFragment.show(childFragmentManager, "AddPostFragment")
         }
 
-        return view
+        binding.rvForumPosts.layoutManager = LinearLayoutManager(context)
+
+        lifecycleScope.launch {
+            val userPreference = UserPreference.getInstance(requireContext())
+            userPreference.getToken().firstOrNull()
+            val repository = ForumRepository(userPreference)
+            viewModel = ForumViewModelFactory(repository).create(ForumViewModel::class.java)
+            observeViewModel()
+        }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.rvForumPosts.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = ForumAdapter(forumPosts)
+    private fun observeViewModel() {
+        viewModel.forumPosts.observe(viewLifecycleOwner) { posts ->
+            binding.rvForumPosts.adapter = ForumAdapter(posts) { forumPost ->
+                val intent = Intent(requireContext(), DetailForumActivity::class.java).apply {
+                    putExtra("forumPost", forumPost)
+                }
+                startActivity(intent)
+            }
         }
     }
 

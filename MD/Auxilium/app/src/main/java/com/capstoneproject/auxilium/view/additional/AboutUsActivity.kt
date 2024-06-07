@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.auxilium.R
-import com.capstoneproject.auxilium.adapter.AboutUsAdapter
 import com.capstoneproject.auxilium.databinding.ActivityAboutUsBinding
 
 class AboutUsActivity : AppCompatActivity() {

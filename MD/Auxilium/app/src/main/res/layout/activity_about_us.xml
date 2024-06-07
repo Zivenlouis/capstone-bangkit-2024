@@ -20,6 +20,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_about_us_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_auxilium_white"
+        app:layout_constraintBottom_toBottomOf="@id/tv_about_us_title"
+        app:layout_constraintEnd_toStartOf="@id/tv_about_us_title"
+        app:layout_constraintTop_toTopOf="@id/tv_about_us_title"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTeams"
         android:layout_width="match_parent"

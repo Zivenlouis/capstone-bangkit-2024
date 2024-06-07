@@ -10,11 +10,26 @@
         android:id="@+id/rv_wishlist"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_wishlist" />
+
+    <TextView
+        android:id="@+id/tv_empty_wishlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/clash_grotesk_medium"
+        android:text="Add Your Current Wishlist Here...."
+        android:textAlignment="center"
+        android:textColor="@color/light_peach"
+        android:textSize="60dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

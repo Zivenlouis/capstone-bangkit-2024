@@ -3,8 +3,8 @@ package com.capstoneproject.auxilium.di
 /*
 import android.content.Context
 import com.example.storyapps.data.repository.StoryRepository
-import com.example.storyapps.data.datastore.UserPreference
-import com.example.storyapps.data.datastore.dataStore
+import com.capstoneproject.auxilium.login.UserPreference
+import com.capstoneproject.auxilium.login.getDataStore
 import com.example.storyapps.api.ApiConfig
 import com.example.storyapps.database.StoryDatabase
 import kotlinx.coroutines.flow.first
