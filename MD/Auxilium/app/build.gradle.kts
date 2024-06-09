@@ -101,6 +101,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     ksp("com.github.bumptech.glide:compiler:4.16.0")
+    implementation("app.rive:rive-android:8.7.0")
 
     // Firebase Firestore
     implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
