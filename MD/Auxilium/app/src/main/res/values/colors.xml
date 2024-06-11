@@ -4,13 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="hyperlink_color_default">#0000FF</color>
     <color name="hyperlink_color_accent">#4285F4</color>
-    <color name="auth_card_bg_color">#282A62</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="light_peach">#EFCABF</color>
     <color name="gold">#FFD700</color>
     <color name="dark_peach">#D6A393</color>
-    <color name="start_icon_tint">#1E1E1E</color>
-    <color name="hint_text_tint">#616161</color>
+
     <color name="md_theme_primary">#000059</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#222782</color>

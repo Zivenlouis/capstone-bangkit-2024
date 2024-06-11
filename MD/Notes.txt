@@ -1,23 +1,23 @@
-Slicing UI Progress(100%), Auth(100%) and Forum(30%)
-All Figma Desing Slicing Page Done
+Merging Conflicts harry-branch for animation (minimum sdk or os Android 12)
+
 
 Not Done:
 - Logic / BackEnd : 
 	- Model
 	- Questionnare
-	- Add, Edit & Delete Forum 
+	- Add Forum 
 	- Add, Edit & Delete Avatar , Change Password and Username Cause of Uncompleted API
 	- Detail Phone Pages for Every RecyclerView (30% only layout)
 	- Response Item Cause of Uncompleted API
-	- Else
+	- Add, Edit & Delete Forum
+	- forum reply
+	- else
 
-Done
-- API Fix
-- All RecyclerView Layout and Adapter
-- Toolbar Fix
-- Alert in Email and Password + Confirm Password
-- Slicing Design Error Fixed
-- Profile : Logout And Localize Access
+Done 
+- Merge Animation from Harry Branch
+- Minor Design error (table and icon color tint)
+- finish new arrivals (list of phone)
+- username phone and profile added to homefragment
 
 Minor Detail Flaws:
 - Localize not created
@@ -26,8 +26,5 @@ Minor Detail Flaws:
 - Less detailed  due to design using Emulator Pixel 4 API 28
 - Phone Mockup PNG only 1
 - Loading Bar / Progress Bar Logic
-
-Optional / OutofScoped
-DarkMode
 
 

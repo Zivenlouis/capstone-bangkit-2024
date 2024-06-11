@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Auxilium" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -53,14 +52,5 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-
     </style>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-        <!-- Atur atribut gaya sesuai kebutuhan -->
-        <!-- Misalnya, warna latar belakang pop-up -->
-        <item name="android:background">@android:color/white</item>
-        <!-- Atur atribut lainnya -->
-    </style>
-
 </resources>
