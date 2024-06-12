@@ -33,6 +33,7 @@ Auxilium app is developed with:
 3. Android Studio
 4. FlaskAPI
 5. Google Cloud Platform (MySQL, Storage Bucket, Compute Engine)
+6. Postman
 
 ## Steps to Replicate
 To replicate the Auxillium Mobile App, we can follow this steps:
@@ -42,13 +43,30 @@ git clone https://github.com/Zivenlouis/capstone-bangkit-2024.git
 ```
 1. Re-Train the model with new dataset by running collaborative_filtering_train.py and content_based_filtering_model_final_training.py script.(optional)
 2. Move the .h5 model data to CC folder that contain flaskAPI
-3. 
+3. Set Up Flask API
+4. Configure Backend with SQL Server on GCP
+    - IP       : 34.101.58.1xx
+    - User     : root
+    - Password : xxxxxx
+5. Endpoint Integration
 
 
 
 ## Dependencies
 | No | Dependency | Purpose |
-|:--:|:-------------------|:--------------------------------------------------|
-| 1  | pandas             | Data manipulation and analysis.                   |
-| 2  | numpy              | Numerical computing with arrays and matrices.     |
-| 3  | tensorflow         | Machine learning framework for building models.   |
+|:--:|:------------------------|:------------------------------------------------------------|
+| 1  | pandas                  | Data manipulation and analysis.                             |
+| 2  | numpy                   | Numerical computing with arrays and matrices.               |
+| 3  | tensorflow              | Machine learning framework for building models.             |
+| 4  | express                 | Node.js framework is for building web applications and APIs.|
+| 5  | google-cloud/storage    | Clients to access Google Cloud Storage from the Node.js app.|
+| 6  | bcrypt                  | Library for secure password hashing.                        |
+| 7  | cors                    | Middleware to configure Cross-Origin Resource Sharing.      |
+| 8  | dotenv                  | Library to load environmental variables from .env files.    |
+| 9  | helmet                  | Middleware to improve web application security.             |
+| 10 | jsonwebtoken            | Library to create and verify JSON Web Tokens (JWT).         |
+| 11 | morgan                  | Middleware to log HTTP request logs in Express.             |
+| 12 | multer                  | Middleware to handle file uploads in Express applications.  |
+| 13 | mysql2                  | Library for connecting Node.js with MySQL database.         |
+| 14 | node-cron               | Library to schedule tasks (cron jobs).                      |
+| 15 | sequelize               | ORM to manage SQL databases in Node.js application.         |
