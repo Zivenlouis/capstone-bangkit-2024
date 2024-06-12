@@ -1,7 +1,7 @@
 package com.capstoneproject.auxilium.ui.forum
 
 import com.capstoneproject.auxilium.api.ApiConfig
-import com.capstoneproject.auxilium.login.UserPreference
+import com.capstoneproject.auxilium.datastore.UserPreference
 import kotlinx.coroutines.flow.firstOrNull
 
 class ForumRepository(private val userPreference: UserPreference) {

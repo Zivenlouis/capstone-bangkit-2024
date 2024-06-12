@@ -15,13 +15,11 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnAddWishlist.setOnClickListener {
-            binding.btnAddWishlist.setOnClickListener {
+        binding.btnAddHistory.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("selected_tab", R.id.navigation_wishlist)
                 startActivity(intent)
                 finish()
-            }
         }
     }
 }

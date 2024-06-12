@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ActivityRegisterBinding
+import com.capstoneproject.auxilium.datastore.UserPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

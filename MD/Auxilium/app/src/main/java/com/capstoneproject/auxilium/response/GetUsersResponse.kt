@@ -22,6 +22,9 @@ data class GetUsersResponseItem(
 	@field:SerializedName("id")
 	val id: Int? = null,
 
+	@field:SerializedName("profileImage")
+	val profileImage: String? = null,
+
 	@field:SerializedName("email")
 	val email: String? = null,
 

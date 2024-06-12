@@ -2,6 +2,7 @@ package com.capstoneproject.auxilium.login
 
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.RegisterRequestBody
+import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.RegisterResponse
 import kotlinx.coroutines.flow.firstOrNull
 

@@ -1,7 +1,11 @@
 package com.capstoneproject.auxilium.ui.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class PhoneItem(
-    val image: Int,
-    val title: String,
-    val description: String
-)
+    val phoneImage: Int,
+    val phoneNames: String,
+    val phoneOS: String
+):Parcelable

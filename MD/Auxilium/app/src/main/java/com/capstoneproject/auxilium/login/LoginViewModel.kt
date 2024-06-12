@@ -13,4 +13,12 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
     fun getSavedToken(): Flow<String?> {
         return repository.getSavedToken()
     }
+
+    suspend fun saveToken(token: String) {
+        repository.saveToken(token)
+    }
+
+    suspend fun saveUserId(userId: Int) {
+        repository.saveUserId(userId)
+    }
 }

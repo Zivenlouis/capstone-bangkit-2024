@@ -33,7 +33,6 @@
             android:background="@color/transparent"
             android:contentDescription="History Button"
             android:src="@drawable/profile_home_support"
-            app:icon="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="@id/iv_bg_home_profile"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
@@ -44,7 +43,7 @@
             android:layout_height="36dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="17dp"
-            android:src="@drawable/ic_auxilium"
+            android:src="@drawable/ic_user"
             app:layout_constraintStart_toStartOf="@id/iv_bg_home_profile"
             app:layout_constraintTop_toTopOf="@id/iv_bg_home_profile" />
 
@@ -156,11 +155,12 @@
             android:fontFamily="@font/clash_grotesk_regular"
             android:text="Supercharge your search"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/start_icon_tint"
             android:textSize="16sp"
             app:cornerRadius="31dp"
             app:icon="@drawable/ic_supercharge"
             app:iconGravity="textStart"
+            app:iconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_bg_home_profile" />
@@ -227,7 +227,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals_support"
                     tools:itemCount="5"
-                    tools:listitem="@layout/item_recommended_main" />
+                    tools:listitem="@layout/item_home_new_arrivals" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 

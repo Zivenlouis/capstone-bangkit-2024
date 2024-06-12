@@ -25,9 +25,9 @@ class MainRecAdapter(private val userList: List<PhoneItem>) :
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val currentItem = userList[position]
-        holder.phoneImage.setImageResource(currentItem.image)
-        holder.phoneTitle.text = currentItem.title
-        holder.phoneDescription.text = currentItem.description
+        holder.phoneImage.setImageResource(currentItem.phoneImage)
+        holder.phoneTitle.text = currentItem.phoneNames
+        holder.phoneDescription.text = currentItem.phoneOS
     }
 
     override fun getItemCount(): Int {

@@ -2,77 +2,126 @@ package com.capstoneproject.auxilium.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.capstoneproject.auxilium.R
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.databinding.FragmentHomeBinding
+import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.history.HistoryActivity
+import com.capstoneproject.auxilium.view.newarrivals.NewArrivalsActivity
 import com.capstoneproject.auxilium.view.question.QuestActivity
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModelFactory: HomeViewModelFactory
+    private lateinit var userPreference: UserPreference
+    private lateinit var newArrivalsAdapter: ViewNewArrivalsAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
-        ViewModelProvider(this)[HomeViewModel::class.java]
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        viewModelFactory = HomeViewModelFactory(requireContext())
+        viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
+        userPreference = UserPreference.getInstance(requireContext())
+
+        setupViews()
+        observeViewModel()
+        setupAdapters()
+
+        return root
+    }
+
+    private fun setupViews() {
         binding.btnSuperchargeSearch.setOnClickListener {
-            val intent = Intent(requireContext(), QuestActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), QuestActivity::class.java))
         }
 
         binding.btnHistory.setOnClickListener {
-            val intent = Intent(requireContext(), HistoryActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), HistoryActivity::class.java))
         }
 
-        val userPhoneList = listOf(
-            PhoneItem(R.drawable.ic_image, "Phone 1", "Some description"),
-            PhoneItem(R.drawable.ic_image, "Phone 1", "Some description")
-        )
-        val recommendedList = listOf(
-            PhoneItem(R.drawable.ic_image, "Phone 1", "Some description"),
-            PhoneItem(R.drawable.ic_image, "Phone 1", "Some description")
-        )
+        binding.btnNewArrivals.setOnClickListener {
+            startActivity(Intent(requireContext(), NewArrivalsActivity::class.java))
+        }
+    }
 
-        val newArrivalsAdapter = NewArrivalsAdapter(userPhoneList)
-        val mainRecAdapter = MainRecAdapter(recommendedList)
+    private fun observeViewModel() {
+        viewModel.userName.observe(viewLifecycleOwner) { name ->
+            Log.d("HomeFragment", "observeViewModel: userName = $name")
+            binding.tvUsername.text = name
+        }
 
-        binding.rvNewArrivals.adapter = newArrivalsAdapter
-        binding.rvMainRecom.adapter = mainRecAdapter
-        return root
+        viewModel.profileImage.observe(viewLifecycleOwner) { profileImage ->
+            Log.d("HomeFragment", "observeViewModel: profileImage = $profileImage")
+            Glide.with(this)
+                .load(profileImage)
+                .into(binding.civProfile)
+        }
+
+        lifecycleScope.launch {
+            val brand = android.os.Build.BRAND
+            val manufacturer = android.os.Build.MANUFACTURER
+            val deviceModel = if (brand.isNotEmpty() && manufacturer.isNotEmpty()) {
+                "$manufacturer $brand"
+            } else {
+                "Unknown Device"
+            }
+            binding.tvUserPhones.text = deviceModel
+        }
+
+        lifecycleScope.launch {
+            val userId = getCurrentUserId()
+            Log.d("HomeFragment", "observeViewModel: userId = $userId")
+            viewModel.fetchUserName(userId)
+        }
+
+
+        viewModel.phoneList.observe(viewLifecycleOwner) { phones ->
+            if (phones != null) {
+                newArrivalsAdapter.updateData(phones)
+                Log.d("HomeFragment", "observeViewModel: phoneList size = ${phones.size}")
+            }
+        }
+
+        lifecycleScope.launch {
+            val userId = getCurrentUserId()
+            Log.d("HomeFragment", "observeViewModel: userId = $userId")
+            viewModel.fetchUserName(userId)
+            viewModel.fetchPhones()
+        }
+    }
+
+    private suspend fun getCurrentUserId(): Int {
+        val userId = userPreference.getUserId().firstOrNull() ?: 100
+        Log.d("HomeFragment", "getCurrentUserId: userId = $userId")
+        return userId
+    }
+
+    private fun setupAdapters() {
+        newArrivalsAdapter = ViewNewArrivalsAdapter()
+        binding.rvNewArrivals.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = newArrivalsAdapter
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showProgressBar() {
-        val progressBar = requireActivity().findViewById<ProgressBar>(R.id.progress_bar_loading)
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideProgressBar() {
-        val progressBar = requireActivity().findViewById<ProgressBar>(R.id.progress_bar_loading)
-        progressBar.visibility = View.GONE
-    }
-
 }

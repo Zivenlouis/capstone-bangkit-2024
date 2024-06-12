@@ -1,9 +1,10 @@
-package com.capstoneproject.auxilium.login
+package com.capstoneproject.auxilium.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -32,14 +33,34 @@ class UserPreference(context: Context) {
         }
     }
 
-    fun getUser(): Flow<User?> {
+        fun getUserId(): Flow<Int?> {
+            return dataStore.data.map { preferences ->
+                preferences[KEY_USER_ID]
+            }
+        }
+
+    suspend fun saveUserId(userId: Int) {
+        dataStore.edit { preferences ->
+            preferences[KEY_USER_ID] = userId
+        }
+    }
+
+    suspend fun saveUsername(username: String) {
+        dataStore.edit { preferences ->
+            preferences[KEY_USERNAME] = username
+        }
+    }
+
+    fun getUsername(): Flow<String?> {
         return dataStore.data.map { preferences ->
-            User(preferences[KEY_TOKEN])
+            preferences[KEY_USERNAME]
         }
     }
 
     companion object {
         private val KEY_TOKEN = stringPreferencesKey("auth_token")
+        private val KEY_USER_ID = intPreferencesKey("user_id")
+        private val KEY_USERNAME = stringPreferencesKey("username")
 
         @Volatile
         private var INSTANCE: UserPreference? = null

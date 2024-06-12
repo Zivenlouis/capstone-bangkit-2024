@@ -10,6 +10,9 @@ data class CommunityResponse(
 
 data class CommunityResponseItem(
 
+	@field:SerializedName("image")
+	val image: String? = null,
+
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
@@ -18,6 +21,9 @@ data class CommunityResponseItem(
 
 	@field:SerializedName("caption")
 	val caption: String? = null,
+
+	@field:SerializedName("likeCount")
+	val likeCount: Int? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

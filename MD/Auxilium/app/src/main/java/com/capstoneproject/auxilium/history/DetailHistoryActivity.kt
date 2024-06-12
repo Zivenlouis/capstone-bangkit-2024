@@ -2,7 +2,10 @@ package com.capstoneproject.auxilium.history
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ActivityDetailHistoryBinding
+import com.capstoneproject.auxilium.ui.home.PhoneItem
 
 class DetailHistoryActivity : AppCompatActivity() {
 
@@ -13,10 +16,22 @@ class DetailHistoryActivity : AppCompatActivity() {
         binding = ActivityDetailHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val historyItem = intent.getSerializableExtra("HISTORY_ITEM") as HistoryItem
+        val historyItem = intent.getParcelableExtra<PhoneItem>("HISTORY_ITEM")
 
-        binding.ivDetailPhoneImages.setImageResource(historyItem.imageResId)
-        binding.tvDetailPhoneNames.text = historyItem.phoneName
-        binding.tvDetailPhoneOs.text = historyItem.phoneOS
+        if (historyItem != null) {
+            binding.ivDetailPhoneImages.setImageResource(historyItem.phoneImage)
+            binding.tvDetailPhoneNames.text = historyItem.phoneNames
+            binding.tvDetailPhoneOs.text = historyItem.phoneOS
+        }
+
+        val recommendedList = listOf(
+            PhoneItem(R.drawable.ic_image, "Recommended Phone 1", "Android"),
+            PhoneItem(R.drawable.ic_image, "Recommended Phone 2", "iOS"),
+            PhoneItem(R.drawable.ic_image, "Recommended Phone 3", "Android")
+        )
+
+        val adapter = DetailHistoryAdapter(this, recommendedList)
+        binding.rvRecommended.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvRecommended.adapter = adapter
     }
 }

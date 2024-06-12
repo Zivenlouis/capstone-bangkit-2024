@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.auxilium.addpost.AddPostFragment
 import com.capstoneproject.auxilium.databinding.FragmentForumBinding
-import com.capstoneproject.auxilium.login.UserPreference
+import com.capstoneproject.auxilium.datastore.UserPreference
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 

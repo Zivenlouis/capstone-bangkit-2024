@@ -5,39 +5,49 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.auxilium.databinding.ActivitySplashScreenBinding
+import com.capstoneproject.auxilium.datastore.UserPreference
+import com.capstoneproject.auxilium.view.MainActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
+@Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
+    private lateinit var userPreference: UserPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Animate logo fade-in
-        binding.appLogo.alpha = 0f // Initially invisible
-        binding.appLogo.animate()
-            .alpha(1f) // Fade in to 100% opacity
-            .setDuration(2000) // Animation duration (2 seconds)
-            .withEndAction {
-                // Start com.capstoneproject.auxilium.login.com.capstoneproject.auxilium.login.LoginActivity after animation
-                Handler().postDelayed({
-                    val intent = Intent(this, OnBoardingActivity::class.java)
-                    startActivity(intent)
-                    finish() // Close SplashScreenActivity
-                }, 1000) // Delay 1000ms (1 second)
-            }
-            .start()
+        userPreference = UserPreference.getInstance(this)
+    }
 
-        // Optional: Animate text fade-in with a slight delay
-        binding.appName.alpha = 0f
-        binding.appName.animate()
-            .alpha(1f)
-            .setDuration(1500) // Slightly shorter duration
-            .setStartDelay(500) // Delay start by 500ms
-            .start()
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({
+            checkTokenAndNavigate()
+        }, ANIMATION_DURATION)
+    }
+
+    private fun checkTokenAndNavigate() {
+        lifecycleScope.launch {
+            val token = userPreference.getToken().first()
+            val intent = if (token.isNullOrEmpty()) {
+                Intent(this@SplashScreenActivity, OnBoardingActivity::class.java)
+            } else {
+                Intent(this@SplashScreenActivity, MainActivity::class.java)
+            }
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    companion object {
+        private const val ANIMATION_DURATION = 4500L
     }
 }

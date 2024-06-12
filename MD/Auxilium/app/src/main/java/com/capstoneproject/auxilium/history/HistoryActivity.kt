@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ActivityHistoryBinding
+import com.capstoneproject.auxilium.ui.home.PhoneItem
 
 class HistoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var historyAdapter: HistoryAdapter
     private val historyList = listOf(
-        HistoryItem(R.drawable.ic_image, "Phone 1", "OS 1"),
-        HistoryItem(R.drawable.ic_image, "Phone 2", "OS 2"),
-        HistoryItem(R.drawable.ic_image, "Phone 3", "OS 3")
+        PhoneItem(R.drawable.ic_image, "Phone 1", "OS 1"),
+        PhoneItem(R.drawable.ic_image, "Phone 2", "OS 2"),
+        PhoneItem(R.drawable.ic_image, "Phone 3", "OS 3")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

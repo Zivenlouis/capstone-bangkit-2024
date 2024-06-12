@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.auxilium.databinding.ItemHistoryBinding
+import com.capstoneproject.auxilium.ui.home.PhoneItem
 
-class HistoryAdapter(private val context: Context, private val historyList: List<HistoryItem>) :
+class HistoryAdapter(private val context: Context, private val historyList: List<PhoneItem>) :
     RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -25,9 +26,9 @@ class HistoryAdapter(private val context: Context, private val historyList: List
     }
 
     inner class HistoryViewHolder(private val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(historyItem: HistoryItem) {
-            binding.ivPhoneImagesHistory.setImageResource(historyItem.imageResId)
-            binding.tvPhoneNamesHistory.text = historyItem.phoneName
+        fun bind(historyItem: PhoneItem) {
+            binding.ivPhoneImagesHistory.setImageResource(historyItem.phoneImage)
+            binding.tvPhoneNamesHistory.text = historyItem.phoneNames
             binding.tvPhoneOs.text = historyItem.phoneOS
 
             binding.root.setOnClickListener {

@@ -13,6 +13,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ActivityLoginBinding
+import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.view.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -79,7 +80,17 @@ class LoginActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val loginResponse = viewModel.login(email, password)
-                if (!loginResponse.accessToken.isNullOrEmpty()) {
+                if (!loginResponse.token.isNullOrEmpty()) {
+
+                    viewModel.saveToken(loginResponse.token)
+
+                    // Save the userId
+                    val userId = loginResponse.userId
+                    if (userId != null) {
+                        viewModel.saveUserId(userId)
+                    } else {
+                        Log.e("LoginActivity", "User ID is null")
+                    }
                     navigateToMainActivity()
                 } else {
                     Log.e("LoginActivity", "Access token is null or blank")

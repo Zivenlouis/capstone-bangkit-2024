@@ -1,30 +1,34 @@
-Merging Conflicts harry-branch for animation (minimum sdk or os Android 12)
+Wishlist Done , Home UserProfile and ProfilePage Done , Reset Password Done 
 
+Done :
+- Change Password
+- Wishlist Page
+- Home Profile and ProfilePage
+- Minor Detail (Table and ResetPassword)
 
-Not Done:
-- Logic / BackEnd : 
-	- Model
-	- Questionnare
-	- Add Forum 
-	- Add, Edit & Delete Avatar , Change Password and Username Cause of Uncompleted API
-	- Detail Phone Pages for Every RecyclerView (30% only layout)
-	- Response Item Cause of Uncompleted API
-	- Add, Edit & Delete Forum
-	- forum reply
-	- else
-
-Done 
+Done Before
 - Merge Animation from Harry Branch
 - Minor Design error (table and icon color tint)
 - finish new arrivals (list of phone)
 - username phone and profile added to homefragment
 
+Not Done:
+- Logic / BackEnd : 
+	- Model
+	- Questionnare (Model)
+	- Add Complete Forum 
+	- Change / Add / Delete Profile pics and username
+	- Detail Phone Pages (40 % - only new arrivals and wishlist)
+	- Add, Edit & Delete Forum
+	- forum reply
+	- else
+
 Minor Detail Flaws:
 - Localize not created
 - Hardcoded String
-- There are some inconsistent item IDs and color
 - Less detailed  due to design using Emulator Pixel 4 API 28
 - Phone Mockup PNG only 1
-- Loading Bar / Progress Bar Logic
+- Loading Bar / Progress Bar Logic using animation
+- Apps can run in API android 12 + upto newest one
 
 
