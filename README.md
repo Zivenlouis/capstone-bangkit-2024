@@ -14,10 +14,11 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Tech Used](#techused)
-- [Steps to Replicate](#replicate)
+- [Download APK Link](#download-apk-link)
+- [Tech Used](#tech-used)
+- [Steps to Replicate](#steps-to-replicate)
 - [Dependencies](#dependencies)
-- [Download APK Link](#apklink)
+
 
 ## Introduction
 Auxilium is a mobile phone recommendation application that offers tailored suggestions based on specifications and ratings. Users complete a preference survey regarding general specifications, enabling the application to generate personalized recommendations. Additionally, Auxillium employs collaborative filtering methods to suggest new phones, allowing users to explore diverse options. The app also features a community page where users can seek advice, share experiences, and read authentic reviews, fostering a supportive environment for informed decision-making. This comprehensive approach ensures users receive suggestions tailored to their preferences, enhancing satisfaction with their purchases.
