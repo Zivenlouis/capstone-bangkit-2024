@@ -27,11 +27,11 @@ https://www.google.com
 
 ## Tech Used
 Auxilium app is developed with:
-1. Node.js
+1. Express.js
 2. Tensorflow
 3. Android Studio
 4. FlaskAPI
-5. Google Cloud Platform
+5. Google Cloud Platform (MySQL, Storage Bucket, Compute Enginee)
 
 ## Steps to Replicate
 To replicate the Auxillium Mobile App, we can follow this steps:
