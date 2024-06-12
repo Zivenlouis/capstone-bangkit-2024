@@ -33,6 +33,7 @@ Auxilium app is developed with:
 3. Android Studio
 4. FlaskAPI
 5. Google Cloud Platform (MySQL, Storage Bucket, Compute Engine)
+6. Postman
 
 ## Steps to Replicate
 To replicate the Auxillium Mobile App, we can follow this steps:
