@@ -24,7 +24,7 @@
 Auxilium is a mobile phone recommendation application that offers tailored suggestions based on specifications and ratings. Users complete a preference survey regarding general specifications, enabling the application to generate personalized recommendations. Additionally, Auxillium employs collaborative filtering methods to suggest new phones, allowing users to explore diverse options. The app also features a community page where users can seek advice, share experiences, and read authentic reviews, fostering a supportive environment for informed decision-making. This comprehensive approach ensures users receive suggestions tailored to their preferences, enhancing satisfaction with their purchases.
 
 ## Download APK Link
-https://www.google.com
+[Download APK Link](https://github.com/Zivenlouis/capstone-bangkit-2024/releases/download/prerelease/app-debug.apk)
 
 ## Tech Used
 Auxilium app is developed with:
@@ -70,3 +70,30 @@ git clone https://github.com/Zivenlouis/capstone-bangkit-2024.git
 | 13 | mysql2                  | Library for connecting Node.js with MySQL database.         |
 | 14 | node-cron               | Library to schedule tasks (cron jobs).                      |
 | 15 | sequelize               | ORM to manage SQL databases in Node.js application.         |
+| 16 | `androidx.core:core-ktx:1.13.1`                           | Core Android dependencies                                |
+| 17 | `androidx.appcompat:appcompat:1.7.0`                      | Provides backward-compatible versions of Android UI components |
+| 18 | `androidx.annotation:annotation:1.8.0`                    | Support for annotations                                  |
+| 19 | `androidx.constraintlayout:constraintlayout:2.1.4`        | Layout manager for creating complex layouts              |
+| 20 | `com.google.android.material:material:1.12.0`             | Material design components for Android                   |
+| 21 | `androidx.recyclerview:recyclerview:1.3.2`                | Support for RecyclerView widget                          |
+| 22 | `com.facebook.shimmer:shimmer:0.5.0`                      | Shimmer effect for loading placeholders                  |
+| 23 | `androidx.lifecycle:lifecycle-livedata-ktx:2.8.1`         | Lifecycle-aware LiveData components                      |
+| 24 | `androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1`        | Lifecycle-aware ViewModel components                     |
+| 25 | `androidx.lifecycle:lifecycle-runtime-ktx:2.8.1`          | Lifecycle-aware runtime components                       |
+| 26 | `org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0`  | Support for Kotlin coroutines on Android                 |
+| 27 | `org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0`     | Core library for Kotlin coroutines                       |
+| 28 | `com.squareup.retrofit2:retrofit:2.11.0`                  | Type-safe HTTP client for Android                        |
+| 29 | `com.squareup.retrofit2:converter-gson:2.11.0`            | Gson converter for Retrofit                              |
+| 30 | `com.squareup.okhttp3:okhttp:5.0.0-alpha.14`              | HTTP & HTTP/2 client for Android                         |
+| 31 | `com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14` | Logging interceptor for OkHttp                           |
+| 32 | `com.github.bumptech.glide:glide:4.16.0`                  | Image loading and caching library                        |
+| 33 | `com.google.firebase:firebase-firestore-ktx:25.0.0`       | Firebase Firestore support for Android                   |
+| 34 | `androidx.paging:paging-common-ktx:3.3.0`                 | Common paging library components                         |
+| 35 | `androidx.paging:paging-runtime-ktx:3.3.0`                | Runtime paging library components                        |
+| 36 | `androidx.room:room-paging:2.6.1`                         | Paging support for Room                                  |
+| 37 | `androidx.datastore:datastore-preferences:1.1.1`          | DataStore preferences library                            |
+| 38 | `androidx.work:work-runtime-ktx:2.9.0`                    | WorkManager library for Android                          |
+| 39 | `androidx.exifinterface:exifinterface:1.3.7`              | EXIF interface for handling image metadata               |
+| 40 | `de.hdodenhof:circleimageview:3.1.0`                      | CircleImageView library for circular images              |
+| 41 | `androidx.navigation:navigation-fragment-ktx:2.7.7`       | Navigation component for fragments                       |
+| 42 | `androidx.navigation:navigation-ui-ktx:2.7.7`             | Navigation component for UI                              |
