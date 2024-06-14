@@ -1,25 +1,19 @@
-Wishlist Done , Home UserProfile and ProfilePage Done , Reset Password Done 
+Edit Profile Done (Remaining Refresh After edit profile) ,  Forum And Add Forum (Remaining Refresh After add forum , like forum , and reply)
 
 Done :
-- Change Password
-- Wishlist Page
-- Home Profile and ProfilePage
-- Minor Detail (Table and ResetPassword)
+- Minor Detail Design Fixed (image post and edit profile)
+- Edit profile done
+- Read and Add post done
 
-Done Before
-- Merge Animation from Harry Branch
-- Minor Design error (table and icon color tint)
-- finish new arrivals (list of phone)
-- username phone and profile added to homefragment
+TODO :
 
 Not Done:
 - Logic / BackEnd : 
 	- Model
 	- Questionnare (Model)
 	- Add Complete Forum 
-	- Change / Add / Delete Profile pics and username
 	- Detail Phone Pages (40 % - only new arrivals and wishlist)
-	- Add, Edit & Delete Forum
+	- Delete forum and like forum 
 	- forum reply
 	- else
 

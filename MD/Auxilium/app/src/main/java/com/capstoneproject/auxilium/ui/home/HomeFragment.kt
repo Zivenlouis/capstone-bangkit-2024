@@ -1,5 +1,6 @@
 package com.capstoneproject.auxilium.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ import com.capstoneproject.auxilium.databinding.FragmentHomeBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.history.HistoryActivity
 import com.capstoneproject.auxilium.view.newarrivals.NewArrivalsActivity
-import com.capstoneproject.auxilium.view.question.QuestActivity
+import com.capstoneproject.auxilium.view.question.QuestionnaireActivity
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
 
     private fun setupViews() {
         binding.btnSuperchargeSearch.setOnClickListener {
-            startActivity(Intent(requireContext(), QuestActivity::class.java))
+            startActivity(Intent(requireContext(), QuestionnaireActivity::class.java))
         }
 
         binding.btnHistory.setOnClickListener {
@@ -60,6 +61,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         viewModel.userName.observe(viewLifecycleOwner) { name ->
             Log.d("HomeFragment", "observeViewModel: userName = $name")
@@ -88,8 +90,9 @@ class HomeFragment : Fragment() {
             val userId = getCurrentUserId()
             Log.d("HomeFragment", "observeViewModel: userId = $userId")
             viewModel.fetchUserName(userId)
+            viewModel.fetchPhones()
+            viewModel.fetchWishlist(userId)
         }
-
 
         viewModel.phoneList.observe(viewLifecycleOwner) { phones ->
             if (phones != null) {
@@ -98,11 +101,8 @@ class HomeFragment : Fragment() {
             }
         }
 
-        lifecycleScope.launch {
-            val userId = getCurrentUserId()
-            Log.d("HomeFragment", "observeViewModel: userId = $userId")
-            viewModel.fetchUserName(userId)
-            viewModel.fetchPhones()
+        viewModel.wishlist.observe(viewLifecycleOwner) { wishlistItems ->
+            binding.wishlistNumbs.text = "${wishlistItems.size} item(s)"
         }
     }
 

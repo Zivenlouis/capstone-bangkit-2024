@@ -2,18 +2,28 @@ package com.capstoneproject.auxilium.api
 
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import com.capstoneproject.auxilium.response.CommunityResponseItem
+import com.capstoneproject.auxilium.response.CreatePostResponse
 import com.capstoneproject.auxilium.response.DeleteWishlistResponse
+import com.capstoneproject.auxilium.response.EditProfileResponse
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
+import com.capstoneproject.auxilium.response.LikePostResponse
 import com.capstoneproject.auxilium.response.LoginResponse
 import com.capstoneproject.auxilium.response.PhonesResponseItem
 import com.capstoneproject.auxilium.response.RegisterResponse
 import com.capstoneproject.auxilium.response.ResetPasswordResponse
+import com.capstoneproject.auxilium.response.UnLikePostResponse
 import com.capstoneproject.auxilium.response.WishlistResponseItem
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
+
 
 interface ApiService {
 
@@ -68,6 +78,38 @@ interface ApiService {
     suspend fun getWishlistById(
         @Path("id") id: Int,
     ): WishlistResponseItem
+
+    @Multipart
+    @PUT("edit_profile/{id}")
+    suspend fun editProfile(
+        @Path("id") id: Int,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part profileImage: MultipartBody.Part? = null,
+    ): EditProfileResponse
+
+    @Multipart
+    @POST("/community/add")
+    suspend fun createPost(
+        @Part("user_id") userId: Int,
+        @Part("caption") caption: RequestBody,
+        @Part file: MultipartBody.Part,
+    ): CreatePostResponse
+
+    @POST("community/like")
+    suspend fun likeCommunity(
+        @Body request: LikeCommunityRequest,
+    ): LikePostResponse
+
+    @POST("community/unlike")
+    suspend fun unlikeCommunity(
+        @Body request: LikeCommunityRequest,
+    ): UnLikePostResponse
+
+    @GET("community/{id}")
+    suspend fun getForumById(
+        @Path("id") id: Int
+    ): List<CommunityResponseItem>
 }
 
 data class RegisterRequestBody(
@@ -93,3 +135,7 @@ data class WishlistRequest(
     val smartphone_id: Int,
 )
 
+data class LikeCommunityRequest(
+    val user_id: Int,
+    val community_id: Int,
+)

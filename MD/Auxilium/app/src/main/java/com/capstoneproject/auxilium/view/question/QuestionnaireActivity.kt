@@ -9,11 +9,11 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.capstoneproject.auxilium.R
-import com.capstoneproject.auxilium.databinding.ActivityQuestBinding
+import com.capstoneproject.auxilium.databinding.ActivityQuestionnaireBinding
 
-class QuestActivity : AppCompatActivity() {
+class QuestionnaireActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityQuestBinding
+    private lateinit var binding: ActivityQuestionnaireBinding
 
     private val questions = listOf(
         Question("Apakah mempertimbangkan brand hp?", listOf("Ya", "Tidak")),
@@ -35,7 +35,7 @@ class QuestActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityQuestBinding.inflate(layoutInflater)
+        binding = ActivityQuestionnaireBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         updateQuestionUI(currentQuestionIndex)

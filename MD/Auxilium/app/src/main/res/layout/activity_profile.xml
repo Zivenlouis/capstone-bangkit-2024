@@ -7,6 +7,14 @@
     android:background="@drawable/dark_background"
     tools:context=".view.profile.ProfileActivity">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_copyright"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_back_profile"
@@ -51,16 +59,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
 
-            <!--     <androidx.appcompat.widget.AppCompatImageButton
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="68dp"
-                     android:background="@drawable/edit_profile_btn_bg"
-                     android:contentDescription="Edit Profile"
-                     android:src="@drawable/ic_edit_profile"
-                     app:layout_constraintEnd_toEndOf="@id/divider_guest"
-                     app:layout_constraintTop_toTopOf="@id/text_name"
-                     tools:ignore="TouchTargetSizeCheck" />-->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="68dp"
+                android:background="@drawable/edit_profile_btn_bg"
+                android:contentDescription="Edit Profile"
+                android:src="@drawable/ic_edit_profile"
+                app:layout_constraintEnd_toEndOf="@id/divider_guest"
+                app:layout_constraintTop_toTopOf="@id/text_name"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/text_name"
@@ -224,6 +233,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

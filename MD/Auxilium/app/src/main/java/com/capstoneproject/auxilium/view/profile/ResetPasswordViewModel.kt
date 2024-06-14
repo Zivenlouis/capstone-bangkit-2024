@@ -35,12 +35,4 @@ class ResetPasswordViewModel(private val repository: ResetPasswordRepository) : 
     }
 }
 
-class ResetPasswordViewModelFactory(private val repository: ResetPasswordRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ResetPasswordViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return ResetPasswordViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+

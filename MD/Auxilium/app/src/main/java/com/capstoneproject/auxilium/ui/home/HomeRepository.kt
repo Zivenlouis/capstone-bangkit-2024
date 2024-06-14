@@ -6,6 +6,7 @@ import com.capstoneproject.auxilium.api.ApiService
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import com.capstoneproject.auxilium.response.PhonesResponseItem
+import com.capstoneproject.auxilium.response.WishlistResponseItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.withContext
@@ -47,5 +48,24 @@ class HomeRepository(private val userPreference: UserPreference) {
             }
         }
     }
+
+    suspend fun getWishlist(userId: Int): List<WishlistResponseItem> {
+        val token = userPreference.getToken().firstOrNull()
+        if (token.isNullOrEmpty()) {
+            return emptyList()
+        }
+
+        return withContext(Dispatchers.IO) {
+            val apiService = getApiService(token)
+            try {
+                val response = apiService.getWishlist(userId)
+                response
+            } catch (e: Exception) {
+                Log.e("HomeRepository", "Error fetching wishlist: ${e.localizedMessage}")
+                emptyList()
+            }
+        }
+    }
+
 }
 

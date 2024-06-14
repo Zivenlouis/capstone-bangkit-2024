@@ -5,12 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ForumPost(
-    val profileImage: Int,
+    val profileImage: String,
     val username: String,
     val datePosted: String,
     val description: String,
-    val postImage: Int,
+    val postImage: String,
     var likes: Int,
     val replies: List<Reply>,
-    var isLiked: Boolean = false
+    val communityId: Int
 ):Parcelable

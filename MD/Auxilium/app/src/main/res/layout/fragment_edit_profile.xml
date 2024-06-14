@@ -2,11 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottom_sheet"
+    android:id="@+id/bottom_sheet_edit"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
     android:background="@drawable/transparent_bg"
-    tools:context=".addpost.AddPostFragment">
+    android:orientation="vertical"
+    tools:context=".view.profile.EditProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,12 +26,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_new_post"
+            android:id="@+id/tv_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="New Post"
+            android:text="Edit Your Profile Here"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,50 +39,22 @@
 
 
         <EditText
-            android:id="@+id/ed_add_description"
+            android:id="@+id/ed_edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/transparent"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:hint="What's good?"
+            android:hint="Username"
             android:inputType="textMultiLine"
             android:minHeight="48dp"
             android:textColorHint="#616161"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_new_post"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_profile"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-
-        <!--   <com.google.android.material.textfield.TextInputLayout
-               android:id="@+id/textInputLayoutDescription"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginHorizontal="30dp"
-               android:layout_marginTop="10dp"
-               app:hintEnabled="true"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tv_new_post">
-
-               <com.google.android.material.textfield.TextInputEditText
-                   android:id="@+id/ed_add_description"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:backgroundTint="@color/transparent"
-                   android:fontFamily="@font/clash_grotesk_regular"
-                   android:gravity="start|top"
-                   android:hint="What's good?"
-                   android:inputType="textMultiLine"
-                   android:minHeight="48dp"
-                   android:textColorHint="#616161"
-                   android:textSize="18sp"
-                   tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-           </com.google.android.material.textfield.TextInputLayout>-->
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/btn_gallery"
@@ -90,8 +64,8 @@
             android:backgroundTint="@color/transparent"
             android:contentDescription="Gallery Button"
             android:src="@drawable/ic_gallery"
-            app:layout_constraintStart_toStartOf="@id/ed_add_description"
-            app:layout_constraintTop_toBottomOf="@id/ed_add_description"
+            app:layout_constraintStart_toStartOf="@id/ed_edit_username"
+            app:layout_constraintTop_toBottomOf="@id/ed_edit_username"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -106,7 +80,7 @@
             app:layout_constraintTop_toTopOf="@id/btn_gallery"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_show_image"
             android:layout_width="240dp"
             android:layout_height="120dp"
@@ -132,8 +106,7 @@
             app:cornerRadius="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_show_image"/>
+            app:layout_constraintTop_toBottomOf="@id/iv_show_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

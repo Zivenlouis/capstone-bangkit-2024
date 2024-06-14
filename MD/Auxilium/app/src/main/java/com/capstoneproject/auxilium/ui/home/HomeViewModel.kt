@@ -5,16 +5,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.PhonesResponseItem
+import com.capstoneproject.auxilium.response.WishlistResponseItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeViewModel(private val userPreference: UserPreference) : ViewModel() {
     private val repository = HomeRepository(userPreference)
+
     val userName = MutableLiveData<String?>()
     val profileImage = MutableLiveData<String?>()
-    private val errorMessage = MutableLiveData<String?>()
+    val errorMessage = MutableLiveData<String?>()
     val phoneList = MutableLiveData<List<PhonesResponseItem>?>()
+
+    val wishlist = MutableLiveData<List<WishlistResponseItem>>()
+    val error = MutableLiveData<String?>()
 
     fun fetchUserName(userId: Int) {
         viewModelScope.launch {
@@ -42,6 +47,17 @@ class HomeViewModel(private val userPreference: UserPreference) : ViewModel() {
                 phoneList.postValue(phones)
             } catch (e: Exception) {
                 errorMessage.postValue("Error fetching phones: ${e.message}")
+            }
+        }
+    }
+
+    fun fetchWishlist(userId: Int) {
+        viewModelScope.launch {
+            try {
+                val wishlistItems = repository.getWishlist(userId)
+                wishlist.postValue(wishlistItems)
+            } catch (e: Exception) {
+                error.postValue("Error fetching wishlist: ${e.localizedMessage}")
             }
         }
     }

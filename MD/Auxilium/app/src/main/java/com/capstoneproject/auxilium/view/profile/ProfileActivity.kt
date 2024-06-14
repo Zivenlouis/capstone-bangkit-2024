@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
+import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.databinding.ActivityProfileBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
@@ -41,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val token = userPreference.getToken().firstOrNull()
             repository = ProfileRepository(ApiConfig.getApiService(token))
-            viewModel.fetchUserProfile()  // Fetch the user profile
+            viewModel.fetchUserProfile()
             observeViewModel()
         }
 
@@ -74,9 +75,32 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, AboutUsActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnEditProfile.setOnClickListener {
+            navigateToEditProfile()
+        }
     }
 
-    private fun observeViewModel() {
+    private fun navigateToEditProfile() {
+        val userProfile = viewModel.userProfile.value ?: return
+
+        val bundle = Bundle().apply {
+            putString("username", userProfile.name)
+            putString("email", userProfile.email)
+            putString("profileImagePath", userProfile.profileImage)
+        }
+
+        val editProfileFragment = EditProfileFragment().apply {
+            arguments = bundle
+        }
+
+        editProfileFragment.show(supportFragmentManager, editProfileFragment.tag)
+
+        observeViewModel()
+    }
+
+
+    fun observeViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.userProfile.collectLatest { user ->
@@ -101,5 +125,4 @@ class ProfileActivity : AppCompatActivity() {
             "Joined ${outputFormat.format(it)}"
         } ?: "Joined Unknown Date"
     }
-
 }

@@ -38,14 +38,3 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
         }
     }
 }
-
-
-class DetailNewArrivalsViewModelFactory(private val repository: DetailNewArrivalsRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DetailNewArrivalsViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return DetailNewArrivalsViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}

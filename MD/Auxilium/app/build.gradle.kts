@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.capstoneproject.auxilium"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -27,7 +27,7 @@ android {
                 isReturnDefaultValues = true
             }
         }
-        buildConfigField("String", "BASE_URL", "\"https://apicapstone-odpjy5n7da-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"http://34.101.211.67:5000/\"")
     }
 
     buildTypes {

@@ -15,6 +15,13 @@ class DetailForumActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val forumPost = intent.getParcelableExtra<ForumPost>("forumPost")
+        val profileImage = intent.getStringExtra("profileImage")
+
+        binding.civForumPostProfile.let {
+            Glide.with(this)
+                .load(profileImage)
+                .into(it)
+        }
 
         if (forumPost != null) {
             binding.tvForumUsername.text = forumPost.username
@@ -23,8 +30,11 @@ class DetailForumActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(forumPost.profileImage)
                 .into(binding.civForumPostProfile)
-            binding.tvLikesForum?.text = forumPost.likes.toString()
-            binding.tvReplyForum?.text = forumPost.replies.size.toString()
+            binding.tvLikesForum.text = forumPost.likes.toString()
+            binding.tvReplyForum.text = forumPost.replies.size.toString()
+            Glide.with(this)
+                .load(forumPost.postImage)
+                .into(binding.ivForumPhoto)
 
             val replyList = forumPost.replies
             val adapter = DetailForumAdapter(replyList)

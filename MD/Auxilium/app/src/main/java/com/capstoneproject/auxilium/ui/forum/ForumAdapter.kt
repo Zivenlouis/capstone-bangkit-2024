@@ -3,11 +3,12 @@ package com.capstoneproject.auxilium.ui.forum
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ItemForumPostBinding
 
 class ForumAdapter(
-    private val forumPosts: List<ForumPost>,
+    private var forumPosts: List<ForumPost>,
     private val onItemClick: (ForumPost) -> Unit
 ) : RecyclerView.Adapter<ForumAdapter.ForumPostViewHolder>() {
 
@@ -22,38 +23,35 @@ class ForumAdapter(
 
     override fun getItemCount(): Int = forumPosts.size
 
+    fun updateData(newForumPosts: List<ForumPost>) {
+        forumPosts = newForumPosts
+        notifyDataSetChanged()
+    }
+
     inner class ForumPostViewHolder(private val binding: ItemForumPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(forumPost: ForumPost) {
             binding.apply {
-                civForumPostProfile.setImageResource(forumPost.profileImage)
+                Glide.with(itemView.context)
+                    .load(forumPost.profileImage)
+                    .placeholder(R.drawable.ic_user)
+                    .error(R.drawable.ic_user)
+                    .into(civForumPostProfile)
                 tvForumUsername.text = forumPost.username
                 tvForumDateposted.text = forumPost.datePosted
                 tvForumDescription.text = forumPost.description
-                ivForumPhoto.setImageResource(forumPost.postImage)
+                Glide.with(itemView.context)
+                    .load(forumPost.postImage)
+                    .placeholder(R.drawable.ic_image)
+                    .error(R.drawable.ic_image)
+                    .into(ivForumPhoto)
+
                 tvLikesForum.text = forumPost.likes.toString()
                 tvReplyForum.text = forumPost.replies.size.toString()
 
-                ivLikeForum.setImageResource(
-                    if (forumPost.isLiked) R.drawable.ic_like_full else R.drawable.ic_like_border
-                )
-
                 root.setOnClickListener {
                     onItemClick(forumPost)
-                }
-
-                ivLikeForum.setOnClickListener {
-                    forumPost.isLiked = !forumPost.isLiked
-                    if (forumPost.isLiked) {
-                        forumPost.likes += 1
-                    } else {
-                        forumPost.likes -= 1
-                    }
-                    tvLikesForum.text = forumPost.likes.toString()
-                    ivLikeForum.setImageResource(
-                        if (forumPost.isLiked) R.drawable.ic_like_full else R.drawable.ic_like_border
-                    )
                 }
 
                 ivReplyForum.setOnClickListener {
