@@ -3,8 +3,8 @@ package com.capstoneproject.auxilium.ui.forum
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import kotlinx.coroutines.launch
 
 class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
@@ -12,25 +12,76 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
     private val _forumPosts = MutableLiveData<List<ForumPost>>()
     val forumPosts: LiveData<List<ForumPost>> get() = _forumPosts
 
+    private val _likeStatus = MutableLiveData<Map<Int, Boolean>>(mapOf())
+    val likeStatus: LiveData<Map<Int, Boolean>> get() = _likeStatus
+
     init {
-        refreshPosts()
+        _likeStatus.value = mapOf()
+    }
+
+
+    init {
+        _likeStatus.value = mapOf()
     }
 
     fun refreshPosts() {
         viewModelScope.launch {
-            val retrievedPosts = repository.getAllForumPosts()
-            _forumPosts.postValue(retrievedPosts)
+            try {
+                val retrievedPosts = repository.getAllForumPosts()
+                _forumPosts.postValue(retrievedPosts)
+            } catch (e: Exception) {
+            }
         }
     }
-}
 
-
-class ForumViewModelFactory(private val repository: ForumRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ForumViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return ForumViewModel(repository) as T
+    fun likePost(communityId: Int) {
+        viewModelScope.launch {
+            try {
+                val userId = repository.getUserId()
+                repository.likeCommunity(userId, communityId)
+                updateLikeStatus(communityId, true)
+            } catch (e: Exception) {
+            }
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+
+    fun unlikePost(communityId: Int) {
+        viewModelScope.launch {
+            try {
+                val userId = repository.getUserId()
+                repository.unlikeCommunity(userId, communityId)
+                updateLikeStatus(communityId, false)
+            } catch (e: Exception) {
+            }
+        }
+    }
+
+    private fun updateLikeStatus(communityId: Int, isLiked: Boolean) {
+        val currentLikes = _likeStatus.value?.toMutableMap() ?: mutableMapOf()
+        currentLikes[communityId] = isLiked
+        _likeStatus.postValue(currentLikes)
+
+        val currentPosts = _forumPosts.value.orEmpty().toMutableList()
+        val updatedPosts = currentPosts.map { post ->
+            if (post.communityId == communityId) {
+                post.copy(isLiked = isLiked)
+            } else {
+                post
+            }
+        }
+        _forumPosts.postValue(updatedPosts)
+    }
+
+    suspend fun isPostLikedByUser(communityId: Int): Boolean {
+        return try {
+            val userId = repository.getUserId()
+            repository.isPostLikedByUser(userId, communityId)
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    suspend fun getUserDetails(userId: Int): GetUsersResponseItem? {
+        return repository.getUserDetails(userId)
     }
 }

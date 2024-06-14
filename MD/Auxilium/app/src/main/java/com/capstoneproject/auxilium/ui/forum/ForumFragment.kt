@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -20,6 +21,7 @@ class ForumFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: ForumViewModel
     private lateinit var forumAdapter: ForumAdapter
+    private var userProfileImage: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,50 +34,89 @@ class ForumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        forumAdapter = ForumAdapter(
+            onItemClick = { forumPost ->
+                openDetailForumActivity(forumPost)
+            },
+            onLikeClick = { forumPost ->
+                handleLikeClick(forumPost)
+            }
+        )
+
+        binding.rvForumPosts.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvForumPosts.adapter = forumAdapter
+
         binding.btnAddPost.setOnClickListener {
             val addPostFragment = AddPostFragment()
             addPostFragment.show(childFragmentManager, "AddPostFragment")
         }
 
-        forumAdapter = ForumAdapter(emptyList()) { forumPost ->
-            val intent = Intent(requireContext(), DetailForumActivity::class.java).apply {
-                putExtra("forumPost", forumPost)
-                putExtra("profileImage", forumPost.profileImage)
-            }
-            startActivity(intent)
-        }
-
-        binding.rvForumPosts.layoutManager = LinearLayoutManager(context)
-        binding.rvForumPosts.adapter = forumAdapter
-
         lifecycleScope.launch {
-            val userPreference = UserPreference.getInstance(requireContext())
-            val repository = ForumRepository(userPreference)
-            viewModel = ForumViewModelFactory(repository).create(ForumViewModel::class.java)
-            observeViewModel()
+            try {
+                val userPreference = UserPreference.getInstance(requireContext())
+                val repository = ForumRepository(userPreference)
+                viewModel = ViewModelProvider(this@ForumFragment, ForumViewModelFactory(repository))[ForumViewModel::class.java]
+                observeViewModel()
 
-            val userId = userPreference.getUserId().firstOrNull()
-            if (userId != null) {
-                val user = repository.getUserDetails(userId)
-                user?.let {
-                    Glide.with(requireContext())
-                        .load(it.profileImage)
-                        .into(binding.civForumProfile)
+                val userId = userPreference.getUserId().firstOrNull()
+                userId?.let { it ->
+                    val user = viewModel.getUserDetails(it)
+                    user?.let {
+                        userProfileImage = it.profileImage
+                        Glide.with(requireContext())
+                            .load(it.profileImage)
+                            .into(binding.civForumProfile)
+                    }
                 }
+
+                viewModel.refreshPosts()
+            } catch (e: Exception) {
+                // Handle error initializing ViewModel or fetching data
             }
         }
-        parentFragmentManager.setFragmentResultListener("postAdded", this) { _, _ ->
+
+        parentFragmentManager.setFragmentResultListener("postAdded", viewLifecycleOwner) { _, _ ->
             viewModel.refreshPosts()
         }
-
     }
 
     private fun observeViewModel() {
         viewModel.forumPosts.observe(viewLifecycleOwner) { posts ->
-            forumAdapter.updateData(posts)
+            forumAdapter.submitList(posts)
+        }
+
+        viewModel.likeStatus.observe(viewLifecycleOwner) { likeStatus ->
+            likeStatus.forEach { (communityId, isLiked) ->
+                forumAdapter.currentList.firstOrNull { it.communityId == communityId }?.let { post ->
+                    post.isLiked = isLiked
+                    forumAdapter.notifyItemChanged(forumAdapter.currentList.indexOf(post))
+                }
+            }
         }
     }
 
+    private fun openDetailForumActivity(forumPost: ForumPost) {
+        val intent = Intent(requireContext(), DetailForumActivity::class.java).apply {
+            putExtra("forumPost", forumPost)
+            putExtra("userProfileImage", userProfileImage)
+        }
+        startActivity(intent)
+    }
+
+    private fun handleLikeClick(forumPost: ForumPost) {
+        lifecycleScope.launch {
+            try {
+                val isLiked = viewModel.isPostLikedByUser(forumPost.communityId)
+                if (isLiked) {
+                    viewModel.unlikePost(forumPost.communityId)
+                } else {
+                    viewModel.likePost(forumPost.communityId)
+                }
+            } catch (e: Exception) {
+                // Handle error liking/unliking post
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

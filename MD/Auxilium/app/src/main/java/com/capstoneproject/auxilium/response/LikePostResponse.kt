@@ -1,30 +1,60 @@
 package com.capstoneproject.auxilium.response
 
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import org.json.JSONException
+import org.json.JSONObject
 
-data class LikePostResponse(
+sealed class LikePostResponse {
 
-	@field:SerializedName("like")
-	val like: Like? = null,
+    data class Success(
+		@SerializedName("message")
+		val message: String?,
+		@SerializedName("like")
+		val like: Like,
+	) : LikePostResponse()
 
-	@field:SerializedName("message")
-	val message: String? = null
-)
+    data class Error(
+		@SerializedName("error")
+		val error: String,
+	) : LikePostResponse()
+
+    companion object {
+        fun fromJson(jsonString: String): LikePostResponse {
+            return try {
+                val jsonObject = JSONObject(jsonString)
+                if (jsonObject.has("like")) {
+                    Success(
+                        message = jsonObject.optString("message", null),
+                        like = Gson().fromJson(
+                            jsonObject.getJSONObject("like").toString(),
+                            Like::class.java
+                        )
+                    )
+                } else {
+                    Error(jsonObject.getString("error"))
+                }
+            } catch (e: JSONException) {
+                Error("Error parsing JSON")
+            }
+        }
+    }
+}
 
 data class Like(
 
-	@field:SerializedName("createdAt")
+	@SerializedName("createdAt")
 	val createdAt: String? = null,
 
-	@field:SerializedName("community_id")
+	@SerializedName("community_id")
 	val communityId: Int? = null,
 
-	@field:SerializedName("user_id")
+	@SerializedName("user_id")
 	val userId: Int? = null,
 
-	@field:SerializedName("id")
+	@SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	@SerializedName("updatedAt")
+	val updatedAt: String? = null,
 )

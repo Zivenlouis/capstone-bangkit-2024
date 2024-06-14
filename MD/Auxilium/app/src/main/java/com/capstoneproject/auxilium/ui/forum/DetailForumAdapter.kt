@@ -2,12 +2,15 @@ package com.capstoneproject.auxilium.ui.forum
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.databinding.ItemRepliesForumBinding
+import com.capstoneproject.auxilium.response.GetRepliesByIdResponseItem
 
-class DetailForumAdapter(private val replies: List<Reply>?) :
-    RecyclerView.Adapter<DetailForumAdapter.ReplyViewHolder>() {
+class DetailForumAdapter(private val viewModel: DetailForumViewModel) : RecyclerView.Adapter<DetailForumAdapter.ReplyViewHolder>() {
+
+    private var replies: List<GetRepliesByIdResponseItem> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -16,22 +19,32 @@ class DetailForumAdapter(private val replies: List<Reply>?) :
     }
 
     override fun onBindViewHolder(holder: ReplyViewHolder, position: Int) {
-        val reply = replies?.get(position)
-        reply?.let { holder.bind(it) }
+        val reply = replies[position]
+        holder.bind(reply)
     }
 
     override fun getItemCount(): Int {
-        return replies?.size ?: 0
+        return replies.size
+    }
+
+    fun updateData(newList: List<GetRepliesByIdResponseItem>) {
+        replies = newList
+        notifyDataSetChanged()
     }
 
     inner class ReplyViewHolder(private val binding: ItemRepliesForumBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(reply: Reply) {
-            binding.tvUsernameReplies.text = reply.replyUsername
-            binding.tvDescriptionReplies.text = reply.replyDescription
-            Glide.with(itemView)
-                .load(reply.replyProfileImage)
-                .into(binding.civUserReplies)
+
+        fun bind(reply: GetRepliesByIdResponseItem) {
+            binding.tvDescriptionReplies.text = reply.comment
+            viewModel.userMap.observe(itemView.context as LifecycleOwner) { userMap ->
+                userMap[reply.userId]?.let { user ->
+                    binding.tvUsernameReplies.text = user.name
+                    Glide.with(itemView)
+                        .load(user.profileImage)
+                        .into(binding.civUserReplies)
+                }
+            }
         }
     }
 }

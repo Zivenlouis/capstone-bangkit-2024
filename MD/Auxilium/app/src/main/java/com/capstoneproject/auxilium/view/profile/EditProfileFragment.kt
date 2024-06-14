@@ -1,13 +1,10 @@
 package com.capstoneproject.auxilium.view.profile
 
 import android.Manifest
-import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +12,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.auxilium.databinding.FragmentEditProfileBinding
 import com.capstoneproject.auxilium.helper.getImageUri
 import com.capstoneproject.auxilium.helper.reduceFileImage
 import com.capstoneproject.auxilium.helper.uriToFile
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -112,6 +107,8 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         binding.btnSaveProfile.setOnClickListener {
             saveProfile()
         }
+
+        observeViewModel()
     }
 
     private fun allPermissionsGranted() =
@@ -147,9 +144,17 @@ class EditProfileFragment : BottomSheetDialogFragment() {
             profileImagePart = MultipartBody.Part.createFormData("file", it.name, imageRequestBody)
         }
 
-        lifecycleScope.launch {
-            viewModel.editProfile(nameRequestBody, email, profileImagePart)
-            (requireActivity() as ProfileActivity).observeViewModel()
+        viewModel.editProfile(nameRequestBody, email, profileImagePart)
+    }
+
+    private fun observeViewModel() {
+        viewModel.editProfileResponse.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
     }
 

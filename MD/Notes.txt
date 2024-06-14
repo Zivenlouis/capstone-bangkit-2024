@@ -1,9 +1,12 @@
-Edit Profile Done (Remaining Refresh After edit profile) ,  Forum And Add Forum (Remaining Refresh After add forum , like forum , and reply)
+Edit Profile Done (Remaining Refresh After edit profile) ,  Forum And Add Forum (Remaining Refresh After add forum , like forum button logic) , Read and Add Reply and update after add done
 
 Done :
-- Minor Detail Design Fixed (image post and edit profile)
-- Edit profile done
-- Read and Add post done
+- Minor Detail Design Fixed (image post and edit profile + newarrivals + detailforum (reply))
+- Edit profile done (UI Refresh)
+- Read and Add post done (Likebutton logic and UI Refresh)
+- Read & Add Reply / Comment done
+- New link API with configuration
+- Camera can be click and gallery done
 
 TODO :
 
@@ -11,10 +14,8 @@ Not Done:
 - Logic / BackEnd : 
 	- Model
 	- Questionnare (Model)
-	- Add Complete Forum 
-	- Detail Phone Pages (40 % - only new arrivals and wishlist)
-	- Delete forum and like forum 
-	- forum reply
+	- Detail Phone Pages (70 % - new arrivals , wishlist, edit profile ,reset password , forum)
+	- Delete forum
 	- else
 
 Minor Detail Flaws:

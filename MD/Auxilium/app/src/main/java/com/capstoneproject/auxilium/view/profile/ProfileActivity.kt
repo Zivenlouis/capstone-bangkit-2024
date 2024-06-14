@@ -6,11 +6,8 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
-import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.databinding.ActivityProfileBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
@@ -19,7 +16,6 @@ import com.capstoneproject.auxilium.view.MainActivity
 import com.capstoneproject.auxilium.view.additional.AboutUsActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -99,19 +95,14 @@ class ProfileActivity : AppCompatActivity() {
         observeViewModel()
     }
 
-
-    fun observeViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.userProfile.collectLatest { user ->
-                    user?.let {
-                        binding.apply {
-                            textName.text = it.name
-                            textEmail.text = it.email
-                            textDateJoined.text = formatDate(it.createdAt)
-                            Glide.with(this@ProfileActivity).load(it.profileImage).into(imageAvatar)
-                        }
-                    }
+    private fun observeViewModel() {
+        viewModel.userProfile.observe(this) { user ->
+            user?.let {
+                binding.apply {
+                    textName.text = it.name
+                    textEmail.text = it.email
+                    textDateJoined.text = formatDate(it.createdAt)
+                    Glide.with(this@ProfileActivity).load(it.profileImage).into(imageAvatar)
                 }
             }
         }

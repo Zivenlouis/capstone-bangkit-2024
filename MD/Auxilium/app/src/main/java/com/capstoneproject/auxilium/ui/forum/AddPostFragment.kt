@@ -102,8 +102,13 @@ class AddPostFragment : BottomSheetDialogFragment() {
             if (currentPhotoPath != null) {
                 viewLifecycleOwner.lifecycleScope.launch {
                     val file = File(currentPhotoPath!!)
-                    viewModel.uploadPost(captionRequestBody, file)
-                    parentFragmentManager.setFragmentResult("postAdded", Bundle())
+                    val isUploadSuccessful = viewModel.uploadPost(captionRequestBody, file)
+                    if (isUploadSuccessful) {
+                        parentFragmentManager.setFragmentResult("postAdded", Bundle())
+                        dismiss()
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to upload post", Toast.LENGTH_SHORT).show()
+                    }
                 }
             } else {
                 Toast.makeText(requireContext(), "Please select a photo", Toast.LENGTH_SHORT).show()

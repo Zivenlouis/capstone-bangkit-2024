@@ -33,11 +33,11 @@ class UserPreference(context: Context) {
         }
     }
 
-        fun getUserId(): Flow<Int?> {
-            return dataStore.data.map { preferences ->
-                preferences[KEY_USER_ID]
-            }
+    fun getUserId(): Flow<Int?> {
+        return dataStore.data.map { preferences ->
+            preferences[KEY_USER_ID]
         }
+    }
 
     suspend fun saveUserId(userId: Int) {
         dataStore.edit { preferences ->
@@ -51,9 +51,9 @@ class UserPreference(context: Context) {
         }
     }
 
-    fun getUsername(): Flow<String?> {
-        return dataStore.data.map { preferences ->
-            preferences[KEY_USERNAME]
+    suspend fun clearAll() {
+        dataStore.edit { preferences ->
+            preferences.clear()
         }
     }
 
@@ -75,6 +75,6 @@ class UserPreference(context: Context) {
     }
 
     data class User(
-        val token: String?
+        val token: String?,
     )
 }

@@ -1,10 +1,12 @@
 package com.capstoneproject.auxilium.api
 
+import com.capstoneproject.auxilium.response.AddRepliesResponse
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import com.capstoneproject.auxilium.response.CommunityResponseItem
 import com.capstoneproject.auxilium.response.CreatePostResponse
 import com.capstoneproject.auxilium.response.DeleteWishlistResponse
 import com.capstoneproject.auxilium.response.EditProfileResponse
+import com.capstoneproject.auxilium.response.GetRepliesByIdResponseItem
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import com.capstoneproject.auxilium.response.LikePostResponse
 import com.capstoneproject.auxilium.response.LoginResponse
@@ -13,8 +15,10 @@ import com.capstoneproject.auxilium.response.RegisterResponse
 import com.capstoneproject.auxilium.response.ResetPasswordResponse
 import com.capstoneproject.auxilium.response.UnLikePostResponse
 import com.capstoneproject.auxilium.response.WishlistResponseItem
+import com.capstoneproject.auxilium.ui.forum.GetLikeByPostIdResponseItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -38,7 +42,8 @@ interface ApiService {
     ): LoginResponse
 
     @GET("community")
-    suspend fun getAllForumPosts(): List<CommunityResponseItem>
+    suspend fun getAllForumPosts(
+    ): List<CommunityResponseItem>
 
     @GET("users/{id}")
     suspend fun getUserById(
@@ -94,7 +99,7 @@ interface ApiService {
         @Part("user_id") userId: Int,
         @Part("caption") caption: RequestBody,
         @Part file: MultipartBody.Part,
-    ): CreatePostResponse
+    ): Response<CreatePostResponse>
 
     @POST("community/like")
     suspend fun likeCommunity(
@@ -106,10 +111,21 @@ interface ApiService {
         @Body request: LikeCommunityRequest,
     ): UnLikePostResponse
 
-    @GET("community/{id}")
-    suspend fun getForumById(
-        @Path("id") id: Int
-    ): List<CommunityResponseItem>
+    @GET("getLikesByPostId/{id}")
+    suspend fun getLikesByPostId(
+        @Path("id") id: Int,
+    ): List<GetLikeByPostIdResponseItem>
+
+    @POST("comments/add")
+    suspend fun addPostReplies(
+        @Body requestBody: AddRepliesRequestBody,
+    ): AddRepliesResponse
+
+    @GET("comments/{id}")
+    suspend fun getRepliesByPostId(
+        @Path("id") id: Int,
+    ): List<GetRepliesByIdResponseItem>
+
 }
 
 data class RegisterRequestBody(
@@ -138,4 +154,10 @@ data class WishlistRequest(
 data class LikeCommunityRequest(
     val user_id: Int,
     val community_id: Int,
+)
+
+data class AddRepliesRequestBody(
+    val user_id: Int,
+    val community_id: Int,
+    val comment: String,
 )

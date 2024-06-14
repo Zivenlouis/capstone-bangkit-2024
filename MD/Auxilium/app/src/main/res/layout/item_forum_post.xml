@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/transparent"
+    android:id="@+id/forum_card_view"
     android:clickable="true"
     android:onClick="openDetailForumActivity"
     app:cardElevation="4dp"

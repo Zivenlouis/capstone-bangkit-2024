@@ -12,5 +12,6 @@ data class ForumPost(
     val postImage: String,
     var likes: Int,
     val replies: List<Reply>,
-    val communityId: Int
+    val communityId: Int,
+    var isLiked: Boolean
 ):Parcelable
