@@ -160,7 +160,8 @@ val_rating = rating_dataset[:int(len(rating_dataset)/4)]
 
 """Create a model with two inputs for user data and phone data, the output is the dot product of the two vectors from user_NN and phone_NN which is the predicted rating."""
 
-model = tf.keras.models.load_model('model.keras', safe_mode=False)
+# model = tf.keras.models.load_model('model.keras', safe_mode=False)
+model = tf.keras.models.load_model('model.h5', safe_mode=False)
 
 model.summary()
 
@@ -180,11 +181,21 @@ model.fit([train_user, train_phone], train_rating, epochs=30, validation_data=([
 
 model.evaluate([val_user, val_phone], val_rating)
 
-model.save('model.keras')
+"""Save model in keras format."""
 
-user_model.save('user_model.keras')
+# model.save('model.keras')
+#
+# user_model.save('user_model.keras')
+#
+# phone_model.save('phone_model.keras')
 
-phone_model.save('phone_model.keras')
+"""Save model in h5 format."""
+
+model.save('model.h5')
+
+user_model.save('user_model.h5')
+
+phone_model.save('phone_model.h5')
 
 """Predict rating."""
 
