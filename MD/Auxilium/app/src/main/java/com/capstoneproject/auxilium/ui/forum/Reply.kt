@@ -5,8 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Reply(
-    val replyProfileImage: String,
-    val replyUsername: String,
-    val replyDescription: String
+    val id: Int,
+    val userId: Int,
+    val communityId: Int,
+    val comment: String,
+    val createdAt: String,
+    val updatedAt: String
 ): Parcelable
 

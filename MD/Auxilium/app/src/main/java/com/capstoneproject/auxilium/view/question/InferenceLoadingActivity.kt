@@ -3,9 +3,11 @@ package com.capstoneproject.auxilium.view.question
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.auxilium.databinding.ActivityInferenceLoadingBinding
+import com.capstoneproject.auxilium.response.PhonesResponseItem
 
 @Suppress("DEPRECATION")
 class InferenceLoadingActivity : AppCompatActivity() {
@@ -24,6 +26,7 @@ class InferenceLoadingActivity : AppCompatActivity() {
     )
     private val handler = Handler()
     private var dotCount = 0
+    private lateinit var recommendationIds: List<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,25 +34,26 @@ class InferenceLoadingActivity : AppCompatActivity() {
         setContentView(binding.root)
         tvCrunchingLoading = binding.tvCrunchingLoading
         tvQuotes = binding.tvQuotes
+
+        recommendationIds = intent.getIntegerArrayListExtra("recommendations") ?: emptyList()
         simulateLoadingAndSwitchActivity()
     }
 
     private fun simulateLoadingAndSwitchActivity() {
         handler.postDelayed({
-            // Simulate loading time (replace with your actual loading logic)
-            val loadingTime = 10000 // milliseconds
+            val loadingTime = 1000
 
             handler.postDelayed({
-                // Navigate to ResultActivity after loading time
                 val intent = Intent(this, ResultActivity::class.java)
+                intent.putIntegerArrayListExtra("recommendations", ArrayList(recommendationIds))
                 startActivity(intent)
-                finish() // Close InferenceLoadingActivity after navigation
+                finish()
             }, loadingTime.toLong())
 
-            // Start loading animation
             startLoadingAnimation()
-        }, 0) // Start after a slight delay for better UX
+        }, 0)
     }
+
 
     private fun startLoadingAnimation() {
         handler.postDelayed(object : Runnable {
@@ -60,7 +64,6 @@ class InferenceLoadingActivity : AppCompatActivity() {
                 }
                 tvCrunchingLoading.text = loadingText.toString()
                 dotCount = (dotCount + 1) % 4
-
 
                 val randInt = (0 until stringArray.size).random()
                 val randomTip = stringArray[randInt]
@@ -73,7 +76,6 @@ class InferenceLoadingActivity : AppCompatActivity() {
             }
         }, 1000)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

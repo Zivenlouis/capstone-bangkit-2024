@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/dark_background"
     android:padding="@dimen/activity_padding"
+    android:id="@+id/inference_loading_layout"
     tools:context=".view.question.InferenceLoadingActivity">
 
 

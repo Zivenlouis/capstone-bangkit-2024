@@ -1,6 +1,13 @@
-Edit Profile Done (Remaining Refresh After edit profile) ,  Forum And Add Forum (Remaining Refresh After add forum , like forum button logic) , Read and Add Reply and update after add done
+Model 1 Done UserSurvey and Result Page
 
-Done :
+Done : 
+- Model 1 : User Survey / Questionnare
+- Format Phone Detail Table
+- Questionnare Page & Question
+- Result Page and Detail Result Page with Add to Wishlist button 
+- Minor Design Detail
+
+Done Before:
 - Minor Detail Design Fixed (image post and edit profile + newarrivals + detailforum (reply))
 - Edit profile done (UI Refresh)
 - Read and Add post done (Likebutton logic and UI Refresh)
@@ -12,11 +19,17 @@ TODO :
 
 Not Done:
 - Logic / BackEnd : 
-	- Model
-	- Questionnare (Model)
-	- Detail Phone Pages (70 % - new arrivals , wishlist, edit profile ,reset password , forum)
+	- Model 2 User Clicks & Ratings
+	- Detail Phone Pages (70 % - new arrivals , wishlist, edit profile ,reset password , forum , result page)
 	- Delete forum
-	- else
+	- Save to History (Local Database) (from button Result Activity)
+	- Recommended For You (in Home Fragment)
+
+- UI :
+ 	- Like Button Logic
+	- Auto Update UI profileactivity page after edit profile
+	- Auto Update UI ForumFragment page after add post 
+	- Questionnare Page slow response when move to InferenceLoading (maybe for fetching data it should be directly from inferenceloading page)
 
 Minor Detail Flaws:
 - Localize not created
@@ -25,5 +38,6 @@ Minor Detail Flaws:
 - Phone Mockup PNG only 1
 - Loading Bar / Progress Bar Logic using animation
 - Apps can run in API android 12 + upto newest one
+- Clean Code & Clear Logic
 
 

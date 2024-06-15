@@ -5,18 +5,21 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.capstoneproject.auxilium.databinding.ActivityNewArrivalsBinding
+import com.capstoneproject.auxilium.datastore.UserPreference
 
 class NewArrivalsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewArrivalsBinding
     private lateinit var viewModel: NewArrivalsViewModel
+    private lateinit var repository: NewArrivalsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewArrivalsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, NewArrivalsViewModelFactory(this))[NewArrivalsViewModel::class.java]
+        repository = NewArrivalsRepository(UserPreference.getInstance(this))
+        viewModel = ViewModelProvider(this, NewArrivalsViewModelFactory(repository))[NewArrivalsViewModel::class.java]
 
         val newArrivalsAdapter = NewArrivalsAdapter { phone ->
             val intent = Intent(this, DetailNewArrivalsActivity::class.java).apply {

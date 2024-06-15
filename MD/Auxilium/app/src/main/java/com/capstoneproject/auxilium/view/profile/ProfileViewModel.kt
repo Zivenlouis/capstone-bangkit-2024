@@ -1,9 +1,6 @@
 package com.capstoneproject.auxilium.view.profile
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import kotlinx.coroutines.flow.first
@@ -17,12 +14,17 @@ class ProfileViewModel(
     private val _userProfile = MutableLiveData<GetUsersResponseItem?>()
     val userProfile: LiveData<GetUsersResponseItem?> get() = _userProfile
 
+    init {
+        fetchUserProfile()
+    }
+
     fun fetchUserProfile() {
         viewModelScope.launch {
             val userId = userPreference.getUserId().first()
             userId?.let {
-                val user = repository.getUserById(it)
-                _userProfile.postValue(user)
+                repository.getFlowUserById(it).collect { user ->
+                    _userProfile.postValue(user)
+                }
             }
         }
     }

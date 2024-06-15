@@ -156,6 +156,12 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         viewModel.error.observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
+
+        viewModel.isProfileUpdated.observe(viewLifecycleOwner) { isUpdated ->
+            if (isUpdated) {
+                dismiss()
+            }
+        }
     }
 
     override fun onDestroyView() {

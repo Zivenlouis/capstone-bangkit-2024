@@ -1,4 +1,4 @@
-package com.capstoneproject.auxilium.view.newarrivals
+package com.capstoneproject.auxilium.view.question.detailresult
 
 import android.os.Bundle
 import android.widget.Toast
@@ -7,21 +7,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.api.ApiConfig
-import com.capstoneproject.auxilium.databinding.ActivityDetailNewArrivalsBinding
+import com.capstoneproject.auxilium.databinding.ActivityDetailResultBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.helper.FormatterUtil
 import com.capstoneproject.auxilium.response.PhonesResponseItem
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-class DetailNewArrivalsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailNewArrivalsBinding
-    private lateinit var viewModel: DetailNewArrivalsViewModel
+class DetailResultActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailResultBinding
+    private lateinit var viewModel: DetailResultViewModel
     private lateinit var userPreference: UserPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailNewArrivalsBinding.inflate(layoutInflater)
+        binding = ActivityDetailResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         userPreference = UserPreference.getInstance(this)
@@ -29,10 +30,13 @@ class DetailNewArrivalsActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val token = userPreference.getToken().firstOrNull()
             val apiService = ApiConfig.getApiService(token)
-            val repository = DetailNewArrivalsRepository(apiService)
-            viewModel = ViewModelProvider(this@DetailNewArrivalsActivity, DetailNewArrivalsViewModelFactory(repository))[DetailNewArrivalsViewModel::class.java]
+            val repository = DetailResultRepository(apiService)
+            ViewModelProvider(
+                this@DetailResultActivity,
+                DetailResultViewModelFactory(repository)
+            )[DetailResultViewModel::class.java].also { viewModel = it }
 
-            val phone = intent.getParcelableExtra<PhonesResponseItem>("PHONE_DATA")
+            val phone = intent.getParcelableExtra<PhonesResponseItem>("phone")
             phone?.let {
                 binding.apply {
                     tvPhoneNames.text = it.name
@@ -54,7 +58,7 @@ class DetailNewArrivalsActivity : AppCompatActivity() {
                     tvColorsLabel.text = it.colors
                     tvNfcLabel.text = FormatterUtil.formatYesNo(it.nfc)
                     tvPriceLabel.text = FormatterUtil.formatPrice(it.price)
-                    Glide.with(this@DetailNewArrivalsActivity).load(it.image).into(ivPhoneImages)
+                    Glide.with(this@DetailResultActivity).load(it.image).into(ivPhoneImages)
                 }
             }
 
@@ -68,12 +72,12 @@ class DetailNewArrivalsActivity : AppCompatActivity() {
                 }
             }
 
-            viewModel.addWishlistResult.observe(this@DetailNewArrivalsActivity) { response ->
-                Toast.makeText(this@DetailNewArrivalsActivity, response.msg, Toast.LENGTH_SHORT).show()
+            viewModel.addWishlistResult.observe(this@DetailResultActivity) { response ->
+                Toast.makeText(this@DetailResultActivity, response.msg, Toast.LENGTH_SHORT).show()
             }
 
-            viewModel.error.observe(this@DetailNewArrivalsActivity) { errorMessage ->
-                Toast.makeText(this@DetailNewArrivalsActivity, errorMessage, Toast.LENGTH_SHORT).show()
+            viewModel.error.observe(this@DetailResultActivity) { errorMessage ->
+                Toast.makeText(this@DetailResultActivity, errorMessage, Toast.LENGTH_SHORT).show()
             }
         }
     }

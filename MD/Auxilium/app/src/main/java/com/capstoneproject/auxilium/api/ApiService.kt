@@ -18,6 +18,7 @@ import com.capstoneproject.auxilium.response.WishlistResponseItem
 import com.capstoneproject.auxilium.ui.forum.GetLikeByPostIdResponseItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -91,7 +92,7 @@ interface ApiService {
         @Part("name") name: RequestBody,
         @Part("email") email: RequestBody,
         @Part profileImage: MultipartBody.Part? = null,
-    ): EditProfileResponse
+    ): Response<EditProfileResponse>
 
     @Multipart
     @POST("/community/add")
@@ -125,6 +126,11 @@ interface ApiService {
     suspend fun getRepliesByPostId(
         @Path("id") id: Int,
     ): List<GetRepliesByIdResponseItem>
+
+    @POST("topUserSurveys")
+    fun getRecommendations(
+        @Body userSurvey: UserSurveyRequest
+    ): Call<List<Int>>
 
 }
 
@@ -160,4 +166,8 @@ data class AddRepliesRequestBody(
     val user_id: Int,
     val community_id: Int,
     val comment: String,
+)
+
+data class UserSurveyRequest(
+    val user_survey: List<Any>
 )

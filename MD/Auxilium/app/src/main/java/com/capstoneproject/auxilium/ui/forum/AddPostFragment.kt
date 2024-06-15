@@ -104,6 +104,7 @@ class AddPostFragment : BottomSheetDialogFragment() {
                     val file = File(currentPhotoPath!!)
                     val isUploadSuccessful = viewModel.uploadPost(captionRequestBody, file)
                     if (isUploadSuccessful) {
+                        Toast.makeText(requireContext(), "Post added successfully ", Toast.LENGTH_SHORT).show()
                         parentFragmentManager.setFragmentResult("postAdded", Bundle())
                         dismiss()
                     } else {

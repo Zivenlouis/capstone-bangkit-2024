@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.databinding.ActivityDetailWishlistBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
+import com.capstoneproject.auxilium.helper.FormatterUtil
 import com.capstoneproject.auxilium.response.PhonesResponseItem
 import java.text.NumberFormat
 import java.util.Locale
@@ -32,22 +33,22 @@ class DetailWishlistActivity : AppCompatActivity() {
                 tvPhoneNames.text = it.name
                 tvPhoneOs.text = it.os
                 tvBrandLabel.text = it.brand
-                tvReleasedDateLabel.text = it.releaseDate
-                tvResolutionLabel.text = it.resolution
-                tvWeightLabel.text = it.weight
+                tvReleasedDateLabel.text = FormatterUtil.formatDate(it.releaseDate)
+                tvResolutionLabel.text = FormatterUtil.formatResolution(it.resolution)
+                tvWeightLabel.text = FormatterUtil.formatWeight(it.weight)
                 tvChipsetLabel.text = it.chipset
-                tvMemoryLabel.text = it.memory
-                tvRamLabel.text = it.ram
-                tvMainCamera1Label.text = it.mainCamera1
-                tvMainCamera2Label.text = it.mainCamera2
-                tvMainCamera3Label.text = it.mainCamera3
-                tvSelfieCameraLabel.text = it.selfieCamera
-                tvEarphoneJackLabel.text = it.earphoneJack
-                tvBatteryLabel.text = it.battery
-                tvChargingLabel.text = it.charging
+                tvMemoryLabel.text = FormatterUtil.formatMemory(it.memory)
+                tvRamLabel.text = FormatterUtil.formatMemory(it.ram)
+                tvMainCamera1Label.text = FormatterUtil.formatCamera(it.mainCamera1)
+                tvMainCamera2Label.text = FormatterUtil.formatCamera(it.mainCamera2)
+                tvMainCamera3Label.text = FormatterUtil.formatCamera(it.mainCamera3)
+                tvSelfieCameraLabel.text = FormatterUtil.formatCamera(it.selfieCamera)
+                tvEarphoneJackLabel.text = FormatterUtil.formatYesNo(it.earphoneJack)
+                tvBatteryLabel.text = FormatterUtil.formatBattery(it.battery)
+                tvChargingLabel.text = FormatterUtil.formatCharging(it.charging)
                 tvColorsLabel.text = it.colors
-                tvNfcLabel.text = it.nfc
-                tvPriceLabel.text = formatPrice(it.price)
+                tvNfcLabel.text = FormatterUtil.formatYesNo(it.nfc)
+                tvPriceLabel.text = FormatterUtil.formatPrice(it.price)
                 Glide.with(this@DetailWishlistActivity).load(it.image).into(ivPhoneImages)
             }
         }

@@ -53,11 +53,11 @@ class ForumAdapter(
                 }
 
                 ivLikeForum.setOnClickListener {
-                    val currentPost = getItem(position) // Get the current post object
-                    currentPost.isLiked = !currentPost.isLiked // Toggle the isLiked flag locally
-                    notifyItemChanged(position) // Update the UI for the specific item
+                    val currentPost = getItem(position)
+                    currentPost.isLiked = !currentPost.isLiked
+                    notifyItemChanged(position)
 
-                    onLikeClick(currentPost) // Call the onLikeClick function to handle the like/unlike action
+                    onLikeClick(currentPost)
                 }
             }
         }

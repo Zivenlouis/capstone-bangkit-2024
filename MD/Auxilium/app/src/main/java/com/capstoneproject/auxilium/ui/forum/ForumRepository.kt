@@ -3,6 +3,7 @@ package com.capstoneproject.auxilium.ui.forum
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.LikeCommunityRequest
 import com.capstoneproject.auxilium.datastore.UserPreference
+import com.capstoneproject.auxilium.response.GetRepliesByIdResponseItem
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import com.capstoneproject.auxilium.response.LikePostResponse
 import com.capstoneproject.auxilium.response.UnLikePostResponse
@@ -25,6 +26,7 @@ class ForumRepository(private val userPreference: UserPreference) {
         val response = apiService.getAllForumPosts()
         return response.map { item ->
             val user = getUserDetails(item.userId ?: 0)
+            val replies = getRepliesByPostId(item.id ?: 0)
             ForumPost(
                 profileImage = user?.profileImage ?: "",
                 username = user?.name ?: "",
@@ -32,7 +34,15 @@ class ForumRepository(private val userPreference: UserPreference) {
                 description = item.caption ?: "",
                 postImage = item.image ?: "",
                 likes = item.likeCount ?: 0,
-                replies = emptyList(),
+                replies = replies.map { reply ->
+                    Reply(
+                        id = reply.id ?: 0,
+                        userId = reply.userId ?: 0,
+                        communityId = reply.communityId ?: 0,
+                        comment = reply.comment ?: "",
+                        createdAt = formatTimeDifference(reply.createdAt ?: "") ,
+                        updatedAt = formatTimeDifference(reply.updatedAt ?: ""))
+                },
                 communityId = item.id ?: 0,
                 isLiked = false
             )
@@ -62,6 +72,17 @@ class ForumRepository(private val userPreference: UserPreference) {
         return apiService.getLikesByPostId(communityId)
     }
 
+    private suspend fun getRepliesByPostId(communityId: Int): List<GetRepliesByIdResponseItem> {
+        val token = userPreference.getToken().firstOrNull()
+        val apiService = ApiConfig.getApiService(token ?: "")
+
+        if (token.isNullOrEmpty()) {
+            return emptyList()
+        }
+
+        return apiService.getRepliesByPostId(communityId)
+    }
+
     suspend fun getUserDetails(userId: Int): GetUsersResponseItem? {
         val token = userPreference.getToken().firstOrNull()
         val apiService = ApiConfig.getApiService(token ?: "")
@@ -79,6 +100,19 @@ class ForumRepository(private val userPreference: UserPreference) {
         val likes = getLikesByPostId(communityId)
         return likes.any { it.userId == userId }
     }
+
+    suspend fun getRepliesCountByPostId(communityId: Int): Int {
+        val token = userPreference.getToken().firstOrNull()
+        val apiService = ApiConfig.getApiService(token ?: "")
+
+        if (token.isNullOrEmpty()) {
+            return 0
+        }
+
+        val replies = apiService.getRepliesByPostId(communityId)
+        return replies.size
+    }
+
 
     private fun formatTimeDifference(dateString: String): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)

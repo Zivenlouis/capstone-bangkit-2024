@@ -63,6 +63,7 @@ class DetailForumActivity : AppCompatActivity() {
 
         viewModel.repliesList.observe(this) { replies ->
             adapter.updateData(replies)
+            binding.tvReplyForum.text = replies.size.toString()
             replies.forEach { reply ->
                 viewModel.fetchUserById(reply.userId ?: 0)
             }

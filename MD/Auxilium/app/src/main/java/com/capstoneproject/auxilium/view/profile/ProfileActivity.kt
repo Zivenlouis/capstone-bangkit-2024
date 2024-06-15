@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.api.ApiConfig
@@ -26,9 +26,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private val userPreference: UserPreference by lazy { UserPreference.getInstance(this) }
     private lateinit var repository: ProfileRepository
-    private val viewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(userPreference, repository)
-    }
+    private var viewModel: ProfileViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +36,13 @@ class ProfileActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val token = userPreference.getToken().firstOrNull()
             repository = ProfileRepository(ApiConfig.getApiService(token))
-            viewModel.fetchUserProfile()
+
+            viewModel = ViewModelProvider(
+                this@ProfileActivity,
+                ProfileViewModelFactory(userPreference, repository)
+            )[ProfileViewModel::class.java]
+
+            viewModel?.fetchUserProfile()
             observeViewModel()
         }
 
@@ -78,7 +82,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun navigateToEditProfile() {
-        val userProfile = viewModel.userProfile.value ?: return
+        val userProfile = viewModel?.userProfile?.value ?: return
 
         val bundle = Bundle().apply {
             putString("username", userProfile.name)
@@ -91,12 +95,10 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         editProfileFragment.show(supportFragmentManager, editProfileFragment.tag)
-
-        observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.userProfile.observe(this) { user ->
+        viewModel?.userProfile?.observe(this) { user ->
             user?.let {
                 binding.apply {
                     textName.text = it.name
@@ -106,6 +108,11 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observeViewModel()
     }
 
     private fun formatDate(dateString: String?): String {

@@ -84,4 +84,13 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
     suspend fun getUserDetails(userId: Int): GetUsersResponseItem? {
         return repository.getUserDetails(userId)
     }
+
+    suspend fun getRepliesCount(communityId: Int): Int {
+        return try {
+            repository.getRepliesCountByPostId(communityId)
+        } catch (e: Exception) {
+            0
+        }
+    }
+
 }

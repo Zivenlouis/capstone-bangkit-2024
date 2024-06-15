@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 
 class EditProfileViewModel(context: Context) : ViewModel() {
 
@@ -23,6 +24,9 @@ class EditProfileViewModel(context: Context) : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
+    private val _isProfileUpdated = MutableLiveData<Boolean>()
+    val isProfileUpdated: LiveData<Boolean> get() = _isProfileUpdated
+
     fun editProfile(name: RequestBody, email: RequestBody, profileImage: MultipartBody.Part?) {
         viewModelScope.launch {
             val token = userPreference.getToken().firstOrNull()
@@ -31,8 +35,13 @@ class EditProfileViewModel(context: Context) : ViewModel() {
             if (token != null && userId != null) {
                 try {
                     val apiService = ApiConfig.getApiService(token)
-                    val response: EditProfileResponse = apiService.editProfile(userId, name, email, profileImage)
-                    _editProfileResponse.postValue(response)
+                    val response: Response<EditProfileResponse> = apiService.editProfile(userId, name, email, profileImage)
+                    if (response.isSuccessful) {
+                        _editProfileResponse.postValue(response.body())
+                        _isProfileUpdated.postValue(true)
+                    } else {
+                        _error.postValue(response.message())
+                    }
                 } catch (e: Exception) {
                     _error.postValue(e.message)
                 }

@@ -1,6 +1,7 @@
-package com.capstoneproject.auxilium.view.newarrivals
+package com.capstoneproject.auxilium.view.question
 
 import android.util.Log
+import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.ApiConfig.Companion.getApiService
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.PhonesResponseItem
@@ -8,22 +9,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.withContext
 
-class NewArrivalsRepository(private val userPreference: UserPreference) {
+class ResultRepository (private val userPreference: UserPreference) {
 
-    suspend fun getPhones(): List<PhonesResponseItem> {
+    suspend fun getPhoneById(phoneId: Int): PhonesResponseItem? {
         val token = userPreference.getToken().firstOrNull()
         if (token.isNullOrEmpty()) {
-            return emptyList()
+            return null
         }
 
         return withContext(Dispatchers.IO) {
-            val apiService = getApiService(token)
             try {
-                val response = apiService.getAllPhones()
-                response
+                val apiService = getApiService(token)
+                val response = apiService.getPhonesById(phoneId)
+                response.firstOrNull()
             } catch (e: Exception) {
-                Log.e("NewArrivalsRepository", "Error fetching phones: ${e.localizedMessage}")
-                throw e
+                null
             }
         }
     }
