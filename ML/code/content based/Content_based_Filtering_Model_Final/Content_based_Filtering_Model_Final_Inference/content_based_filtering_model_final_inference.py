@@ -12,7 +12,8 @@ import tensorflow as tf
 
 brand_choice_list = ['Oppo', 'Asus', 'Infinix', 'Samsung', 'Vivo', 'Huawei', 'Apple', 'Realme', 'Xiaomi', 'Poco', 'lainnya/tidak ada']
 
-user_model = tf.keras.models.load_model('user_model.keras')
+# user_model = tf.keras.models.load_model('user_model.keras')
+user_model = tf.keras.models.load_model('user_model.h5')
 
 """Preprocess data into input compatible with the model."""
 
