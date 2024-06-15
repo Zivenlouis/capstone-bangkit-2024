@@ -203,11 +203,21 @@ model.fit([train_user, train_phone], train_rating, epochs=30, validation_data=([
 
 model.evaluate([val_user, val_phone], val_rating)
 
-model.save('model.keras')
+"""Save model in keras format."""
 
-user_model.save('user_model.keras')
+# model.save('model.keras')
+#
+# user_model.save('user_model.keras')
+#
+# phone_model.save('phone_model.keras')
 
-phone_model.save('phone_model.keras')
+"""Save model in h5 format."""
+
+model.save('model.h5')
+
+user_model.save('user_model.h5')
+
+phone_model.save('phone_model.h5')
 
 """Predict rating."""
 
