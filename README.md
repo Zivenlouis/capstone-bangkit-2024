@@ -80,20 +80,21 @@ git clone https://github.com/Zivenlouis/capstone-bangkit-2024.git
 | 23 | `androidx.lifecycle:lifecycle-livedata-ktx:2.8.1`         | Lifecycle-aware LiveData components                      |
 | 24 | `androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1`        | Lifecycle-aware ViewModel components                     |
 | 25 | `androidx.lifecycle:lifecycle-runtime-ktx:2.8.1`          | Lifecycle-aware runtime components                       |
-| 26 | `org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0`  | Support for Kotlin coroutines on Android                 |
-| 27 | `org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0`     | Core library for Kotlin coroutines                       |
-| 28 | `com.squareup.retrofit2:retrofit:2.11.0`                  | Type-safe HTTP client for Android                        |
-| 29 | `com.squareup.retrofit2:converter-gson:2.11.0`            | Gson converter for Retrofit                              |
-| 30 | `com.squareup.okhttp3:okhttp:5.0.0-alpha.14`              | HTTP & HTTP/2 client for Android                         |
-| 31 | `com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14` | Logging interceptor for OkHttp                           |
-| 32 | `com.github.bumptech.glide:glide:4.16.0`                  | Image loading and caching library                        |
-| 33 | `com.google.firebase:firebase-firestore-ktx:25.0.0`       | Firebase Firestore support for Android                   |
-| 34 | `androidx.paging:paging-common-ktx:3.3.0`                 | Common paging library components                         |
-| 35 | `androidx.paging:paging-runtime-ktx:3.3.0`                | Runtime paging library components                        |
-| 36 | `androidx.room:room-paging:2.6.1`                         | Paging support for Room                                  |
-| 37 | `androidx.datastore:datastore-preferences:1.1.1`          | DataStore preferences library                            |
-| 38 | `androidx.work:work-runtime-ktx:2.9.0`                    | WorkManager library for Android                          |
-| 39 | `androidx.exifinterface:exifinterface:1.3.7`              | EXIF interface for handling image metadata               |
-| 40 | `de.hdodenhof:circleimageview:3.1.0`                      | CircleImageView library for circular images              |
-| 41 | `androidx.navigation:navigation-fragment-ktx:2.7.7`       | Navigation component for fragments                       |
-| 42 | `androidx.navigation:navigation-ui-ktx:2.7.7`             | Navigation component for UI                              |
+| 26 | `androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.1` | ViewModel SavedState library for persistent state management |
+| 27 | `org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0`  | Support for Kotlin coroutines on Android                 |
+| 28 | `org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0`     | Core library for Kotlin coroutines                       |
+| 29 | `com.squareup.retrofit2:retrofit:2.11.0`                  | Type-safe HTTP client for Android                        |
+| 30 | `com.squareup.retrofit2:converter-gson:2.11.0`            | Gson converter for Retrofit                              |
+| 31 | `com.squareup.okhttp3:okhttp:5.0.0-alpha.14`              | HTTP & HTTP/2 client for Android                         |
+| 32 | `com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14` | Logging interceptor for OkHttp                           |
+| 33 | `com.github.bumptech.glide:glide:4.16.0`                  | Image loading and caching library                        |
+| 34 | `com.google.firebase:firebase-firestore-ktx:25.0.0`       | Firebase Firestore support for Android                   |
+| 35 | `androidx.paging:paging-common-ktx:3.3.0`                 | Common paging library components                         |
+| 36 | `androidx.paging:paging-runtime-ktx:3.3.0`                | Runtime paging library components                        |
+| 37 | `androidx.room:room-paging:2.6.1`                         | Paging support for Room                                  |
+| 38 | `androidx.datastore:datastore-preferences:1.1.1`          | DataStore preferences library                            |
+| 39 | `androidx.work:work-runtime-ktx:2.9.0`                    | WorkManager library for Android                          |
+| 40 | `androidx.exifinterface:exifinterface:1.3.7`              | EXIF interface for handling image metadata               |
+| 41 | `de.hdodenhof:circleimageview:3.1.0`                      | CircleImageView library for circular images              |
+| 42 | `androidx.navigation:navigation-fragment-ktx:2.7.7`       | Navigation component for fragments                       |
+| 43 | `androidx.navigation:navigation-ui-ktx:2.7.7`             | Navigation component for UI                              |
