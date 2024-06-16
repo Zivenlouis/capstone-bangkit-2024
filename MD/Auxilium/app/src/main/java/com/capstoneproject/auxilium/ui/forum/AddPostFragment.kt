@@ -1,7 +1,5 @@
 package com.capstoneproject.auxilium.ui.forum
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -10,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.auxilium.databinding.FragmentAddPostBinding
@@ -37,21 +35,6 @@ class AddPostFragment : BottomSheetDialogFragment() {
 
     private var currentPhotoPath: String? = null
     private var currentImageUri: Uri? = null
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                Toast.makeText(requireContext(), "Permission request granted", Toast.LENGTH_SHORT)
-                    .show()
-                startGallery()
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Permission denied to read your External storage",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
 
     private val launcherGallery =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -84,59 +67,58 @@ class AddPostFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCamera.setOnClickListener {
-            if (allPermissionsGranted()) {
-                startCamera()
-            } else {
-                requestPermissions()
-            }
+            startCamera()
         }
 
         binding.btnGallery.setOnClickListener {
-            checkPermissionAndStartGallery()
+            startGallery()
+        }
+
+        binding.edAddDescription.doOnTextChanged { text, _, _, _ ->
+            if (text != null) {
+                if (text.isNotEmpty()) {
+                    binding.tiAddPost.error = null
+                } else {
+                    binding.tiAddPost.error = "Please enter a caption"
+                }
+            }
         }
 
         binding.btnPost.setOnClickListener {
             val captionText = binding.edAddDescription.text.toString().trim()
-            val captionRequestBody = captionText.toRequestBody("text/plain".toMediaTypeOrNull())
 
-            if (currentPhotoPath != null) {
-                viewLifecycleOwner.lifecycleScope.launch {
-                    val file = File(currentPhotoPath!!)
-                    val isUploadSuccessful = viewModel.uploadPost(captionRequestBody, file)
-                    if (isUploadSuccessful) {
-                        Toast.makeText(requireContext(), "Post added successfully ", Toast.LENGTH_SHORT).show()
-                        parentFragmentManager.setFragmentResult("postAdded", Bundle())
-                        dismiss()
-                    } else {
-                        Toast.makeText(requireContext(), "Failed to upload post", Toast.LENGTH_SHORT).show()
-                    }
+            if (captionText.isNotEmpty()) {
+                val captionRequestBody: okhttp3.RequestBody =
+                    captionText.toRequestBody("text/plain".toMediaTypeOrNull())
+
+                if (currentPhotoPath != null) {
+                    uploadPost(captionRequestBody, File(currentPhotoPath!!))
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Please select a photo",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Please select a photo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Caption cannot be empty", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.CAMERA
-                ) == PackageManager.PERMISSION_GRANTED
-
-    private fun checkPermissionAndStartGallery() {
-        if (!allPermissionsGranted()) {
-            requestPermissions()
-        } else {
-            startGallery()
+    private fun uploadPost(captionRequestBody: okhttp3.RequestBody, file: File) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val isUploadSuccessful = viewModel.uploadPost(captionRequestBody, file)
+            if (isUploadSuccessful) {
+                Toast.makeText(requireContext(), "Post added successfully ", Toast.LENGTH_SHORT)
+                    .show()
+                parentFragmentManager.setFragmentResult("postAdded", Bundle())
+                dismiss()
+            } else {
+                Toast.makeText(requireContext(), "Failed to upload post", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
-
-    private fun requestPermissions() {
-        requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     private fun startGallery() {

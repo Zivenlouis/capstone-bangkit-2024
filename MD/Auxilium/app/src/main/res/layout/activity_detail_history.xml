@@ -58,7 +58,7 @@
                     android:fontFamily="@font/clash_grotesk_regular"
                     android:text="Phone Names"
                     android:textAlignment="viewEnd"
-                    android:textSize="26sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_phone_images"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -223,9 +223,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
-                        android:textAlignment="viewStart"
                         android:padding="12dp"
                         android:text="Chipset Label"
+                        android:textAlignment="viewStart"
                         android:textColor="@color/white" />
                 </TableRow>
 

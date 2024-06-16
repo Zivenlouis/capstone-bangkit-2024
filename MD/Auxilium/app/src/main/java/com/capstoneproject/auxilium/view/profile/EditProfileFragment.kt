@@ -1,7 +1,5 @@
 package com.capstoneproject.auxilium.view.profile
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -10,13 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import com.capstoneproject.auxilium.databinding.FragmentEditProfileBinding
 import com.capstoneproject.auxilium.helper.getImageUri
 import com.capstoneproject.auxilium.helper.reduceFileImage
 import com.capstoneproject.auxilium.helper.uriToFile
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -36,33 +35,27 @@ class EditProfileFragment : BottomSheetDialogFragment() {
     private var selectedImageFile: File? = null
     private lateinit var email: RequestBody
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
-                startGallery()
-            } else {
-                Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    private val launcherGallery = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            val imageFile = uriToFile(it, requireContext()).reduceFileImage()
-            binding.ivShowImage.setImageURI(Uri.fromFile(imageFile))
-            selectedImageFile = imageFile
-        } ?: Toast.makeText(requireContext(), "No media selected", Toast.LENGTH_SHORT).show()
-    }
-
-    private val launcherIntentCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-        if (isSuccess) {
-            currentPhotoPath?.let { path ->
-                val imageFile = uriToFile(Uri.parse(path), requireContext()).reduceFileImage()
-                binding.ivShowImage.setImageBitmap(BitmapFactory.decodeFile(imageFile.path))
+    // Activity result launcher for gallery
+    private val launcherGallery =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                val imageFile = uriToFile(it, requireContext()).reduceFileImage()
+                binding.ivShowImage.setImageURI(Uri.fromFile(imageFile))
                 selectedImageFile = imageFile
+            } ?: Toast.makeText(requireContext(), "No media selected", Toast.LENGTH_SHORT).show()
+        }
+
+    // Activity result launcher for camera
+    private val launcherIntentCamera =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                currentPhotoPath?.let { path ->
+                    val imageFile = uriToFile(Uri.parse(path), requireContext()).reduceFileImage()
+                    binding.ivShowImage.setImageURI(Uri.fromFile(imageFile))
+                    selectedImageFile = imageFile
+                }
             }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,34 +82,43 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         }
 
         binding.btnCamera.setOnClickListener {
-            if (allPermissionsGranted()) {
-                startCamera()
-            } else {
-                requestPermissions()
-            }
+            startCamera()
         }
 
         binding.btnGallery.setOnClickListener {
-            if (allPermissionsGranted()) {
-                startGallery()
-            } else {
-                requestPermissions()
-            }
+            startGallery()
         }
 
         binding.btnSaveProfile.setOnClickListener {
-            saveProfile()
+            val name = binding.edEditUsername.text.toString().trim()
+            if (name.isNotEmpty()) {
+                val nameRequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
+                var profileImagePart: MultipartBody.Part? = null
+
+                selectedImageFile?.let {
+                    val imageRequestBody = it.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                    profileImagePart = MultipartBody.Part.createFormData("file", it.name, imageRequestBody)
+                }
+
+                viewModel.editProfile(nameRequestBody, email, profileImagePart)
+            } else {
+                Toast.makeText(requireContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show()
+            }
         }
 
+
+        binding.edEditUsername.doOnTextChanged { text, _, _, _ ->
+            if (text != null) {
+                if (text.isNotEmpty()) {
+                    binding.tiEditUsername.error = null
+                } else {
+                    binding.tiEditUsername.error = "Please enter a username"
+                }
+            }
+        }
+
+
         observeViewModel()
-    }
-
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
-
-    private fun requestPermissions() {
-        requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     private fun startGallery() {

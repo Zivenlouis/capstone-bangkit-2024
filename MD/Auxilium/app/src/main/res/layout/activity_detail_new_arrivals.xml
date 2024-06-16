@@ -45,7 +45,7 @@
                     android:fontFamily="@font/clash_grotesk_regular"
                     android:text="Phone Names"
                     android:textAlignment="viewEnd"
-                    android:textSize="26sp"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_phone_images"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -1,5 +1,10 @@
 Model 1 Done UserSurvey and Result Page
 
+Additional Fix :
+- Camera And Gallery for android 13+
+- Register Add profile pics
+- Inference Loading and Questionnare
+
 Done : 
 - Model 1 : User Survey / Questionnare
 - Format Phone Detail Table
