@@ -8,20 +8,15 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.FragmentQuest7Binding
-import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.view.question.InferenceLoadingActivity
+import com.capstoneproject.auxilium.view.question.SharedViewModel
 
 class Quest7Fragment : Fragment() {
 
     private lateinit var binding: FragmentQuest7Binding
-    private val repository by lazy { QuestionnaireRepository(UserPreference.getInstance(requireContext())) }
-    private val questionnaireViewModel: QuestionnaireViewModel by viewModels {
-        QuestionnaireViewModelFactory(repository)
-    }
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -47,45 +42,24 @@ class Quest7Fragment : Fragment() {
         }
 
         binding.btnFinish.setOnClickListener {
-            if (areAllQuestionsAnswered()) {
-                sendUserSurvey()
-            } else {
-                // Handle case where not all questions are answered
-                // Optionally show a message to the user
-            }
+            val responses = arrayListOf(
+                sharedViewModel.getQuestion1Response(),
+                sharedViewModel.getQuestion2Response(),
+                sharedViewModel.getQuestion3Response(),
+                sharedViewModel.getQuestion4Response(),
+                sharedViewModel.getQuestion5Response(),
+                sharedViewModel.getQuestion6Response(),
+                sharedViewModel.getQuestion7Response()
+            )
+
+            val intent = Intent(requireContext(), InferenceLoadingActivity::class.java)
+            intent.putExtra("user_survey", responses)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.Fragment7toFragment6)
-        }
-
-        observeViewModel()
-    }
-
-    private fun areAllQuestionsAnswered(): Boolean {
-        return sharedViewModel.getQuestion1Response() != null &&
-                sharedViewModel.getQuestion2Response() != null &&
-                sharedViewModel.getQuestion3Response() != null &&
-                sharedViewModel.getQuestion4Response() != null &&
-                sharedViewModel.getQuestion5Response() != null &&
-                sharedViewModel.getQuestion6Response() != null &&
-                sharedViewModel.getQuestion7Response() != null
-    }
-
-    private fun sendUserSurvey() {
-        val userSurveyRequest = sharedViewModel.getAllResponses()
-        questionnaireViewModel.getRecommendations(userSurveyRequest)
-    }
-
-    private fun observeViewModel() {
-        questionnaireViewModel.recommendations.observe(viewLifecycleOwner) { recommendations ->
-            if (recommendations.isNotEmpty()) {
-                val intent = Intent(requireContext(), InferenceLoadingActivity::class.java)
-                intent.putIntegerArrayListExtra("recommendations", ArrayList(recommendations))
-                startActivity(intent)
-
-                requireActivity().finish()
-            }
         }
     }
 

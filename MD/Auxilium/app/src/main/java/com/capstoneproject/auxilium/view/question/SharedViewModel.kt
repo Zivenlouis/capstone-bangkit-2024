@@ -1,5 +1,6 @@
-package com.capstoneproject.auxilium.view.question.quest
+package com.capstoneproject.auxilium.view.question
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.capstoneproject.auxilium.api.UserSurveyRequest
@@ -14,6 +15,7 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
         private const val QUESTION_5_KEY = "question5Response"
         private const val QUESTION_6_KEY = "question6Response"
         private const val QUESTION_7_KEY = "question7Response"
+        private const val TAG = "SharedViewModel"
     }
 
     init {
@@ -42,30 +44,37 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
 
     fun setQuestion1Response(response: Int) {
         savedStateHandle[QUESTION_1_KEY] = response
+        Log.d(TAG, "Question 1 Response set to $response")
     }
 
     fun setQuestion2Response(response: Int) {
         savedStateHandle[QUESTION_2_KEY] = response
+        Log.d(TAG, "Question 2 Response set to $response")
     }
 
     fun setQuestion3Response(response: Int) {
         savedStateHandle[QUESTION_3_KEY] = response
+        Log.d(TAG, "Question 3 Response set to $response")
     }
 
     fun setQuestion4Response(response: Int) {
         savedStateHandle[QUESTION_4_KEY] = response
+        Log.d(TAG, "Question 4 Response set to $response")
     }
 
     fun setQuestion5Response(response: Int) {
         savedStateHandle[QUESTION_5_KEY] = response
+        Log.d(TAG, "Question 5 Response set to $response")
     }
 
     fun setQuestion6Response(response: Int) {
         savedStateHandle[QUESTION_6_KEY] = response
+        Log.d(TAG, "Question 6 Response set to $response")
     }
 
     fun setQuestion7Response(response: String) {
         savedStateHandle[QUESTION_7_KEY] = response
+        Log.d(TAG, "Question 7 Response set to $response")
     }
 
     fun getQuestion1Response(): Int {
@@ -105,6 +114,7 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
         responses.add(getQuestion5Response())
         responses.add(getQuestion6Response())
         responses.add(getQuestion7Response())
+        Log.d(TAG, "All Responses: $responses")
         return UserSurveyRequest(responses)
     }
 }

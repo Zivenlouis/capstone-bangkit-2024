@@ -11,10 +11,10 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/text_copyright"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_back_profile"
@@ -58,18 +58,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btn_edit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="68dp"
-                android:background="@drawable/edit_profile_btn_bg"
-                android:contentDescription="Edit Profile"
-                android:src="@drawable/ic_edit_profile"
-                app:layout_constraintEnd_toEndOf="@id/divider_guest"
-                app:layout_constraintTop_toTopOf="@id/text_name"
-                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/text_name"
@@ -130,23 +118,44 @@
                 app:layout_constraintStart_toEndOf="@id/image_date_joined"
                 app:layout_constraintTop_toTopOf="@id/image_date_joined" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="17dp"
+                android:backgroundTint="@color/start_icon_tint"
+                android:contentDescription="Edit Profile"
+                android:fontFamily="@font/clash_grotesk"
+                android:text="Edit Profile"
+                android:textAllCaps="false"
+                android:textColor="@color/light_peach"
+                app:cornerRadius="40dp"
+                app:icon="@drawable/ic_edit_profile"
+                app:iconGravity="textStart"
+                app:iconTint="@color/light_peach"
+                app:layout_constraintEnd_toEndOf="@id/divider_guest"
+                app:layout_constraintStart_toStartOf="@id/divider_guest"
+                app:layout_constraintTop_toBottomOf="@id/image_avatar"
+                tools:ignore="TouchTargetSizeCheck" />
+
             <View
                 android:id="@+id/divider_guest"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="17dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_avatar" />
+                app:layout_constraintTop_toBottomOf="@id/btn_edit_profile" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="53dp"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:text="Language"
@@ -205,6 +214,7 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:text="Logout"

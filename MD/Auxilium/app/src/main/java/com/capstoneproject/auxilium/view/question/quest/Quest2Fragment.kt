@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.FragmentQuest2Binding
+import com.capstoneproject.auxilium.view.question.SharedViewModel
 
 class Quest2Fragment : Fragment() {
 

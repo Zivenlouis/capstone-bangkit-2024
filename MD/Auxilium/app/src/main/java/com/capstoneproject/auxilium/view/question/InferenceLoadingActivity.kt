@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.capstoneproject.auxilium.api.UserSurveyRequest
 import com.capstoneproject.auxilium.databinding.ActivityInferenceLoadingBinding
-import com.capstoneproject.auxilium.response.PhonesResponseItem
+import com.capstoneproject.auxilium.datastore.UserPreference
 
 @Suppress("DEPRECATION")
 class InferenceLoadingActivity : AppCompatActivity() {
@@ -26,7 +28,10 @@ class InferenceLoadingActivity : AppCompatActivity() {
     )
     private val handler = Handler()
     private var dotCount = 0
-    private lateinit var recommendationIds: List<Int>
+    private val repository by lazy { QuestionnaireRepository(UserPreference.getInstance(this)) }
+    private val questionnaireViewModel: QuestionnaireViewModel by viewModels {
+        QuestionnaireViewModelFactory(repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,25 +40,43 @@ class InferenceLoadingActivity : AppCompatActivity() {
         tvCrunchingLoading = binding.tvCrunchingLoading
         tvQuotes = binding.tvQuotes
 
-        recommendationIds = intent.getIntegerArrayListExtra("recommendations") ?: emptyList()
-        simulateLoadingAndSwitchActivity()
+        simulateLoadingAndFetchRecommendations()
     }
 
-    private fun simulateLoadingAndSwitchActivity() {
+    private fun simulateLoadingAndFetchRecommendations() {
         handler.postDelayed({
-            val loadingTime = 1000
+            val loadingTime = 10000
 
             handler.postDelayed({
-                val intent = Intent(this, ResultActivity::class.java)
-                intent.putIntegerArrayListExtra("recommendations", ArrayList(recommendationIds))
-                startActivity(intent)
-                finish()
+                sendUserSurvey()
             }, loadingTime.toLong())
 
             startLoadingAnimation()
         }, 0)
     }
 
+    private fun sendUserSurvey() {
+        val userSurveyList = intent.getSerializableExtra("user_survey") as ArrayList<*>
+        Log.d("InferenceLoadingActivity", "User Survey Request: $userSurveyList")
+
+        val userSurveyRequest = UserSurveyRequest(userSurveyList)
+        questionnaireViewModel.getRecommendations(userSurveyRequest)
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        questionnaireViewModel.recommendations.observe(this) { recommendations ->
+            if (recommendations.isNotEmpty()) {
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putIntegerArrayListExtra(
+                    "recommendations",
+                    recommendations as ArrayList<Int>
+                )
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
 
     private fun startLoadingAnimation() {
         handler.postDelayed(object : Runnable {

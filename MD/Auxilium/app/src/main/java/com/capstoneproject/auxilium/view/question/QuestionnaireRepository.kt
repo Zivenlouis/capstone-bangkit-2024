@@ -1,4 +1,4 @@
-package com.capstoneproject.auxilium.view.question.quest
+package com.capstoneproject.auxilium.view.question
 
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.ApiService

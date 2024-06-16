@@ -1,4 +1,4 @@
-package com.capstoneproject.auxilium.view.question.quest
+package com.capstoneproject.auxilium.view.question
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
