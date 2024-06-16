@@ -39,7 +39,7 @@ object FormatterUtil {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
             val date = inputFormat.parse(it)
-            outputFormat.format(date)
+            date?.let { it1 -> outputFormat.format(it1) }
         } ?: ""
     }
 

@@ -45,7 +45,7 @@ class InferenceLoadingActivity : AppCompatActivity() {
 
     private fun simulateLoadingAndFetchRecommendations() {
         handler.postDelayed({
-            val loadingTime = 10000
+            val loadingTime = 1000
 
             handler.postDelayed({
                 sendUserSurvey()

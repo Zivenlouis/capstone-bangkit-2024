@@ -19,9 +19,9 @@ class DetailHistoryActivity : AppCompatActivity() {
         val historyItem = intent.getParcelableExtra<PhoneItem>("HISTORY_ITEM")
 
         if (historyItem != null) {
-            binding.ivDetailPhoneImages.setImageResource(historyItem.phoneImage)
-            binding.tvDetailPhoneNames.text = historyItem.phoneNames
-            binding.tvDetailPhoneOs.text = historyItem.phoneOS
+            binding.ivPhoneImages.setImageResource(historyItem.phoneImage)
+            binding.tvPhoneNames.text = historyItem.phoneNames
+            binding.tvPhoneOs.text = historyItem.phoneOS
         }
 
         val recommendedList = listOf(

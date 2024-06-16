@@ -42,7 +42,7 @@
             android:layout_marginHorizontal="31dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="How important is software ?"
+            android:text="How important is battery ?"
             android:textColor="@color/light_peach"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"

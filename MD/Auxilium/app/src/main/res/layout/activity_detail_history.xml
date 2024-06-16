@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dark_background"
-    tools:context=".view.question.ResultActivity">
+    tools:context=".history.DetailHistoryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="ExtraText">
 
         <TextView
             android:id="@+id/tv_result_title"
@@ -40,16 +41,16 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/iv_detail_phone_images"
+                    android:id="@+id/iv_phone_images"
                     android:layout_width="173dp"
                     android:layout_height="168dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="21dp"
                     android:src="@drawable/ic_image"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_detail_phone_names"
+                    android:id="@+id/tv_phone_names"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="52dp"
@@ -57,20 +58,20 @@
                     android:fontFamily="@font/clash_grotesk_regular"
                     android:text="Phone Names"
                     android:textAlignment="viewEnd"
-                    android:textSize="16sp"
+                    android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_detail_phone_images"
+                    app:layout_constraintStart_toEndOf="@id/iv_phone_images"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_detail_phone_os"
+                    android:id="@+id/tv_phone_os"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/clash_grotesk_light"
                     android:text="Phone OS"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@id/tv_detail_phone_names"
-                    app:layout_constraintTop_toBottomOf="@id/tv_detail_phone_names" />
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/tv_phone_names"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,410 +90,422 @@
             app:layout_constraintStart_toStartOf="@id/cv_result_phone"
             app:layout_constraintTop_toBottomOf="@id/cv_result_phone" />
 
-        <TableLayout
-            android:id="@+id/table_spesifications"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_table_specs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="26dp"
-            android:layout_marginTop="24dp"
-            android:stretchColumns="1"
+            android:layout_height="400dp"
+            android:layout_marginTop="40dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@id/btn_add_wishlist"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_result_title2">
+            app:layout_constraintTop_toBottomOf="@id/tv_result_title2">
 
-            <TableRow android:background="@drawable/table_row_border_upper">
+            <TableLayout
+                android:id="@+id/table_spesifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="26dp"
+                android:stretchColumns="1"
+                app:layout_constraintBottom_toTopOf="@id/btn_add_wishlist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_result_title2">
 
-                <TextView
-                    android:id="@+id/tv_brand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Brand"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_upper">
 
-                <TextView
-                    android:id="@+id/tv_brand_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Brand Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Brand"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_brand_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Brand Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_released_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Released Date"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_released_date_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Release Date Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_released_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Released Date"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_released_date_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Release Date Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_resolution"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Resolution"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_resolution_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Resolution Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_resolution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Resolution"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_resolution_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Resolution Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Weight"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_weight_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Weight Label"
+                    <TextView
+                        android:id="@+id/tv_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Weight"
+                        android:textColor="@color/white" />
 
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_weight_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Weight Label"
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_chipset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Chipset"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_chipset_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:justificationMode="inter_word"
-                    android:padding="12dp"
-                    android:text="Chipset Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_chipset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Chipset"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_chipset_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:textAlignment="viewStart"
+                        android:padding="12dp"
+                        android:text="Chipset Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_memory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Memory"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_memory_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Memory Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_memory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Memory"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_memory_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Memory Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_ram"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="RAM"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_ram_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="RAM Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_ram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="RAM"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_ram_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="RAM Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_main_camera1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Main Camera 1"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_main_camera1_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Main Camera 1 Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_main_camera1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Main Camera 1"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_main_camera1_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Main Camera 1 Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_main_camera2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Main Camera 2"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_main_camera2_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Main Camera 2 Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_main_camera2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Main Camera 2"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_main_camera2_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Main Camera 2 Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_main_camera3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Main Camera 3"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_main_camera3_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Main Camera 3 Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_main_camera3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Main Camera 3"
+                        android:textColor="@color/white" />
 
-
-            <TableRow android:background="@drawable/table_row_border_mid">
-
-                <TextView
-                    android:id="@+id/tv_selfie_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Selfie Camera"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/tv_selfie_camera_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text=" Selfie Camera Label"
-                    android:textColor="@color/white" />
-            </TableRow>
-
-            <TableRow android:background="@drawable/table_row_border_mid">
-
-                <TextView
-                    android:id="@+id/tv_earphone_jack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Earphone Jack"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/tv_earphone_jack_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Earphone Jack Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_main_camera3_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Main Camera 3 Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_battery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Battery"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_selfie_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Selfie Camera"
+                        android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/tv_battery_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Battery Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_selfie_camera_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text=" Selfie Camera Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_charging"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:paddingVertical="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="20dp"
-                    android:text="Charging"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_earphone_jack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Earphone Jack"
+                        android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/tv_charging_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Charging Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_earphone_jack_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Earphone Jack Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-            <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_colors"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Colors"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_colors_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Colors Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Battery"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_mid">
+                    <TextView
+                        android:id="@+id/tv_battery_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Battery Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_nfc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="NFC"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_nfc_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="NFC Label"
-                    android:textColor="@color/white" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/tv_charging"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:paddingVertical="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="20dp"
+                        android:text="Charging"
+                        android:textColor="@color/white" />
 
-            <TableRow android:background="@drawable/table_row_border_lower">
+                    <TextView
+                        android:id="@+id/tv_charging_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Charging Label"
+                        android:textColor="@color/white" />
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Price"
-                    android:textColor="@color/white" />
+                <TableRow android:background="@drawable/table_row_border_mid">
 
-                <TextView
-                    android:id="@+id/tv_price_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table_border"
-                    android:padding="12dp"
-                    android:text="Price Label"
-                    android:textColor="@color/white" />
-            </TableRow>
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/tv_colors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Colors"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_colors_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Colors Label"
+                        android:textColor="@color/white" />
+                </TableRow>
+
+                <TableRow android:background="@drawable/table_row_border_mid">
+
+                    <TextView
+                        android:id="@+id/tv_nfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="NFC"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_nfc_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="NFC Label"
+                        android:textColor="@color/white" />
+                </TableRow>
+
+                <TableRow android:background="@drawable/table_row_border_lower">
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Price"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_price_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/table_border"
+                        android:padding="12dp"
+                        android:text="Price Label"
+                        android:textColor="@color/white" />
+                </TableRow>
+            </TableLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_wishlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="24dp"
+            android:layout_margin="30dp"
             android:backgroundTint="@color/light_peach"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Add to wishlist"
+            android:text="Add to Wishlist"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="18dp"
@@ -500,7 +513,7 @@
             app:icon="@drawable/ic_wishlist"
             app:iconGravity="textStart"
             app:iconTint="@color/start_icon_tint"
-            app:layout_constraintTop_toBottomOf="@id/table_spesifications" />
+            app:layout_constraintTop_toBottomOf="@id/scroll_table_specs" />
 
         <TextView
             android:id="@+id/tv_result_title3"
@@ -509,16 +522,16 @@
             android:layout_marginTop="34dp"
             android:fontFamily="@font/clash_grotesk_regular"
             android:text="Also recommended for you"
-            android:textColor="@color/white"
+            android:textColor="@color/light_peach"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/cv_result_phone"
             app:layout_constraintTop_toBottomOf="@id/btn_add_wishlist" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommended"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

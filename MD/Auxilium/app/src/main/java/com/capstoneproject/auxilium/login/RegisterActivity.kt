@@ -1,21 +1,28 @@
 package com.capstoneproject.auxilium.login
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Patterns
-import android.view.View
-import android.widget.ProgressBar
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.capstoneproject.auxilium.R
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.auxilium.databinding.ActivityRegisterBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
-import kotlinx.coroutines.CoroutineScope
+import com.capstoneproject.auxilium.helper.getImageUri
+import com.capstoneproject.auxilium.helper.reduceFileImage
+import com.capstoneproject.auxilium.helper.uriToFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -23,10 +30,29 @@ class RegisterActivity : AppCompatActivity() {
         RegisterViewModelFactory(RegisterRepository(UserPreference.getInstance(applicationContext)))
     }
 
+    private var currentPhotoPath: String? = null
+    private var selectedImageFile: File? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnGallery.setOnClickListener {
+            if (allPermissionsGranted()) {
+                startGallery()
+            } else {
+                requestPermissions()
+            }
+        }
+
+        binding.btnCamera.setOnClickListener {
+            if (allPermissionsGranted()) {
+                startCamera()
+            } else {
+                requestPermissions()
+            }
+        }
 
         binding.btnRegister.setOnClickListener {
             val username = binding.edUsernameRegister.text.toString()
@@ -45,14 +71,30 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            CoroutineScope(Dispatchers.Main).launch {
-                try {
-                    viewModel.register(username, email, password, confirmPassword)
-                    Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
-                } catch (e: Exception) {
-                    Toast.makeText(this@RegisterActivity, "Registration failed: ${e.message}", Toast.LENGTH_SHORT).show()
-                    e.printStackTrace()
+            selectedImageFile?.let { file ->
+                lifecycleScope.launch {
+                    try {
+                        val response = viewModel.register(username, email, password, confirmPassword, file)
+
+                        if (response.id != null) {
+                            Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
+                        } else {
+                            response.message?.let {
+                                Toast.makeText(this@RegisterActivity, it, Toast.LENGTH_SHORT).show()
+                            } ?: run {
+                                Toast.makeText(this@RegisterActivity, "Registration failed: Unknown error", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: RegistrationException) {
+                        Toast.makeText(this@RegisterActivity, "Registration failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(this@RegisterActivity, "Registration failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                        e.printStackTrace()
+                        Log.e("RegisterActivity", "Registration failed ${e.message}")
+                    }
                 }
+            } ?: run {
+                Toast.makeText(this@RegisterActivity, "Please select a file first", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -60,7 +102,6 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
-        // Add TextWatchers to validate the input while typing
         setupTextWatchers()
     }
 
@@ -107,18 +148,52 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
+    private fun allPermissionsGranted() =
+        ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+
+    private fun requestPermissions() {
+        requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
-    private fun showProgressBar() {
-        findViewById<ProgressBar>(R.id.progress_bar_loading).visibility = View.VISIBLE
+    private fun startGallery() {
+        launcherGallery.launch("image/*")
     }
 
-    private fun hideProgressBar() {
-        findViewById<ProgressBar>(R.id.progress_bar_loading).visibility = View.GONE
+    private fun startCamera() {
+        val photoURI: Uri = getImageUri(this)
+        currentPhotoPath = photoURI.toString()
+        launcherIntentCamera.launch(photoURI)
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show()
+                startGallery()
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private val launcherGallery = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            val imageFile = uriToFile(it, this).reduceFileImage()
+            binding.ivShowImage.setImageURI(Uri.fromFile(imageFile))
+            selectedImageFile = imageFile
+        } ?: Toast.makeText(this, "No media selected", Toast.LENGTH_SHORT).show()
+    }
+
+    private val launcherIntentCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+        if (isSuccess) {
+            currentPhotoPath?.let { path ->
+                val imageFile = uriToFile(Uri.parse(path), this).reduceFileImage()
+                binding.ivShowImage.setImageBitmap(BitmapFactory.decodeFile(imageFile.path))
+                selectedImageFile = imageFile
+            }
+        }
     }
 }

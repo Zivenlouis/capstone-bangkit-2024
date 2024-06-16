@@ -32,9 +32,14 @@ import retrofit2.http.Path
 
 interface ApiService {
 
+    @Multipart
     @POST("users")
     suspend fun register(
-        @Body requestBody: RegisterRequestBody,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("confirmPassword") confirmPassword: RequestBody,
+        @Part file: MultipartBody.Part
     ): RegisterResponse
 
     @POST("login")
@@ -133,13 +138,6 @@ interface ApiService {
     ): Call<List<Int>>
 
 }
-
-data class RegisterRequestBody(
-    val name: String,
-    val email: String,
-    val password: String,
-    val confirmPassword: String,
-)
 
 data class LoginRequestBody(
     val email: String,

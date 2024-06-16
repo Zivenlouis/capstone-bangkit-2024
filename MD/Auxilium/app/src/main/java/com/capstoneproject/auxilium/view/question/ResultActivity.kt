@@ -3,18 +3,24 @@ package com.capstoneproject.auxilium.view.question
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.databinding.ActivityResultBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.helper.FormatterUtil
+import com.capstoneproject.auxilium.history.HistoryDao
+import com.capstoneproject.auxilium.history.HistoryDatabase
+import com.capstoneproject.auxilium.history.HistoryEntity
 import com.capstoneproject.auxilium.response.PhonesResponseItem
+import kotlinx.coroutines.launch
 
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
     private lateinit var viewModel: ResultViewModel
     private lateinit var resultAdapter: ResultAdapter
+    private lateinit var historyDao: HistoryDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +49,33 @@ class ResultActivity : AppCompatActivity() {
 
                     val remainingPhones = phones.drop(1)
                     resultAdapter.submitList(remainingPhones)
+
+
                 }
             }
         }
 
         viewModel.fetchPhones(recommendationIds)
+
+        val historyDatabase = HistoryDatabase.getDatabase(this)
+        historyDao = historyDatabase.historyDao()
+
+        binding.btnAddHistory.setOnClickListener {
+            lifecycleScope.launch {
+                val currentPhone = viewModel.phoneList.value?.get(0)
+                if (currentPhone != null) {
+                    insertPhoneToHistory(currentPhone)
+                }
+            }
+        }
     }
+
+    private suspend fun insertPhoneToHistory(phone: PhonesResponseItem) {
+        val historyEntry = HistoryEntity(id = 0, phoneId = phone.id!!)
+        historyDao.insertPhone(historyEntry)
+    }
+
+
 
     private fun displayPhoneDetails(phone: PhonesResponseItem) {
         phone.let {

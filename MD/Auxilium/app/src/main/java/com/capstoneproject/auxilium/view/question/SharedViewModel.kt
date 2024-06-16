@@ -114,7 +114,6 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
         responses.add(getQuestion5Response())
         responses.add(getQuestion6Response())
         responses.add(getQuestion7Response())
-        Log.d(TAG, "All Responses: $responses")
         return UserSurveyRequest(responses)
     }
 }

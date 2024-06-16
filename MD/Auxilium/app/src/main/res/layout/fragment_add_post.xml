@@ -55,33 +55,6 @@
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
 
-     <!--   <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="10dp"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_new_post">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_add_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/transparent"
-                android:fontFamily="@font/clash_grotesk_regular"
-                android:gravity="start|top"
-                android:hint="What's good?"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:textColorHint="#616161"
-                android:textSize="18sp"
-                tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-        </com.google.android.material.textfield.TextInputLayout>-->
-
         <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/btn_gallery"
             android:layout_width="wrap_content"

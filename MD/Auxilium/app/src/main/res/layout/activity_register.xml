@@ -237,6 +237,43 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <androidx.constraintlayout.utils.widget.ImageFilterButton
+                    android:id="@+id/btn_gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:backgroundTint="@color/transparent"
+                    android:contentDescription="Gallery Button"
+                    android:src="@drawable/ic_gallery"
+                    android:tint="@color/light_peach"
+                    app:layout_constraintStart_toStartOf="@id/textInputConfirmPassword"
+                    app:layout_constraintTop_toBottomOf="@id/textInputConfirmPassword"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterButton
+                    android:id="@+id/btn_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:backgroundTint="@color/transparent"
+                    android:contentDescription="Camera Button"
+                    android:src="@drawable/ic_camera"
+                    android:tint="@color/light_peach"
+                    app:layout_constraintStart_toEndOf="@id/btn_gallery"
+                    app:layout_constraintTop_toTopOf="@id/btn_gallery"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_show_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_gallery" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_register"
                     android:layout_width="match_parent"
@@ -252,7 +289,7 @@
                     app:cornerRadius="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textInputConfirmPassword" />
+                    app:layout_constraintTop_toBottomOf="@id/iv_show_image" />
 
                 <TextView
                     android:id="@+id/tv_additional"
