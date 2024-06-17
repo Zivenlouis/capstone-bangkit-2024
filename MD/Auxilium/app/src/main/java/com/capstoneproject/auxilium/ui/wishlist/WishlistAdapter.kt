@@ -1,6 +1,5 @@
 package com.capstoneproject.auxilium.ui.wishlist
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -15,7 +14,7 @@ class WishlistAdapter(
     private var wishlist: List<WishlistResponseItem> = emptyList(),
     private var phoneList: List<PhonesResponseItem?> = emptyList(),
     private val onItemClick: (PhonesResponseItem, Int) -> Unit,
-    private val onDeleteClickListener: (Int) -> Unit
+    private val onDeleteClickListener: (Int) -> Unit,
 ) : RecyclerView.Adapter<WishlistAdapter.WishlistViewHolder>() {
 
     inner class WishlistViewHolder(val binding: ItemWishlistBinding) :
@@ -45,7 +44,8 @@ class WishlistAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WishlistViewHolder {
-        val binding = ItemWishlistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemWishlistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return WishlistViewHolder(binding)
     }
 
@@ -59,24 +59,22 @@ class WishlistAdapter(
         return wishlist.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun submitList(newWishlist: List<WishlistResponseItem>, newPhoneList: List<PhonesResponseItem?>) {
+    fun submitList(
+        newWishlist: List<WishlistResponseItem>,
+        newPhoneList: List<PhonesResponseItem?>,
+    ) {
         val diffCallback = WishlistDiffCallback(wishlist, phoneList, newWishlist, newPhoneList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         wishlist = newWishlist
         phoneList = newPhoneList
         diffResult.dispatchUpdatesTo(this)
-
-        if (wishlist.isEmpty()) {
-            notifyDataSetChanged()
-        }
     }
 
     private class WishlistDiffCallback(
         private val oldWishlist: List<WishlistResponseItem>,
         private val oldPhoneList: List<PhonesResponseItem?>,
         private val newWishlist: List<WishlistResponseItem>,
-        private val newPhoneList: List<PhonesResponseItem?>
+        private val newPhoneList: List<PhonesResponseItem?>,
     ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int = oldWishlist.size
 

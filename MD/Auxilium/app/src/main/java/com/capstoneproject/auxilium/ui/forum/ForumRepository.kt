@@ -8,7 +8,9 @@ import com.capstoneproject.auxilium.response.GetUsersResponseItem
 import com.capstoneproject.auxilium.response.LikePostResponse
 import com.capstoneproject.auxilium.response.UnLikePostResponse
 import kotlinx.coroutines.flow.firstOrNull
-import java.time.LocalDateTime
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Locale
@@ -115,18 +117,23 @@ class ForumRepository(private val userPreference: UserPreference) {
 
 
     private fun formatTimeDifference(dateString: String): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
-        val dateTime = LocalDateTime.parse(dateString, formatter)
-        val now = LocalDateTime.now()
-        val days = ChronoUnit.DAYS.between(dateTime, now)
-        val hours = ChronoUnit.HOURS.between(dateTime, now) % 24
-        val minutes = ChronoUnit.MINUTES.between(dateTime, now) % 60
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
+        val instant = Instant.parse(dateString)
+
+        val istZoneId = ZoneId.of("Asia/Jakarta")
+        val localDateTime = ZonedDateTime.ofInstant(instant, istZoneId).toLocalDateTime()
+
+        val now = ZonedDateTime.now(istZoneId).toLocalDateTime()
+        val days = ChronoUnit.DAYS.between(localDateTime, now)
+        val hours = ChronoUnit.HOURS.between(localDateTime, now) % 24
+        val minutes = ChronoUnit.MINUTES.between(localDateTime, now) % 60
 
         return when {
             days > 0 -> "${days}d ${hours}h ago"
             hours > 0 -> "${hours}h ${minutes}m ago"
             minutes > 0 -> "${minutes}m ago"
-            else -> "just now"
+            else -> "Just now"
         }
     }
+
 }
