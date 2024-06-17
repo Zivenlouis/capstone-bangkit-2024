@@ -3,7 +3,6 @@ package com.capstoneproject.auxilium.ui.forum
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.R
@@ -12,7 +11,9 @@ import com.capstoneproject.auxilium.databinding.ItemForumPostBinding
 class ForumAdapter(
     private val onItemClick: (ForumPost) -> Unit,
     private val onLikeClick: (ForumPost) -> Unit,
-) : ListAdapter<ForumPost, ForumAdapter.ForumPostViewHolder>(DIFF_CALLBACK) {
+) : RecyclerView.Adapter<ForumAdapter.ForumPostViewHolder>() {
+
+    var forumPosts: List<ForumPost> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumPostViewHolder {
         val binding =
@@ -21,7 +22,18 @@ class ForumAdapter(
     }
 
     override fun onBindViewHolder(holder: ForumPostViewHolder, position: Int) {
-        holder.bind(getItem(position), onLikeClick)
+        holder.bind(forumPosts[position], onLikeClick)
+    }
+
+    override fun getItemCount(): Int {
+        return forumPosts.size
+    }
+
+    fun updateData(newPosts: List<ForumPost>) {
+        val diffCallback = ForumDiffCallback(forumPosts, newPosts)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        forumPosts = newPosts
+        diffResult.dispatchUpdatesTo(this)
     }
 
     inner class ForumPostViewHolder(private val binding: ItemForumPostBinding) :
@@ -53,9 +65,9 @@ class ForumAdapter(
                 }
 
                 ivLikeForum.setOnClickListener {
-                    val currentPost = getItem(position)
+                    val currentPost = forumPosts[adapterPosition]
                     currentPost.isLiked = !currentPost.isLiked
-                    notifyItemChanged(position)
+                    notifyItemChanged(adapterPosition)
 
                     onLikeClick(currentPost)
                 }
@@ -63,16 +75,21 @@ class ForumAdapter(
         }
     }
 
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ForumPost>() {
-            override fun areItemsTheSame(oldItem: ForumPost, newItem: ForumPost): Boolean {
-                return oldItem.communityId == newItem.communityId
-            }
+    class ForumDiffCallback(
+        private val oldList: List<ForumPost>,
+        private val newList: List<ForumPost>
+    ) : DiffUtil.Callback() {
 
-            override fun areContentsTheSame(oldItem: ForumPost, newItem: ForumPost): Boolean {
-                return oldItem == newItem
-            }
+        override fun getOldListSize(): Int = oldList.size
+
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].communityId == newList[newItemPosition].communityId
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
-
 }

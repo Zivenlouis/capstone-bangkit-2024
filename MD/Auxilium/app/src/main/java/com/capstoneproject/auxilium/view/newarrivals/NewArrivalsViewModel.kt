@@ -21,4 +21,14 @@ class NewArrivalsViewModel(private val repository: NewArrivalsRepository) : View
             }
         }
     }
+
+    fun addUserClick(userId: Int, smartphoneId: Int) {
+        viewModelScope.launch {
+            try {
+                repository.addUserClick(userId, smartphoneId)
+            } catch (e: Exception) {
+                errorMessage.postValue("Error adding user click: ${e.message}")
+            }
+        }
+    }
 }

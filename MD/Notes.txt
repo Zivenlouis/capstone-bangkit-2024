@@ -1,48 +1,35 @@
-Model 1 Done UserSurvey and Result Page
+Model 2 Done User Click & User Rating
 
-Additional Fix :
-- Camera And Gallery for android 13+
-- Register Add profile pics
-- Inference Loading and Questionnare
+Done :
+- Model 2 userclicks in new arrival and user rating in
+- New Arrivals sorted by released date
+- Fixing new arrivals design , forum design and other minor detail
+- Button History to Wishlist in result
+- About 
 
-Done : 
-- Model 1 : User Survey / Questionnare
-- Format Phone Detail Table
-- Questionnare Page & Question
-- Result Page and Detail Result Page with Add to Wishlist button 
-- Minor Design Detail
+TODO : In Scope Project Plan Done 90 % (Problem auto refresh edit profile after edit , forum after add post , like button and delete / edit forum)
 
-Done Before:
-- Minor Detail Design Fixed (image post and edit profile + newarrivals + detailforum (reply))
-- Edit profile done (UI Refresh)
-- Read and Add post done (Likebutton logic and UI Refresh)
-- Read & Add Reply / Comment done
-- New link API with configuration
-- Camera can be click and gallery done
+OutScoped Left :
+- Screen reader (TalkBack feature)
+- NLP for interactive chatbot (Team Collaboration)
+- Latest mobile phone news article
+- Mobile phone type recognition using camera (Team Collaboration)
 
-TODO :
-
-Not Done:
+Minor Task Not Done:
 - Logic / BackEnd : 
-	- Model 2 User Clicks & Ratings
-	- Detail Phone Pages (70 % - new arrivals , wishlist, edit profile ,reset password , forum , result page)
-	- Delete forum
-	- Save to History (Local Database) (from button Result Activity)
+	- Auto Save to History + Detail History
 	- Recommended For You (in Home Fragment)
 
 - UI :
- 	- Like Button Logic
-	- Auto Update UI profileactivity page after edit profile
-	- Auto Update UI ForumFragment page after add post 
-	- Questionnare Page slow response when move to InferenceLoading (maybe for fetching data it should be directly from inferenceloading page)
+	- Dark Mode
+	- Rating in Wishlist
 
 Minor Detail Flaws:
 - Localize not created
 - Hardcoded String
 - Less detailed  due to design using Emulator Pixel 4 API 28
-- Phone Mockup PNG only 1
 - Loading Bar / Progress Bar Logic using animation
-- Apps can run in API android 12 + upto newest one
+- Apps only can run in API android 12 + upto newest one because of rive animation
 - Clean Code & Clear Logic
 
 

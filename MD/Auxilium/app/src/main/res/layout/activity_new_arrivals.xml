@@ -7,29 +7,94 @@
     android:background="@drawable/dark_background"
     tools:context=".view.newarrivals.NewArrivalsActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="33dp"
+        android:backgroundTint="@color/transparent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/custom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:logo="@drawable/ic_auxilium_white"
+            android:layout_marginEnd="15dp"
+            app:menu="@menu/upper_menu" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/tv_new_arrivals_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/clash_grotesk_medium"
-        android:text="New Arrivals Phones"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="New Arrivals 🚀"
+        android:textColor="@color/light_peach"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+
+    <TextView
+        android:id="@+id/tv_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/clash_grotesk_light"
+        android:text="The latest phones have landed."
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_new_arrivals_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_new_arrivals_first"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="17dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tv_support"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_recommended" />
+
+    <View
+        android:id="@+id/divider_guest"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/light_peach"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/rv_new_arrivals_first" />
+
+    <TextView
+        android:id="@+id/tv_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="Earlier this month"
+        android:textColor="@color/light_peach"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/tv_new_arrivals_title"
+        app:layout_constraintTop_toBottomOf="@id/divider_guest" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_new_arrivals_details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="14dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals_title"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title2"
         tools:listitem="@layout/item_new_arrivals" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

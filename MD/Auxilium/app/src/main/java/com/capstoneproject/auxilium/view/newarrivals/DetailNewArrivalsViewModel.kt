@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.capstoneproject.auxilium.response.AddRatingsResponse
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -15,6 +16,10 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
+
+    private val _addRatingsResult = MutableLiveData<AddRatingsResponse>()
+    val addRatingsResult: LiveData<AddRatingsResponse> = _addRatingsResult
+
 
     fun addWishlist(userId: Int, smartphoneId: Int) {
         viewModelScope.launch {
@@ -28,7 +33,7 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
             } catch (e: HttpException) {
                 val code = e.code()
                 if (code == 400) {
-                    _error.value = "Item sudah ada di wishlist"
+                    _error.value = "Item is already on wishlist"
                 } else {
                     _error.value = "Failed to add to wishlist: ${e.message()}"
                 }
@@ -37,4 +42,23 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
             }
         }
     }
+
+    fun addUserRating(userId: Int, smartphoneId: Int, rating: Char) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addUserRating(userId, smartphoneId, rating)
+                if (response.msg != null) {
+                    // Update _addRatingsResult with response
+                    _addRatingsResult.value = response
+                } else {
+                    _error.value = "Failed to add rating"
+                }
+            } catch (e: HttpException) {
+                _error.value = "Failed to add rating: ${e.message()}"
+            } catch (e: Exception) {
+                _error.value = "Failed to add rating: ${e.message}"
+            }
+        }
+    }
+
 }

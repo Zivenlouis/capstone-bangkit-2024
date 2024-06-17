@@ -5,12 +5,6 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
-data class PhonesResponse(
-
-	@field:SerializedName("PhonesResponse")
-	val phonesResponse: List<PhonesResponseItem?>? = emptyList()
-)
-
 @Parcelize
 data class PhonesResponseItem(
 

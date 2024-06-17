@@ -1,9 +1,9 @@
 package com.capstoneproject.auxilium.view.question
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.R
@@ -27,10 +27,12 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = phones.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun submitList(newList: List<PhonesResponseItem>) {
+        val diffCallback = PhonesDiffCallback(phones, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
         phones = newList
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     inner class ViewHolder(private val binding: ItemRecommendedBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -49,6 +51,24 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
                 intent.putExtra("phone", phone)
                 context.startActivity(intent)
             }
+        }
+    }
+
+    private class PhonesDiffCallback(
+        private val oldList: List<PhonesResponseItem>,
+        private val newList: List<PhonesResponseItem>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
 }

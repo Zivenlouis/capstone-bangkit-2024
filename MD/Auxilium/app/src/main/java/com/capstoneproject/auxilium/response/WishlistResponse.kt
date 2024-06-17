@@ -2,12 +2,6 @@ package com.capstoneproject.auxilium.response
 
 import com.google.gson.annotations.SerializedName
 
-data class WishlistResponse(
-
-	@field:SerializedName("WishlistResponse")
-	val wishlistResponse: List<WishlistResponseItem?>? = null
-)
-
 data class WishlistResponseItem(
 
 	@field:SerializedName("createdAt")

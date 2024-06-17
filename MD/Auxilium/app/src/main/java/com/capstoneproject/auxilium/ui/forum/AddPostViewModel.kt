@@ -41,12 +41,3 @@ class AddPostViewModel(private val userPreference: UserPreference) : ViewModel()
     }
 }
 
-class AddPostViewModelFactory(private val userPreference: UserPreference) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AddPostViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return AddPostViewModel(userPreference) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}

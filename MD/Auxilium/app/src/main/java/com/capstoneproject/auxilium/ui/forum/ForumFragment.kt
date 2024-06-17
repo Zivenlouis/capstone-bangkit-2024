@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -51,6 +52,20 @@ class ForumFragment : Fragment() {
             addPostFragment.show(childFragmentManager, "AddPostFragment")
         }
 
+        initializeViewModelAndFetchData()
+
+        parentFragmentManager.setFragmentResultListener("postAdded", viewLifecycleOwner) { _, _ ->
+            lifecycleScope.launch {
+                viewModel.refreshPosts()
+                val addPostFragment = childFragmentManager.findFragmentByTag("AddPostFragment")
+                if (addPostFragment != null && addPostFragment is AddPostFragment) {
+                    addPostFragment.dismiss()
+                }
+            }
+        }
+    }
+
+    private fun initializeViewModelAndFetchData() {
         lifecycleScope.launch {
             try {
                 val userPreference = UserPreference.getInstance(requireContext())
@@ -59,37 +74,38 @@ class ForumFragment : Fragment() {
                 observeViewModel()
 
                 val userId = userPreference.getUserId().firstOrNull()
-                userId?.let { it ->
-                    val user = viewModel.getUserDetails(it)
-                    user?.let {
-                        userProfileImage = it.profileImage
+                userId?.let {
+                    val user = viewModel.getUserDetails(userId)
+                    user?.let { userDetails ->
+                        userProfileImage = userDetails.profileImage
                         Glide.with(requireContext())
-                            .load(it.profileImage)
+                            .load(userDetails.profileImage)
                             .into(binding.civForumProfile)
                     }
                 }
 
                 viewModel.refreshPosts()
             } catch (e: Exception) {
-                // Handle error initializing ViewModel or fetching data
+                Toast.makeText(requireContext(), "Error initializing ViewModel or fetching data: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
+    }
 
-        parentFragmentManager.setFragmentResultListener("postAdded", viewLifecycleOwner) { _, _ ->
-            viewModel.refreshPosts()
-        }
+    override fun onResume() {
+        super.onResume()
+        initializeViewModelAndFetchData()
     }
 
     private fun observeViewModel() {
         viewModel.forumPosts.observe(viewLifecycleOwner) { posts ->
-            forumAdapter.submitList(posts)
+            forumAdapter.updateData(posts)
         }
 
         viewModel.likeStatus.observe(viewLifecycleOwner) { likeStatus ->
             likeStatus.forEach { (communityId, isLiked) ->
-                forumAdapter.currentList.firstOrNull { it.communityId == communityId }?.let { post ->
+                forumAdapter.forumPosts.firstOrNull { it.communityId == communityId }?.let { post ->
                     post.isLiked = isLiked
-                    forumAdapter.notifyItemChanged(forumAdapter.currentList.indexOf(post))
+                    forumAdapter.notifyItemChanged(forumAdapter.forumPosts.indexOf(post))
                 }
             }
         }
@@ -113,7 +129,7 @@ class ForumFragment : Fragment() {
                     viewModel.likePost(forumPost.communityId)
                 }
             } catch (e: Exception) {
-                // Handle error liking/unliking post
+                Toast.makeText(requireContext(), "Error liking/unliking post: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }

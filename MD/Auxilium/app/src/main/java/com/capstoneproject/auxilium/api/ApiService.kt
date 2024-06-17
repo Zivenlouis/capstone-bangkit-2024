@@ -1,5 +1,7 @@
 package com.capstoneproject.auxilium.api
 
+import com.capstoneproject.auxilium.response.AddClicksResponse
+import com.capstoneproject.auxilium.response.AddRatingsResponse
 import com.capstoneproject.auxilium.response.AddRepliesResponse
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import com.capstoneproject.auxilium.response.CommunityResponseItem
@@ -39,7 +41,7 @@ interface ApiService {
         @Part("email") email: RequestBody,
         @Part("password") password: RequestBody,
         @Part("confirmPassword") confirmPassword: RequestBody,
-        @Part file: MultipartBody.Part
+        @Part file: MultipartBody.Part,
     ): RegisterResponse
 
     @POST("login")
@@ -134,9 +136,23 @@ interface ApiService {
 
     @POST("topUserSurveys")
     fun getRecommendations(
-        @Body userSurvey: UserSurveyRequest
+        @Body userSurvey: UserSurveyRequest,
     ): Call<List<Int>>
 
+    @GET("topSmartphones/{id}")
+    suspend fun getTopSmartphones(
+        @Path("id") id: Int,
+    ): Response<List<Int>>
+
+    @POST("user_ratings/add")
+    suspend fun addUserRating(
+        @Body requestBody: AddRatingRequestBody,
+    ): AddRatingsResponse
+
+    @POST("user_clicks/add")
+    suspend fun addUserClick(
+        @Body requestBody: AddClickRequestBody,
+    ): AddClicksResponse
 }
 
 data class LoginRequestBody(
@@ -167,5 +183,16 @@ data class AddRepliesRequestBody(
 )
 
 data class UserSurveyRequest(
-    val user_survey: List<Any>
+    val user_survey: List<Any>,
+)
+
+data class AddRatingRequestBody(
+    val user_id: Int,
+    val smartphone_id: Int,
+    val rating: Char,
+)
+
+data class AddClickRequestBody(
+    val user_id: Int,
+    val smartphone_id: Int,
 )

@@ -1,34 +1,24 @@
-package com.capstoneproject.auxilium.ui.home
+package com.capstoneproject.auxilium.view.newarrivals
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstoneproject.auxilium.databinding.ItemHomeNewArrivalsBinding
+import com.capstoneproject.auxilium.databinding.ItemRecommendedBinding
 import com.capstoneproject.auxilium.response.PhonesResponseItem
-import kotlin.math.min
 
-class ViewNewArrivalsAdapter(
+class FirstNewArrivalsAdapter(
     private var phoneList: List<PhonesResponseItem> = emptyList(),
     private val onItemClick: (PhonesResponseItem) -> Unit
-) : RecyclerView.Adapter<ViewNewArrivalsAdapter.UserViewHolder>() {
-
-    inner class UserViewHolder(private val binding: ItemHomeNewArrivalsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(phoneItem: PhonesResponseItem) {
-            binding.apply {
-                Glide.with(itemView.context).load(phoneItem.image).into(ivPhoneImages)
-                tvPhoneNames.text = phoneItem.name
-                tvPhoneOs.text = phoneItem.os
-                root.setOnClickListener { onItemClick(phoneItem) }
-            }
-        }
-    }
+) : RecyclerView.Adapter<FirstNewArrivalsAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val binding =
-            ItemHomeNewArrivalsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemRecommendedBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return UserViewHolder(binding)
     }
 
@@ -38,19 +28,35 @@ class ViewNewArrivalsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return min(phoneList.size, 7)
+        return phoneList.size
     }
 
-    fun updateData(updatedList: List<PhonesResponseItem>) {
-        val diffCallback = PhonesDiffCallback(phoneList, updatedList)
+    fun submitList(newList: List<PhonesResponseItem>) {
+        val diffCallback = PhonesResponseItemDiffCallback(phoneList, newList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
-        phoneList = updatedList
+
+        phoneList = newList
         diffResult.dispatchUpdatesTo(this)
     }
 
-    private class PhonesDiffCallback(
+    inner class UserViewHolder(private val binding: ItemRecommendedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(phoneItem: PhonesResponseItem) {
+            binding.apply {
+                Glide.with(itemView.context)
+                    .load(phoneItem.image)
+                    .into(ivPhoneImages)
+                tvPhoneNames.text = phoneItem.name
+                tvPhoneOs.text = phoneItem.os
+                root.setOnClickListener { onItemClick(phoneItem) }
+            }
+        }
+    }
+
+    private class PhonesResponseItemDiffCallback(
         private val oldList: List<PhonesResponseItem>,
-        private val newList: List<PhonesResponseItem>,
+        private val newList: List<PhonesResponseItem>
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize(): Int {

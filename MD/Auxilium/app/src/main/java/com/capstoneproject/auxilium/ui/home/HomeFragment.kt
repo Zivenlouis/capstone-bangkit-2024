@@ -3,7 +3,6 @@ package com.capstoneproject.auxilium.ui.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.databinding.FragmentHomeBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.history.HistoryActivity
+import com.capstoneproject.auxilium.view.newarrivals.DetailNewArrivalsActivity
 import com.capstoneproject.auxilium.view.newarrivals.NewArrivalsActivity
 import com.capstoneproject.auxilium.view.question.QuestionnaireActivity
 import kotlinx.coroutines.flow.firstOrNull
@@ -28,11 +28,14 @@ class HomeFragment : Fragment() {
     private lateinit var viewModelFactory: HomeViewModelFactory
     private lateinit var userPreference: UserPreference
     private lateinit var newArrivalsAdapter: ViewNewArrivalsAdapter
+    private lateinit var recommendationsAdapter: MainRecAdapter
+    private lateinit var userClick: MutableList<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        userClick = MutableList(96) { 0 }
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -64,12 +67,10 @@ class HomeFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         viewModel.userName.observe(viewLifecycleOwner) { name ->
-            Log.d("HomeFragment", "observeViewModel: userName = $name")
             binding.tvUsername.text = name
         }
 
         viewModel.profileImage.observe(viewLifecycleOwner) { profileImage ->
-            Log.d("HomeFragment", "observeViewModel: profileImage = $profileImage")
             Glide.with(this)
                 .load(profileImage)
                 .into(binding.civProfile)
@@ -88,35 +89,93 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             val userId = getCurrentUserId()
-            Log.d("HomeFragment", "observeViewModel: userId = $userId")
             viewModel.fetchUserName(userId)
             viewModel.fetchPhones()
             viewModel.fetchWishlist(userId)
+            viewModel.fetchRecommendations(userId)
         }
 
         viewModel.phoneList.observe(viewLifecycleOwner) { phones ->
             if (phones != null) {
                 newArrivalsAdapter.updateData(phones)
-                Log.d("HomeFragment", "observeViewModel: phoneList size = ${phones.size}")
+            }
+        }
+
+        viewModel.recommendations.observe(viewLifecycleOwner) { recommendationIds ->
+            if (recommendationIds != null && recommendationIds.isNotEmpty()) {
+                viewModel.fetchPhonesByIds(recommendationIds)
+            }
+        }
+
+        viewModel.fetchedPhones.observe(viewLifecycleOwner) { fetchedPhones ->
+            if (fetchedPhones != null) {
+                recommendationsAdapter.submitList(fetchedPhones)
             }
         }
 
         viewModel.wishlist.observe(viewLifecycleOwner) { wishlistItems ->
             binding.wishlistNumbs.text = "${wishlistItems.size} item(s)"
         }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                // Handle error message display here
+            }
+        }
     }
 
     private suspend fun getCurrentUserId(): Int {
-        val userId = userPreference.getUserId().firstOrNull() ?: 100
-        Log.d("HomeFragment", "getCurrentUserId: userId = $userId")
-        return userId
+        return userPreference.getUserId().firstOrNull() ?: 100
     }
 
     private fun setupAdapters() {
-        newArrivalsAdapter = ViewNewArrivalsAdapter()
+        newArrivalsAdapter = ViewNewArrivalsAdapter { phone ->
+            lifecycleScope.launch {
+                val userId = userPreference.getUserId().firstOrNull() ?: return@launch
+                userClick[phone.id!!] = 1
+                viewModel.addUserClick(userId, phone.id)
+                val intent = Intent(requireContext(), DetailNewArrivalsActivity::class.java).apply {
+                    putExtra("PHONE_DATA", phone)
+                }
+                startActivity(intent)
+            }
+        }
+
         binding.rvNewArrivals.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = newArrivalsAdapter
+        }
+
+        recommendationsAdapter = MainRecAdapter { phone ->
+            lifecycleScope.launch {
+                val userId = userPreference.getUserId().firstOrNull() ?: return@launch
+                userClick[phone.id!!] = 1
+                viewModel.addUserClick(userId, phone.id)
+                val intent = Intent(requireContext(), DetailNewArrivalsActivity::class.java).apply {
+                    putExtra("PHONE_DATA", phone)
+                }
+                startActivity(intent)
+            }
+        }
+
+        binding.rvMainRecom.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = recommendationsAdapter
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchData()
+    }
+
+    private fun fetchData() {
+        lifecycleScope.launch {
+            val userId = getCurrentUserId()
+            viewModel.fetchUserName(userId)
+            viewModel.fetchPhones()
+            viewModel.fetchWishlist(userId)
+            viewModel.fetchRecommendations(userId)
         }
     }
 

@@ -96,7 +96,7 @@
             android:layout_height="400dp"
             android:layout_marginTop="40dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@id/btn_add_history"
+            app:layout_constraintBottom_toTopOf="@id/btn_add_wishlist"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_result_title2">
@@ -499,7 +499,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_history"
+            android:id="@+id/btn_add_wishlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="30dp"
@@ -510,7 +510,7 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             app:cornerRadius="18dp"
-            app:icon="@drawable/ic_history"
+            app:icon="@drawable/ic_wishlist"
             app:iconGravity="textStart"
             app:iconTint="@color/start_icon_tint"
             app:layout_constraintTop_toBottomOf="@id/scroll_table_specs" />
@@ -525,13 +525,13 @@
             android:textColor="@color/light_peach"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/cv_result_phone"
-            app:layout_constraintTop_toBottomOf="@id/btn_add_history" />
+            app:layout_constraintTop_toBottomOf="@id/btn_add_wishlist" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecommended"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

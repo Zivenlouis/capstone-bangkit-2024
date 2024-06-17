@@ -2,11 +2,6 @@ package com.capstoneproject.auxilium.response
 
 import com.google.gson.annotations.SerializedName
 
-data class GetUsersResponse(
-
-	@field:SerializedName("GetUsersResponse")
-	val getUsersResponse: List<GetUsersResponseItem?>? = null
-)
 
 data class GetUsersResponseItem(
 

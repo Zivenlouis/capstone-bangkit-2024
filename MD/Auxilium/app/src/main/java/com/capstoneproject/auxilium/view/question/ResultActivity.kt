@@ -1,18 +1,18 @@
 package com.capstoneproject.auxilium.view.question
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.databinding.ActivityResultBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.helper.FormatterUtil
-import com.capstoneproject.auxilium.history.HistoryDao
-import com.capstoneproject.auxilium.history.HistoryDatabase
-import com.capstoneproject.auxilium.history.HistoryEntity
 import com.capstoneproject.auxilium.response.PhonesResponseItem
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 class ResultActivity : AppCompatActivity() {
@@ -20,7 +20,6 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     private lateinit var viewModel: ResultViewModel
     private lateinit var resultAdapter: ResultAdapter
-    private lateinit var historyDao: HistoryDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,53 +27,59 @@ class ResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val userPreference = UserPreference(this)
-        val repository = ResultRepository(userPreference)
-        val factory = ResultViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[ResultViewModel::class.java]
+        lifecycleScope.launch {
+            val token = userPreference.getToken().firstOrNull()
+            val apiService = ApiConfig.getApiService(token)
+            val repository = ResultRepository(userPreference, apiService)
+            val factory = ResultViewModelFactory(repository)
+            viewModel =
+                ViewModelProvider(this@ResultActivity, factory)[ResultViewModel::class.java]
 
-        val recommendationIds = intent.getIntegerArrayListExtra("recommendations") ?: emptyList()
+            val recommendationIds =
+                intent.getIntegerArrayListExtra("recommendations") ?: emptyList()
 
-        resultAdapter = ResultAdapter()
-        binding.rvRecommended.apply {
-            layoutManager =
-                LinearLayoutManager(this@ResultActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = resultAdapter
-        }
+            resultAdapter = ResultAdapter()
+            binding.rvRecommended.apply {
+                layoutManager =
+                    LinearLayoutManager(this@ResultActivity, LinearLayoutManager.HORIZONTAL, false)
+                adapter = resultAdapter
+            }
 
-        viewModel.phoneList.observe(this) { phones ->
-            phones?.let {
-                if (phones.isNotEmpty()) {
-                    val firstPhone = phones[0]
-                    displayPhoneDetails(firstPhone)
+            viewModel.phoneList.observe(this@ResultActivity) { phones ->
+                phones?.let {
+                    if (phones.isNotEmpty()) {
+                        val firstPhone = phones[0]
+                        displayPhoneDetails(firstPhone)
 
-                    val remainingPhones = phones.drop(1)
-                    resultAdapter.submitList(remainingPhones)
-
-
+                        val remainingPhones = phones.drop(1)
+                        resultAdapter.submitList(remainingPhones)
+                    }
                 }
             }
-        }
 
-        viewModel.fetchPhones(recommendationIds)
+            viewModel.fetchPhones(recommendationIds)
 
-        val historyDatabase = HistoryDatabase.getDatabase(this)
-        historyDao = historyDatabase.historyDao()
-
-        binding.btnAddHistory.setOnClickListener {
-            lifecycleScope.launch {
-                val currentPhone = viewModel.phoneList.value?.get(0)
-                if (currentPhone != null) {
-                    insertPhoneToHistory(currentPhone)
+            binding.btnAddWishlist.setOnClickListener {
+                val firstPhone =
+                    viewModel.phoneList.value?.get(0)
+                lifecycleScope.launch {
+                    userPreference.getUserId().collect { userId ->
+                        firstPhone?.let {
+                            viewModel.addWishlist(userId!!, it.id!!)
+                        }
+                    }
                 }
+            }
+
+            viewModel.addWishlistResult.observe(this@ResultActivity) { response ->
+                Toast.makeText(this@ResultActivity, response.msg, Toast.LENGTH_SHORT).show()
+            }
+
+            viewModel.error.observe(this@ResultActivity) { errorMessage ->
+                Toast.makeText(this@ResultActivity, errorMessage, Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-    private suspend fun insertPhoneToHistory(phone: PhonesResponseItem) {
-        val historyEntry = HistoryEntity(id = 0, phoneId = phone.id!!)
-        historyDao.insertPhone(historyEntry)
-    }
-
 
 
     private fun displayPhoneDetails(phone: PhonesResponseItem) {

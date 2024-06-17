@@ -27,7 +27,7 @@ class DetailResultViewModel(private val repository: DetailResultRepository) : Vi
             } catch (e: HttpException) {
                 val code = e.code()
                 if (code == 400) {
-                    _error.value = "Item sudah ada di wishlist"
+                    _error.value = "Item is already on wishlist"
                 } else {
                     _error.value = "Failed to add to wishlist: ${e.message()}"
                 }
