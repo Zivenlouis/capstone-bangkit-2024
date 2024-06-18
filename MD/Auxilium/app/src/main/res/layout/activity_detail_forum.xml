@@ -14,7 +14,7 @@
         android:layout_marginTop="15dp"
         android:background="@color/transparent"
         android:fontFamily="@font/clash_grotesk_regular"
-        android:text="Username's post"
+        android:text="@string/username_s_post"
         android:textAllCaps="false"
         android:textColor="@color/light_peach"
         android:textSize="18sp"
@@ -43,7 +43,8 @@
             android:layout_marginTop="31dp"
             android:src="@drawable/image_small_circle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_forum_username"
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/civ_forum_post_profile"
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="3h"
+            android:text="@string/post_time"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/tv_forum_description"
@@ -78,7 +79,7 @@
             android:layout_marginEnd="38dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:justificationMode="inter_word"
-            android:text="Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease"
+            android:text="@string/post_description"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,8 +104,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="173dp"
                 android:layout_gravity="center"
-                android:contentDescription="Forum Picture"
-                android:src="@drawable/ic_image" />
+                android:contentDescription="@string/forum_picture"
+                android:src="@drawable/ic_image"
+                tools:ignore="ImageContrastCheck" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -116,7 +118,8 @@
             android:layout_marginBottom="18dp"
             android:src="@drawable/ic_like_border"
             app:layout_constraintStart_toStartOf="@id/forum_photo_card_view"
-            app:layout_constraintTop_toBottomOf="@id/forum_photo_card_view" />
+            app:layout_constraintTop_toBottomOf="@id/forum_photo_card_view"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_likes_forum"
@@ -124,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="10"
+            android:text="@string/post_likes"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_like_forum"
@@ -139,7 +142,8 @@
             android:src="@drawable/ic_reply"
             app:layout_constraintBottom_toBottomOf="@id/iv_like_forum"
             app:layout_constraintStart_toEndOf="@id/tv_likes_forum"
-            app:layout_constraintTop_toTopOf="@id/iv_like_forum" />
+            app:layout_constraintTop_toTopOf="@id/iv_like_forum"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_reply_forum"
@@ -147,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="8"
+            android:text="@string/post_replies"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_reply_forum"
@@ -235,13 +239,13 @@
                         android:backgroundTint="@color/light_peach"
                         android:fontFamily="@font/clash_grotesk"
                         android:gravity="center"
-                        android:hint="Reply to this post"
+                        android:hint="@string/reply_to_this_post"
                         android:inputType="textShortMessage"
                         android:maxLength="250"
                         android:maxLines="1"
                         android:padding="0dp"
                         android:textColorHint="#616161"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/btn_add_replies"
                         app:layout_constraintStart_toStartOf="parent"
@@ -255,13 +259,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="22dp"
                         android:backgroundTint="@color/light_peach"
-                        android:contentDescription="Button Add Reply"
+                        android:contentDescription="@string/button_add_reply"
                         android:src="@drawable/ic_add_post"
                         app:cornerRadius="30dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -7,7 +7,7 @@
     android:background="@drawable/dark_background"
     tools:context=".view.question.QuestionnaireActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/question_nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

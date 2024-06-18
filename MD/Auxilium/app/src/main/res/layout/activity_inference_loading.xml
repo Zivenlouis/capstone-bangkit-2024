@@ -9,7 +9,6 @@
     android:id="@+id/inference_loading_layout"
     tools:context=".view.question.InferenceLoadingActivity">
 
-
     <app.rive.runtime.kotlin.RiveAnimationView
         android:id="@+id/loading_state"
         android:layout_width="0dp"

@@ -9,11 +9,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/quest_logo"
@@ -23,7 +24,8 @@
                 android:src="@drawable/ic_auxilium_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/question_numbs"
@@ -32,7 +34,7 @@
                 android:layout_marginHorizontal="31dp"
                 android:layout_marginTop="63dp"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Question 7"
+                android:text="@string/question_7"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +48,7 @@
                 android:layout_marginHorizontal="31dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Favorite Brand ?"
+                android:text="@string/favorite_brand"
                 android:textColor="@color/light_peach"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Apple"
+                    android:text="@string/apple"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -76,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Samsung"
+                    android:text="@string/samsung"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -85,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Asus"
+                    android:text="@string/asus"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -94,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Oppo"
+                    android:text="@string/oppo"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -103,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Vivo"
+                    android:text="@string/vivo"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -112,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Realme"
+                    android:text="@string/realme"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -121,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Xiaomi"
+                    android:text="@string/xiaomi"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -130,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Infinix"
+                    android:text="@string/infinix"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -139,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Huawei"
+                    android:text="@string/huawei"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -148,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Poco"
+                    android:text="@string/poco"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -157,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/light_peach"
-                    android:text="Lainnya / Tidak Ada"
+                    android:text="@string/lainnya_tidak_ada"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -172,7 +174,7 @@
                 android:layout_marginBottom="82dp"
                 android:backgroundTint="@color/light_peach"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Finish"
+                android:text="@string/finish"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -188,7 +190,7 @@
                 android:layout_marginEnd="17dp"
                 android:backgroundTint="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Back"
+                android:text="@string/back"
                 android:textAllCaps="false"
                 android:textColor="@color/light_peach"
                 android:textSize="18sp"

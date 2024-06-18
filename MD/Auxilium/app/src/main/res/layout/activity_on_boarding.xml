@@ -16,7 +16,8 @@
         android:layout_marginTop="278dp"
         android:src="@drawable/big_text_1"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/image_oval_circle"
@@ -26,7 +27,8 @@
         android:layout_marginBottom="60dp"
         android:src="@drawable/image_oval_circle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/image_small_circle1"
@@ -36,7 +38,8 @@
         android:src="@drawable/image_small_circle"
         app:layout_constraintBottom_toBottomOf="@id/image_oval_circle"
         app:layout_constraintStart_toEndOf="@id/image_oval_circle"
-        app:layout_constraintTop_toTopOf="@id/image_oval_circle" />
+        app:layout_constraintTop_toTopOf="@id/image_oval_circle"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/image_small_circle2"
@@ -46,14 +49,15 @@
         android:src="@drawable/image_small_circle"
         app:layout_constraintBottom_toBottomOf="@id/image_oval_circle"
         app:layout_constraintStart_toEndOf="@id/image_small_circle1"
-        app:layout_constraintTop_toTopOf="@id/image_oval_circle" />
+        app:layout_constraintTop_toTopOf="@id/image_oval_circle"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
-        android:contentDescription="Next Button"
+        android:contentDescription="@string/next_button"
         android:src="@drawable/button_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
@@ -67,7 +71,8 @@
         android:layout_marginTop="251dp"
         android:src="@drawable/big_text_2"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/text_chat_1"
@@ -78,7 +83,8 @@
         android:alpha="0"
         android:src="@drawable/text_chat_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/big_text_2" />
+        app:layout_constraintTop_toBottomOf="@id/big_text_2"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/text_chat_2"
@@ -89,7 +95,8 @@
         android:alpha="0"
         android:src="@drawable/text_chat_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_chat_1" />
+        app:layout_constraintTop_toBottomOf="@id/text_chat_1"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/phone_support_bg"
@@ -99,7 +106,8 @@
         android:rotation="90"
         android:src="@drawable/phone_support_bg"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/phone_mockup"
@@ -109,7 +117,8 @@
         android:layout_marginTop="95dp"
         android:src="@drawable/phone_mockup"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/big_text_3"
@@ -119,7 +128,8 @@
         android:layout_marginBottom="131dp"
         android:src="@drawable/big_text_3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/button_get_started"
@@ -129,7 +139,8 @@
         android:layout_marginBottom="55dp"
         android:src="@drawable/button_get_started"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

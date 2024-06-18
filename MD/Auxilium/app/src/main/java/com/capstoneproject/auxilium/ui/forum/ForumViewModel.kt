@@ -15,10 +15,8 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
     private val _likeStatus = MutableLiveData<Map<Int, Boolean>>(mapOf())
     val likeStatus: LiveData<Map<Int, Boolean>> get() = _likeStatus
 
-    init {
-        _likeStatus.value = mapOf()
-    }
-
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage: LiveData<String> get() = _toastMessage
 
     init {
         _likeStatus.value = mapOf()
@@ -30,6 +28,7 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
                 val retrievedPosts = repository.getAllForumPosts()
                 _forumPosts.postValue(retrievedPosts)
             } catch (e: Exception) {
+                _toastMessage.postValue("Failed to refresh posts: ${e.message}")
             }
         }
     }
@@ -41,6 +40,7 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
                 repository.likeCommunity(userId, communityId)
                 updateLikeStatus(communityId, true)
             } catch (e: Exception) {
+                _toastMessage.postValue("Failed to like post: ${e.message}")
             }
         }
     }
@@ -52,6 +52,7 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
                 repository.unlikeCommunity(userId, communityId)
                 updateLikeStatus(communityId, false)
             } catch (e: Exception) {
+                _toastMessage.postValue("Failed to unlike post: ${e.message}")
             }
         }
     }
@@ -77,18 +78,25 @@ class ForumViewModel(private val repository: ForumRepository) : ViewModel() {
             val userId = repository.getUserId()
             repository.isPostLikedByUser(userId, communityId)
         } catch (e: Exception) {
+            _toastMessage.postValue("Failed to check like status: ${e.message}")
             false
         }
     }
 
     suspend fun getUserDetails(userId: Int): GetUsersResponseItem? {
-        return repository.getUserDetails(userId)
+        return try {
+            repository.getUserDetails(userId)
+        } catch (e: Exception) {
+            _toastMessage.postValue("Failed to get user details: ${e.message}")
+            null
+        }
     }
 
     suspend fun getRepliesCount(communityId: Int): Int {
         return try {
             repository.getRepliesCountByPostId(communityId)
         } catch (e: Exception) {
+            _toastMessage.postValue("Failed to get replies count: ${e.message}")
             0
         }
     }

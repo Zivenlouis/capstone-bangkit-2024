@@ -3,7 +3,6 @@ package com.capstoneproject.auxilium.ui.forum
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.capstoneproject.auxilium.response.GetRepliesByIdResponseItem
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
@@ -63,15 +62,39 @@ class DetailForumViewModel(private val repository: DetailForumRepository) : View
             }
         }
     }
-}
 
-
-class DetailForumViewModelFactory(private val repository: DetailForumRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DetailForumViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return DetailForumViewModel(repository) as T
+    fun likePost() {
+        viewModelScope.launch {
+            try {
+                val postId = _forumPost.value?.communityId ?: return@launch
+                if (!_forumPost.value?.isLiked!!) {
+                    repository.likePost(postId)
+                    updateLikeStatus(true)
+                }
+            } catch (e: Exception) {
+                // Handle error
+            }
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+
+    fun unlikePost() {
+        viewModelScope.launch {
+            try {
+                val postId = _forumPost.value?.communityId ?: return@launch
+                if (_forumPost.value?.isLiked!!) {
+                    repository.unlikePost(postId)
+                    updateLikeStatus(false)
+                }
+            } catch (e: Exception) {
+                // Handle error
+            }
+        }
+    }
+
+    private fun updateLikeStatus(isLiked: Boolean) {
+        val currentPost = _forumPost.value ?: return
+        _forumPost.postValue(currentPost.copy(isLiked = isLiked))
     }
 }
+
+

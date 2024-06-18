@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/clash_grotesk_medium"
-        android:text="Auxilium Team"
+        android:text="@string/auxilium_team"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,8 @@
         android:src="@drawable/ic_auxilium_white"
         app:layout_constraintBottom_toBottomOf="@id/tv_about_us_title"
         app:layout_constraintEnd_toStartOf="@id/tv_about_us_title"
-        app:layout_constraintTop_toTopOf="@id/tv_about_us_title"/>
+        app:layout_constraintTop_toTopOf="@id/tv_about_us_title"
+        android:contentDescription="@string/logo_about_us" />
 
 
     <androidx.recyclerview.widget.RecyclerView

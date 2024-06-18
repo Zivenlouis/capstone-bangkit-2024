@@ -22,8 +22,8 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        historyAdapter = HistoryAdapter(this, historyList)
+/*        historyAdapter = HistoryAdapter(this, historyList)
         binding.rvHistory.layoutManager = LinearLayoutManager(this)
-        binding.rvHistory.adapter = historyAdapter
+        binding.rvHistory.adapter = historyAdapter*/
     }
 }

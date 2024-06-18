@@ -3,6 +3,7 @@ Model 2 Done User Click & User Rating
 Additional Fix
 - Add Result rating and user clicks
 - Forum format date
+- Fix Hardcoded String and Add Localize Indonesia
 
 Done :
 - Model 2 userclicks in new arrival and user rating in
@@ -29,9 +30,6 @@ Minor Task Not Done:
 	- Rating in Wishlist
 
 Minor Detail Flaws:
-- Localize not created
-- Hardcoded String
-- Less detailed  due to design using Emulator Pixel 4 API 28
 - Loading Bar / Progress Bar Logic using animation
 - Apps only can run in API android 12 + upto newest one because of rive animation
 - Clean Code & Clear Logic

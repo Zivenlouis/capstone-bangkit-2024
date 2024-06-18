@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingBottom="100dp">
 
         <include layout="@layout/progress_bar_loading" />
@@ -22,7 +22,8 @@
             android:src="@drawable/profile_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/btn_history"
@@ -31,11 +32,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:background="@color/transparent"
-            android:contentDescription="History Button"
+            android:contentDescription="@string/history_button"
             android:src="@drawable/profile_home_support"
             app:layout_constraintEnd_toEndOf="@id/iv_bg_home_profile"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_profile"
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Howdy, "
+            android:text="@string/howdy"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/civ_profile"
             app:layout_constraintTop_toBottomOf="@id/civ_profile" />
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Username"
+            android:text="@string/username"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/tv_support"
             app:layout_constraintTop_toTopOf="@id/tv_support" />
@@ -73,22 +74,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="👋"
+            android:text="@string/emote_hello"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_username"
             app:layout_constraintStart_toEndOf="@id/tv_username"
-            app:layout_constraintTop_toTopOf="@id/tv_username" />
+            app:layout_constraintTop_toTopOf="@id/tv_username"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_support2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Excited to find yout dream phone today?"
+            android:text="@string/excited_to_find_yout_dream_phone_today"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/tv_support"
             app:layout_constraintTop_toBottomOf="@id/tv_support"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_phone"
@@ -97,7 +99,8 @@
             android:layout_marginTop="37dp"
             android:src="@drawable/ic_phone"
             app:layout_constraintStart_toStartOf="@id/tv_support2"
-            app:layout_constraintTop_toBottomOf="@id/tv_support2" />
+            app:layout_constraintTop_toBottomOf="@id/tv_support2"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_user_phones"
@@ -105,11 +108,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="UserPhones"
+            android:text="@string/userphones"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_phone"
             app:layout_constraintTop_toTopOf="@id/iv_phone"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <TextView
             android:id="@+id/divider"
@@ -117,11 +120,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="|"
+            android:text="@string/divider_line"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/tv_user_phones"
             app:layout_constraintTop_toTopOf="@id/iv_phone"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_wishlist"
@@ -131,7 +134,8 @@
             android:src="@drawable/ic_wishlist"
             app:layout_constraintBottom_toBottomOf="@id/iv_phone"
             app:layout_constraintStart_toStartOf="@id/divider"
-            app:layout_constraintTop_toTopOf="@id/iv_phone" />
+            app:layout_constraintTop_toTopOf="@id/iv_phone"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/wishlist_numbs"
@@ -139,11 +143,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="10 item(s)"
+            android:text="@string/wishlist_items"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_wishlist"
             app:layout_constraintTop_toTopOf="@id/iv_wishlist"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_supercharge_search"
@@ -153,7 +157,7 @@
             android:layout_marginTop="26dp"
             android:backgroundTint="@color/light_peach"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Supercharge your search"
+            android:text="@string/supercharge_your_search"
             android:textAllCaps="false"
             android:textColor="@color/start_icon_tint"
             android:textSize="16sp"
@@ -188,7 +192,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/clash_grotesk_regular"
-                    android:text="New Arrivals 🚀"
+                    android:text="@string/new_arrivals_title"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -198,10 +202,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/clash_grotesk_light"
-                    android:text="The latest phones have landed."
+                    android:text="@string/the_latest_phones_have_landed"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@id/tv_new_arrivals"
-                    app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals"
+                    tools:ignore="TextContrastCheck" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btn_new_arrivals"
@@ -210,11 +215,11 @@
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/button_bg"
-                    android:contentDescription="New Arrival Button"
+                    android:contentDescription="@string/new_arrival_button"
                     android:src="@drawable/ic_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvNewArrivals"
@@ -238,11 +243,12 @@
             android:layout_marginStart="31dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Recommended For You"
+            android:text="@string/recommended_for_you"
             android:textColor="@color/light_peach"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/new_arrivals_card_view" />
+            app:layout_constraintTop_toBottomOf="@id/new_arrivals_card_view"
+            tools:ignore="TextContrastCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMainRecom"

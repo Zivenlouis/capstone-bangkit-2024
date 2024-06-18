@@ -30,11 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="New Post"
+            android:text="@string/new_post"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_add_post"
@@ -52,13 +53,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_add_description"
-                errorEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-12dp"
                 android:backgroundTint="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:hint="What's good?"
+                android:hint="@string/hint_whats_good"
                 android:inputType="textMultiLine"
                 android:minHeight="48dp"
                 android:paddingVertical="18dp"
@@ -73,11 +73,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:backgroundTint="@color/transparent"
-            android:contentDescription="Gallery Button"
+            android:contentDescription="@string/gallery_button"
             android:src="@drawable/ic_gallery"
             app:layout_constraintStart_toStartOf="@id/ti_add_post"
             app:layout_constraintTop_toBottomOf="@id/ti_add_post"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/btn_camera"
@@ -85,11 +85,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:backgroundTint="@color/transparent"
-            android:contentDescription="Camera Button"
+            android:contentDescription="@string/camera_button"
             android:src="@drawable/ic_camera"
             app:layout_constraintStart_toEndOf="@id/btn_gallery"
             app:layout_constraintTop_toTopOf="@id/btn_gallery"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <ImageView
             android:id="@+id/iv_show_image"
@@ -100,7 +100,8 @@
             android:src="@drawable/ic_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_gallery" />
+            app:layout_constraintTop_toBottomOf="@id/btn_gallery"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_post"
@@ -110,7 +111,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="#1E1E1E"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Post"
+            android:text="@string/post"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"

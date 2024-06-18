@@ -26,7 +26,8 @@
             android:src="@drawable/ic_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_phone_names"
@@ -35,7 +36,7 @@
             android:layout_marginStart="9dp"
             android:layout_marginEnd="19dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Phone Names"
+            android:text="@string/phone_names"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_phone_images"
@@ -46,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="Phone OS"
+            android:text="@string/phone_os"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/tv_phone_names"
             app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
@@ -57,7 +58,7 @@
             android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:background="@color/transparent"
-            android:contentDescription="Delete Wishlist"
+            android:contentDescription="@string/delete_wishlist"
             android:src="@drawable/ic_delete"
             android:tag="Delete Bookmark"
             app:cornerRadius="20dp"

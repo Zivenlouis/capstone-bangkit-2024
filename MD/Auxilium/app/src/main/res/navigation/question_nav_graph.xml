@@ -10,10 +10,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest1Fragment"
         android:label="Question 1"
         tools:layout="@layout/fragment_quest1">
-        <argument
-            android:name="question1Answer"
-            android:defaultValue="How important is performance?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment1toFragment2"
             app:destination="@id/questionFragment2" />
@@ -25,10 +21,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest2Fragment"
         android:label="Question 2"
         tools:layout="@layout/fragment_quest2">
-        <argument
-            android:name="question2Answer"
-            android:defaultValue="How important is camera?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment2toFragment3"
             app:destination="@id/questionFragment3" />
@@ -42,10 +34,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest3Fragment"
         android:label="Question 3"
         tools:layout="@layout/fragment_quest3">
-        <argument
-            android:name="question3Answer"
-            android:defaultValue="How important is battery?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment3toFragment4"
             app:destination="@id/questionFragment4" />
@@ -59,10 +47,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest4Fragment"
         android:label="Question 4"
         tools:layout="@layout/fragment_quest4">
-        <argument
-            android:name="question4Answer"
-            android:defaultValue="How important is software?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment4toFragment5"
             app:destination="@id/questionFragment5" />
@@ -76,10 +60,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest5Fragment"
         android:label="Question 5"
         tools:layout="@layout/fragment_quest5">
-        <argument
-            android:name="question5Answer"
-            android:defaultValue="How important is RAM?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment5toFragment6"
             app:destination="@id/questionFragment6" />
@@ -93,10 +73,6 @@
         android:name="com.capstoneproject.auxilium.view.question.quest.Quest6Fragment"
         android:label="Question 6"
         tools:layout="@layout/fragment_quest6">
-        <argument
-            android:name="question6Answer"
-            android:defaultValue="How important is Storage?"
-            app:argType="string" />
         <action
             android:id="@+id/Fragment6toFragment7"
             app:destination="@id/questionFragment7" />
@@ -113,10 +89,6 @@
         <action
             android:id="@+id/Fragment7toFragment6"
             app:destination="@id/questionFragment6" />
-        <argument
-            android:name="question7Answer"
-            android:defaultValue="Favorite Brand?"
-            app:argType="string" />
     </fragment>
 
 </navigation>

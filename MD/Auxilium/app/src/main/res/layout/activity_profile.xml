@@ -23,7 +23,7 @@
         android:layout_marginTop="71dp"
         android:background="@color/transparent"
         android:fontFamily="@font/clash_grotesk_regular"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textAllCaps="false"
         android:textColor="@color/light_peach"
         android:textSize="24sp"
@@ -57,6 +57,7 @@
                 android:src="@drawable/ic_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
@@ -66,7 +67,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Username"
+                android:text="@string/username"
                 android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@id/image_avatar"
                 app:layout_constraintTop_toTopOf="@id/image_avatar" />
@@ -78,7 +79,8 @@
                 android:layout_marginTop="6dp"
                 android:src="@drawable/ic_email"
                 app:layout_constraintStart_toStartOf="@id/text_name"
-                app:layout_constraintTop_toBottomOf="@id/text_name" />
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/text_email"
@@ -88,12 +90,13 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/clash_grotesk_regular"
                 android:gravity="center_horizontal"
-                android:text="email@gmail.com"
+                android:text="@string/email_gmail_com"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/image_email"
                 app:layout_constraintStart_toEndOf="@id/image_email"
-                app:layout_constraintTop_toTopOf="@id/image_email" />
+                app:layout_constraintTop_toTopOf="@id/image_email"
+                tools:ignore="TextContrastCheck" />
 
             <ImageView
                 android:id="@+id/image_date_joined"
@@ -102,7 +105,8 @@
                 android:layout_marginTop="6dp"
                 android:src="@drawable/ic_date"
                 app:layout_constraintStart_toStartOf="@id/image_email"
-                app:layout_constraintTop_toBottomOf="@id/image_email" />
+                app:layout_constraintTop_toBottomOf="@id/image_email"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/text_date_joined"
@@ -111,12 +115,13 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/clash_grotesk_light"
                 android:gravity="center_horizontal"
-                android:text="Joined Dated"
+                android:text="@string/joined_dated"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/image_date_joined"
                 app:layout_constraintStart_toEndOf="@id/image_date_joined"
-                app:layout_constraintTop_toTopOf="@id/image_date_joined" />
+                app:layout_constraintTop_toTopOf="@id/image_date_joined"
+                tools:ignore="TextContrastCheck" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_edit_profile"
@@ -125,9 +130,9 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="17dp"
                 android:backgroundTint="@color/start_icon_tint"
-                android:contentDescription="Edit Profile"
+                android:contentDescription="@string/edit_profile"
                 android:fontFamily="@font/clash_grotesk"
-                android:text="Edit Profile"
+                android:text="@string/edit_profile"
                 android:textAllCaps="false"
                 android:textColor="@color/light_peach"
                 app:cornerRadius="40dp"
@@ -158,7 +163,7 @@
                 android:layout_marginTop="53dp"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Language"
+                android:text="@string/language"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -173,10 +178,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="158dp"
-                android:text="en"
+                android:text="@string/language_typed"
                 app:layout_constraintBottom_toBottomOf="@id/btn_language"
                 app:layout_constraintStart_toEndOf="@id/btn_language"
-                app:layout_constraintTop_toTopOf="@id/btn_language" />
+                app:layout_constraintTop_toTopOf="@id/btn_language"
+                tools:ignore="TextContrastCheck" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_reset_password"
@@ -184,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Reset Password"
+                android:text="@string/reset_password"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -200,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="About Us"
+                android:text="@string/about_us"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -217,7 +223,7 @@
                 android:layout_marginTop="56dp"
                 android:background="@color/transparent"
                 android:fontFamily="@font/clash_grotesk_regular"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -238,7 +244,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/clash_grotesk_regular"
-        android:text="2024 © Auxilium"
+        android:text="@string/copyright"
         android:textColor="@color/light_peach"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

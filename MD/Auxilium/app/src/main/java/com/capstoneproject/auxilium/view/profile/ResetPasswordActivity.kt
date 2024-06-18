@@ -47,7 +47,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             val password = binding.edPassword.text.toString()
             val confirmPassword = binding.edPasswordConfirm.text.toString()
 
-                viewModel.resetPassword(userId, email, password, confirmPassword)
+            viewModel.resetPassword(userId, email, password, confirmPassword)
         }
 
         observeViewModel()
@@ -60,13 +60,16 @@ class ResetPasswordActivity : AppCompatActivity() {
                     is ResetPasswordViewModel.ResetPasswordState.Idle -> {
                         // Do nothing
                     }
+
                     is ResetPasswordViewModel.ResetPasswordState.Loading -> {
                         // Show loading state
                     }
+
                     is ResetPasswordViewModel.ResetPasswordState.Success -> {
                         showError(binding.tiEmailReset, state.message)
                         // Navigate to another activity or update UI
                     }
+
                     is ResetPasswordViewModel.ResetPasswordState.Error -> {
                         showError(binding.tiEmailReset, state.error)
                     }
@@ -99,7 +102,8 @@ class ResetPasswordActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString() != binding.edPasswordConfirm.text.toString()) {
                     binding.tiPasswordReset.error = "Password and confirm password do not match."
-                    binding.tiConfirmPasswordReset.error = "Password and confirm password do not match."
+                    binding.tiConfirmPasswordReset.error =
+                        "Password and confirm password do not match."
                 } else {
                     binding.tiPasswordReset.error = null
                     binding.tiConfirmPasswordReset.error = null
@@ -113,7 +117,8 @@ class ResetPasswordActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString() != binding.edPassword.text.toString()) {
                     binding.tiPasswordReset.error = "Password and confirm password do not match."
-                    binding.tiConfirmPasswordReset.error = "Password and confirm password do not match."
+                    binding.tiConfirmPasswordReset.error =
+                        "Password and confirm password do not match."
                 } else {
                     binding.tiPasswordReset.error = null
                     binding.tiConfirmPasswordReset.error = null
@@ -121,6 +126,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }

@@ -92,7 +92,7 @@ class Quest7Fragment : Fragment() {
             "Infinix" -> "Infinix"
             "Huawei" -> "Huawei"
             "Poco" -> "Poco"
-            "Lainnya / Tidak Ada" -> "lainnya/tidak ada"
+            "None of the Options" -> "lainnya/tidak ada"
             else -> ""
         }
     }

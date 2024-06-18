@@ -3,6 +3,7 @@ package com.capstoneproject.auxilium.ui.forum
 import com.capstoneproject.auxilium.api.AddRepliesRequestBody
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.ApiService
+import com.capstoneproject.auxilium.api.LikeCommunityRequest
 import com.capstoneproject.auxilium.datastore.UserPreference
 import com.capstoneproject.auxilium.response.GetRepliesByIdResponseItem
 import com.capstoneproject.auxilium.response.GetUsersResponseItem
@@ -45,4 +46,17 @@ class DetailForumRepository(private val userPreference: UserPreference) {
     suspend fun getUserId(): Int? {
         return userPreference.getUserId().firstOrNull()
     }
+
+    suspend fun likePost(communityId: Int) {
+        val userId = userPreference.getUserId().firstOrNull()
+        val service = getApiService()
+        service.likeCommunity(LikeCommunityRequest(userId!!, communityId))
+    }
+
+    suspend fun unlikePost(communityId: Int) {
+        val userId = userPreference.getUserId().firstOrNull()
+        val service = getApiService()
+        service.unlikeCommunity(LikeCommunityRequest(userId!!, communityId))
+    }
+
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="124dp"
     android:layout_gravity="center"
@@ -26,7 +27,8 @@
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_profile_names"
@@ -34,20 +36,22 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/clash_grotesk_medium"
-            android:text="Profile Names"
+            android:text="@string/profile_names"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@id/iv_profile_teams"
-            app:layout_constraintTop_toTopOf="@id/iv_profile_teams" />
+            app:layout_constraintTop_toTopOf="@id/iv_profile_teams"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_profile_roles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Team Roles"
+            android:text="@string/team_roles"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/tv_profile_names"
-            app:layout_constraintTop_toBottomOf="@id/tv_profile_names" />
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_names"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_profile_quotes"
@@ -57,13 +61,14 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/clash_grotesk_regular"
             android:justificationMode="inter_word"
-            android:text="Profile Quotes"
+            android:text="@string/profile_quotes"
             android:textSize="12sp"
             android:textStyle="italic|bold"
             app:layout_constraintBottom_toBottomOf="@id/iv_profile_teams"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_profile_names"
-            app:layout_constraintTop_toBottomOf="@id/tv_profile_roles" />
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_roles"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

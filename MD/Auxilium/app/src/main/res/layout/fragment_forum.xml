@@ -12,14 +12,15 @@
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         android:fontFamily="@font/clash_grotesk_regular"
-        android:text="Community Hub"
+        android:text="@string/community_hub"
         android:textAllCaps="false"
         android:textColor="@color/light_peach"
         android:textSize="24sp"
         app:icon="@drawable/ic_back_profile"
         app:iconTint="@color/light_peach"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/forum_card_view"
@@ -30,7 +31,8 @@
         app:cardCornerRadius="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back_forum">
+        app:layout_constraintTop_toBottomOf="@id/btn_back_forum"
+        tools:ignore="DuplicateSpeakableTextCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -54,7 +56,7 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/light_peach"
-                android:text="What's good?"
+                android:text="@string/hint_whats_good"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="14sp"

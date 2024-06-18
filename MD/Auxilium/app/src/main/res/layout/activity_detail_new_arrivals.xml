@@ -34,7 +34,8 @@
                     android:layout_marginTop="21dp"
                     android:src="@drawable/ic_image"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/tv_phone_names"
@@ -43,7 +44,7 @@
                     android:layout_marginTop="52dp"
                     android:layout_marginEnd="25dp"
                     android:fontFamily="@font/clash_grotesk_regular"
-                    android:text="Phone Names"
+                    android:text="@string/phone_names"
                     android:textAlignment="viewEnd"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/clash_grotesk_light"
-                    android:text="Phone OS"
+                    android:text="@string/phone_os"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/tv_phone_names"
                     app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
@@ -71,7 +72,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Get ready to be dazzled! Presenting the whole shebang of information!"
+            android:text="@string/support_text_get_ready"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/cv_detail_phone"
@@ -105,9 +106,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Brand"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/brand"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -116,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Brand Label"
+                        android:text="@string/brand_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -128,9 +129,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Released Date"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/released_date"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -139,7 +140,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Release Date Label"
+                        android:text="@string/release_date_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -151,9 +152,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Resolution"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/resolution"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -162,7 +163,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Resolution Label"
+                        android:text="@string/resolution_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -174,9 +175,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Weight"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/weight"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -185,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Weight Label"
+                        android:text="@string/weight_label"
 
                         android:textColor="@color/white" />
                 </TableRow>
@@ -198,9 +199,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Chipset"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/chipset"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -209,10 +210,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Chipset Label"
+                        android:text="@string/chipset_label"
                         android:textAlignment="viewStart"
                         android:textColor="@color/white" />
-
                 </TableRow>
 
                 <TableRow android:background="@drawable/table_row_border_mid">
@@ -223,7 +223,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Memory"
+                        android:text="@string/memory"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -232,7 +232,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Memory Label"
+                        android:text="@string/memory_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -244,7 +244,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="RAM"
+                        android:text="@string/ram"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="RAM Label"
+                        android:text="@string/ram_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -265,9 +265,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Main Camera 1"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/main_camera_1"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -276,7 +276,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Main Camera 1 Label"
+                        android:text="@string/main_camera_1_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -288,9 +288,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Main Camera 2"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/main_camera_2"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -299,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Main Camera 2 Label"
+                        android:text="@string/main_camera_2_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -311,9 +311,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Main Camera 3"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/main_camera_3"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -322,7 +322,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Main Camera 3 Label"
+                        android:text="@string/main_camera_3_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -335,9 +335,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Selfie Camera"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/selfie_camera"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -346,7 +346,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text=" Selfie Camera Label"
+                        android:text="@string/selfie_camera_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -358,9 +358,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Earphone Jack"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/earphone_jack"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -369,7 +369,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Earphone Jack Label"
+                        android:text="@string/earphone_jack_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -382,7 +382,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Battery"
+                        android:text="@string/battery"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -391,7 +391,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Battery Label"
+                        android:text="@string/battery_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -403,9 +403,9 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:paddingVertical="12dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="20dp"
-                        android:text="Charging"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/charging"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Charging Label"
+                        android:text="@string/charging_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -426,7 +426,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Colors"
+                        android:text="@string/colors"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -435,7 +435,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Colors Label"
+                        android:text="@string/colors_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -447,7 +447,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="NFC"
+                        android:text="@string/nfc"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -456,7 +456,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="NFC Label"
+                        android:text="@string/nfc_label"
                         android:textColor="@color/white" />
                 </TableRow>
 
@@ -468,7 +468,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Price"
+                        android:text="@string/price"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -477,7 +477,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/table_border"
                         android:padding="12dp"
-                        android:text="Price Label"
+                        android:text="@string/price_label"
                         android:textColor="@color/white" />
                 </TableRow>
             </TableLayout>
@@ -491,10 +491,10 @@
             android:layout_margin="30dp"
             android:backgroundTint="@color/light_peach"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Add to Wishlist"
+            android:text="@string/add_to_wishlist"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:cornerRadius="18dp"
             app:icon="@drawable/ic_wishlist"
             app:iconGravity="textStart"
@@ -508,7 +508,7 @@
             android:layout_marginHorizontal="29dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="What would you rate Pixel 8?"
+            android:text="@string/phone_rates"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textAlignment="center"

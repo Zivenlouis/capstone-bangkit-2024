@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="143dp"
     android:layout_gravity="center"
@@ -17,12 +18,13 @@
             android:id="@+id/iv_phone_images"
             android:layout_width="115dp"
             android:layout_height="141dp"
-            android:layout_marginTop="28dp"
             android:layout_marginStart="14.5dp"
+            android:layout_marginTop="28dp"
             android:src="@drawable/ic_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_phone_names"
@@ -33,7 +35,7 @@
             android:layout_marginTop="28dp"
             android:textAlignment="viewEnd"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Phone Names"
+            android:text="@string/phone_names"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_phone_images"
@@ -44,11 +46,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="Phone OS"
-            android:textSize="16sp"
+            android:text="@string/phone_os"
             android:textAlignment="viewEnd"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/tv_phone_names"
-            app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_names"
+            tools:ignore="TextContrastCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="99dp"
     android:layout_gravity="center"
@@ -21,7 +22,8 @@
             android:layout_marginTop="31dp"
             android:src="@drawable/ic_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_phone_names"
@@ -31,7 +33,7 @@
             android:layout_marginStart="5dp"
             android:maxLines="2"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Phone Names"
+            android:text="@string/phone_names"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="Phone OS"
+            android:text="@string/phone_os"
             android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@id/tv_phone_names"
-            app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_names"
+            tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

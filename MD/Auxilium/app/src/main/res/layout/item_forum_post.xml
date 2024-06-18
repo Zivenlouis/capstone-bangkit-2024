@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/transparent"
-    android:clickable="true"
-    android:onClick="openDetailForumActivity">
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cv_forum"
@@ -32,25 +31,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_regular"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/civ_forum_post_profile"
             app:layout_constraintTop_toTopOf="@id/civ_forum_post_profile"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <TextView
             android:id="@+id/tv_forum_dateposted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="186dp"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="3h"
+            android:text="@string/post_time"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/forum_photo_card_view"
             app:layout_constraintTop_toTopOf="@id/tv_forum_username"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
 
         <TextView
@@ -59,15 +57,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="29dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:justificationMode="inter_word"
-            android:text="Just got my new Samsung A14 and I'm impressed! The battery life is phenomenal, lasting me through a full day of heavy usage with ease"
+            android:text="@string/post_description"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_forum_username"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/forum_photo_card_view"
@@ -87,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="173dp"
                 android:layout_gravity="center"
-                android:contentDescription="Forum Picture"
+                android:contentDescription="@string/forum_picture"
                 android:src="@drawable/ic_image" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -96,10 +93,10 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="18dp"
             android:src="@drawable/ic_like_border"
             app:layout_constraintStart_toStartOf="@id/forum_photo_card_view"
-            app:layout_constraintTop_toBottomOf="@id/forum_photo_card_view" />
+            app:layout_constraintTop_toBottomOf="@id/forum_photo_card_view"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_likes_forum"
@@ -107,12 +104,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="10"
+            android:text="@string/post_likes"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_like_forum"
             app:layout_constraintTop_toTopOf="@id/iv_like_forum"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_reply_forum"
@@ -122,7 +119,8 @@
             android:src="@drawable/ic_reply"
             app:layout_constraintBottom_toBottomOf="@id/iv_like_forum"
             app:layout_constraintStart_toEndOf="@id/tv_likes_forum"
-            app:layout_constraintTop_toTopOf="@id/iv_like_forum" />
+            app:layout_constraintTop_toTopOf="@id/iv_like_forum"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tv_reply_forum"
@@ -130,12 +128,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/clash_grotesk_light"
-            android:text="8"
+            android:text="@string/post_replies"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/iv_reply_forum"
             app:layout_constraintTop_toTopOf="@id/iv_reply_forum"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
