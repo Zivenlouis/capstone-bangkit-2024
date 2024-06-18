@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.capstoneproject.auxilium.response.AddRatingsResponse
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import com.capstoneproject.auxilium.response.PhonesResponseItem
 import kotlinx.coroutines.launch
@@ -13,6 +14,11 @@ class ResultViewModel(private val repository: ResultRepository) : ViewModel() {
 
     private val _phoneList = MutableLiveData<List<PhonesResponseItem>>()
     val phoneList: LiveData<List<PhonesResponseItem>> get() = _phoneList
+
+    private val _addRatingsResult = MutableLiveData<AddRatingsResponse>()
+    val addRatingsResult: LiveData<AddRatingsResponse> = _addRatingsResult
+
+    private val errorMessage = MutableLiveData<String?>()
 
     fun fetchPhones(ids: List<Int>) {
         viewModelScope.launch {
@@ -47,6 +53,33 @@ class ResultViewModel(private val repository: ResultRepository) : ViewModel() {
                 }
             } catch (e: Exception) {
                 _error.value = "Failed to add to wishlist: ${e.message}"
+            }
+        }
+    }
+
+    fun addUserRating(userId: Int, smartphoneId: Int, rating: Char) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addUserRating(userId, smartphoneId, rating)
+                if (response.msg != null) {
+                    _addRatingsResult.value = response
+                } else {
+                    _error.value = "Failed to add rating"
+                }
+            } catch (e: HttpException) {
+                _error.value = "Failed to add rating: ${e.message()}"
+            } catch (e: Exception) {
+                _error.value = "Failed to add rating: ${e.message}"
+            }
+        }
+    }
+
+    fun addUserClick(userId: Int, smartphoneId: Int) {
+        viewModelScope.launch {
+            try {
+                repository.addUserClick(userId, smartphoneId)
+            } catch (e: Exception) {
+                errorMessage.postValue("Error adding user click: ${e.message}")
             }
         }
     }

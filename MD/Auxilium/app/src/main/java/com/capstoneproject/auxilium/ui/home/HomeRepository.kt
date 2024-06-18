@@ -1,6 +1,5 @@
 package com.capstoneproject.auxilium.ui.home
 
-import android.util.Log
 import com.capstoneproject.auxilium.api.AddClickRequestBody
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.ApiService
@@ -27,10 +26,6 @@ class HomeRepository(private val userPreference: UserPreference) {
         return withContext(Dispatchers.IO) {
             val apiService = getApiService(token)
             val response = apiService.getUserById(userId)
-            Log.d(
-                "com.capstoneproject.auxilium.ui.home.HomeRepository",
-                "getUserById response: $response"
-            )
             if (response.isNotEmpty()) response[0] else null
         }
     }
@@ -47,10 +42,6 @@ class HomeRepository(private val userPreference: UserPreference) {
                 val response = apiService.getAllPhones()
                 response.sortedByDescending { it.releaseDate }
             } catch (e: Exception) {
-                Log.e(
-                    "com.capstoneproject.auxilium.ui.home.HomeRepository",
-                    "Error fetching phones: ${e.localizedMessage}"
-                )
                 emptyList()
             }
         }
@@ -68,10 +59,6 @@ class HomeRepository(private val userPreference: UserPreference) {
                 val response = apiService.getWishlist(userId)
                 response
             } catch (e: Exception) {
-                Log.e(
-                    "com.capstoneproject.auxilium.ui.home.HomeRepository",
-                    "Error fetching wishlist: ${e.localizedMessage}"
-                )
                 emptyList()
             }
         }
@@ -95,7 +82,6 @@ class HomeRepository(private val userPreference: UserPreference) {
                 }
                 phones
             } catch (e: Exception) {
-                Log.e("HomeRepository", "Error fetching phones by IDs: ${e.localizedMessage}")
                 emptyList()
             }
         }
@@ -113,10 +99,6 @@ class HomeRepository(private val userPreference: UserPreference) {
                 val response = apiService.getTopSmartphones(userId)
                 response.body() ?: emptyList()
             } catch (e: Exception) {
-                Log.e(
-                    "HomeRepository",
-                    "Error fetching top smartphones: ${e.localizedMessage}"
-                )
                 emptyList()
             }
         }
@@ -134,7 +116,6 @@ class HomeRepository(private val userPreference: UserPreference) {
                 val requestBody = AddClickRequestBody(userId, smartphoneId)
                 apiService.addUserClick(requestBody)
             } catch (e: Exception) {
-                Log.e("NewArrivalsRepository", "Error adding user click: ${e.localizedMessage}")
                 throw e
             }
         }

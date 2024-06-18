@@ -1,6 +1,5 @@
 package com.capstoneproject.auxilium.ui.wishlist
 
-import android.util.Log
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.api.ApiService
 import com.capstoneproject.auxilium.datastore.UserPreference
@@ -28,7 +27,6 @@ class WishlistRepository(private val userPreference: UserPreference) {
                 val response = apiService.getWishlist(userId)
                 response
             } catch (e: Exception) {
-                Log.e("WishlistRepository", "Error fetching wishlist: ${e.localizedMessage}")
                 emptyList()
             }
         }
@@ -46,7 +44,6 @@ class WishlistRepository(private val userPreference: UserPreference) {
                 val response = apiService.getPhonesById(phoneId)
                 response.firstOrNull()
             } catch (e: Exception) {
-                Log.e("WishlistRepository", "Error fetching phone: ${e.localizedMessage}")
                 null
             }
         }
@@ -64,7 +61,6 @@ class WishlistRepository(private val userPreference: UserPreference) {
                 apiService.deleteWishlist(wishlistId)
                 true
             } catch (e: Exception) {
-                Log.e("WishlistRepository", "Error deleting wishlist: ${e.localizedMessage}")
                 false
             }
         }
@@ -82,7 +78,6 @@ class WishlistRepository(private val userPreference: UserPreference) {
                 val response = apiService.getWishlistById(wishlistId)
                 response
             } catch (e: Exception) {
-                Log.e("WishlistRepository", "Error fetching wishlist by id: ${e.localizedMessage}")
                 null
             }
         }

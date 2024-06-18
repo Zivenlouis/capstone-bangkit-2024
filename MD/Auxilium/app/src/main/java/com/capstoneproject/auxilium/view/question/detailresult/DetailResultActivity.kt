@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.api.ApiConfig
 import com.capstoneproject.auxilium.databinding.ActivityDetailResultBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
@@ -14,11 +15,14 @@ import com.capstoneproject.auxilium.response.PhonesResponseItem
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
+@Suppress("DEPRECATION")
 class DetailResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailResultBinding
     private lateinit var viewModel: DetailResultViewModel
     private lateinit var userPreference: UserPreference
+
+    private lateinit var ratingButtons: List<androidx.constraintlayout.utils.widget.ImageFilterButton>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,10 @@ class DetailResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         userPreference = UserPreference.getInstance(this)
+
+        ratingButtons = listOf(
+            binding.btnStar1, binding.btnStar2, binding.btnStar3, binding.btnStar4, binding.btnStar5
+        )
 
         lifecycleScope.launch {
             val token = userPreference.getToken().firstOrNull()
@@ -78,6 +86,34 @@ class DetailResultActivity : AppCompatActivity() {
 
             viewModel.error.observe(this@DetailResultActivity) { errorMessage ->
                 Toast.makeText(this@DetailResultActivity, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+            viewModel.addRatingsResult.observe(this@DetailResultActivity) { response ->
+                Toast.makeText(this@DetailResultActivity, response.msg, Toast.LENGTH_SHORT).show()
+            }
+
+            ratingButtons.forEachIndexed { index, button ->
+                button.setOnClickListener {
+                    val rating = (index + 1).toString()[0]
+                    lifecycleScope.launch {
+                        userPreference.getUserId().collect { userId ->
+                            if (userId != null && phone != null) {
+                                viewModel.addUserRating(userId, phone.id!!, rating)
+                            }
+                        }
+                    }
+                    updateRating(index + 1)
+                }
+            }
+        }
+    }
+
+    private fun updateRating(selectedStars: Int) {
+        ratingButtons.forEachIndexed { index, button ->
+            if (index < selectedStars) {
+                button.setImageResource(R.drawable.ic_star_full)
+            } else {
+                button.setImageResource(R.drawable.ic_star_border)
             }
         }
     }

@@ -23,7 +23,6 @@ class NewArrivalsRepository(private val userPreference: UserPreference) {
                 val response = apiService.getAllPhones()
                 response.sortedByDescending { it.releaseDate }
             } catch (e: Exception) {
-                Log.e("NewArrivalsRepository", "Error fetching phones: ${e.localizedMessage}")
                 throw e
             }
         }
@@ -41,7 +40,6 @@ class NewArrivalsRepository(private val userPreference: UserPreference) {
                 val requestBody = AddClickRequestBody(userId, smartphoneId)
                 apiService.addUserClick(requestBody)
             } catch (e: Exception) {
-                Log.e("NewArrivalsRepository", "Error adding user click: ${e.localizedMessage}")
                 throw e
             }
         }

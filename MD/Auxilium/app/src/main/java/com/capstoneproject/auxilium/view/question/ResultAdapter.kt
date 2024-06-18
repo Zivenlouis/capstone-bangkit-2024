@@ -1,6 +1,5 @@
 package com.capstoneproject.auxilium.view.question
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,9 +8,10 @@ import com.bumptech.glide.Glide
 import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.ItemRecommendedBinding
 import com.capstoneproject.auxilium.response.PhonesResponseItem
-import com.capstoneproject.auxilium.view.question.detailresult.DetailResultActivity
 
-class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
+class ResultAdapter(
+    private val onItemClick: (PhonesResponseItem) -> Unit
+) : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
 
     private var phones: List<PhonesResponseItem> = emptyList()
 
@@ -22,7 +22,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val phone = phones[position]
-        holder.bind(phone)
+        holder.bind(phone, onItemClick)
     }
 
     override fun getItemCount(): Int = phones.size
@@ -36,7 +36,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(private val binding: ItemRecommendedBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(phone: PhonesResponseItem) {
+        fun bind(phone: PhonesResponseItem, onItemClick: (PhonesResponseItem) -> Unit) {
             Glide.with(binding.root)
                 .load(phone.image)
                 .placeholder(R.drawable.ic_image)
@@ -46,10 +46,7 @@ class ResultAdapter : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
             binding.tvPhoneOs.text = phone.os
 
             binding.root.setOnClickListener {
-                val context = binding.root.context
-                val intent = Intent(context, DetailResultActivity::class.java)
-                intent.putExtra("phone", phone)
-                context.startActivity(intent)
+                onItemClick(phone)
             }
         }
     }

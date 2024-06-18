@@ -3,7 +3,6 @@ package com.capstoneproject.auxilium.view.question
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -57,8 +56,6 @@ class InferenceLoadingActivity : AppCompatActivity() {
 
     private fun sendUserSurvey() {
         val userSurveyList = intent.getSerializableExtra("user_survey") as ArrayList<*>
-        Log.d("InferenceLoadingActivity", "User Survey Request: $userSurveyList")
-
         val userSurveyRequest = UserSurveyRequest(userSurveyList)
         questionnaireViewModel.getRecommendations(userSurveyRequest)
         observeViewModel()

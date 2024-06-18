@@ -114,8 +114,7 @@ class ForumRepository(private val userPreference: UserPreference) {
         val replies = apiService.getRepliesByPostId(communityId)
         return replies.size
     }
-
-
+    
     private fun formatTimeDifference(dateString: String): String {
         DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
         val instant = Instant.parse(dateString)

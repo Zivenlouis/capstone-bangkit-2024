@@ -21,7 +21,7 @@ class NewArrivalsActivity : AppCompatActivity() {
     private lateinit var viewModel: NewArrivalsViewModel
     private lateinit var repository: NewArrivalsRepository
     private lateinit var userPreference: UserPreference
-    private lateinit var userClick: MutableList<Int>
+    private var userClick: MutableList<Int> = MutableList(96) { 0 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,6 @@ class NewArrivalsActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.custom_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
-
-        userClick = MutableList(96) { 0 }
 
         userPreference = UserPreference.getInstance(this)
         repository = NewArrivalsRepository(userPreference)

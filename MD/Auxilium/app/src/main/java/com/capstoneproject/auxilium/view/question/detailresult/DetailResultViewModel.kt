@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.capstoneproject.auxilium.response.AddRatingsResponse
 import com.capstoneproject.auxilium.response.AddWishlistResponse
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -14,6 +15,9 @@ class DetailResultViewModel(private val repository: DetailResultRepository) : Vi
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
+
+    private val _addRatingsResult = MutableLiveData<AddRatingsResponse>()
+    val addRatingsResult: LiveData<AddRatingsResponse> = _addRatingsResult
 
     fun addWishlist(userId: Int, smartphoneId: Int) {
         viewModelScope.launch {
@@ -33,6 +37,23 @@ class DetailResultViewModel(private val repository: DetailResultRepository) : Vi
                 }
             } catch (e: Exception) {
                 _error.value = "Failed to add to wishlist: ${e.message}"
+            }
+        }
+    }
+
+    fun addUserRating(userId: Int, smartphoneId: Int, rating: Char) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addUserRating(userId, smartphoneId, rating)
+                if (response.msg != null) {
+                    _addRatingsResult.value = response
+                } else {
+                    _error.value = "Failed to add rating"
+                }
+            } catch (e: HttpException) {
+                _error.value = "Failed to add rating: ${e.message()}"
+            } catch (e: Exception) {
+                _error.value = "Failed to add rating: ${e.message}"
             }
         }
     }

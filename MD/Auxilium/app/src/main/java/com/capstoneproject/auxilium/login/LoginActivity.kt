@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ProgressBar
@@ -89,15 +88,13 @@ class LoginActivity : AppCompatActivity() {
                     if (userId != null) {
                         viewModel.saveUserId(userId)
                     } else {
-                        Log.e("LoginActivity", "User ID is null")
+                        Toast.makeText(this@LoginActivity, "User id is null", Toast.LENGTH_SHORT).show()
                     }
                     navigateToMainActivity()
                 } else {
-                    Log.e("LoginActivity", "Access token is null or blank")
                     Toast.makeText(this@LoginActivity, "Access token is null or blank", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Log.e("LoginActivity", "Error during login", e)
                 Toast.makeText(this@LoginActivity, "Error during login", Toast.LENGTH_SHORT).show()
             }
         }

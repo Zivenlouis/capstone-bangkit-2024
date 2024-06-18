@@ -20,7 +20,6 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
     private val _addRatingsResult = MutableLiveData<AddRatingsResponse>()
     val addRatingsResult: LiveData<AddRatingsResponse> = _addRatingsResult
 
-
     fun addWishlist(userId: Int, smartphoneId: Int) {
         viewModelScope.launch {
             try {
@@ -48,7 +47,6 @@ class DetailNewArrivalsViewModel(private val repository: DetailNewArrivalsReposi
             try {
                 val response = repository.addUserRating(userId, smartphoneId, rating)
                 if (response.msg != null) {
-                    // Update _addRatingsResult with response
                     _addRatingsResult.value = response
                 } else {
                     _error.value = "Failed to add rating"

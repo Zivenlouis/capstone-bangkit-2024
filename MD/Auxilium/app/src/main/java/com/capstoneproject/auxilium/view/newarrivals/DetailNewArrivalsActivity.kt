@@ -1,5 +1,6 @@
 package com.capstoneproject.auxilium.view.newarrivals
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ class DetailNewArrivalsActivity : AppCompatActivity() {
 
     private lateinit var ratingButtons: List<androidx.constraintlayout.utils.widget.ImageFilterButton>
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailNewArrivalsBinding.inflate(layoutInflater)
@@ -82,6 +84,10 @@ class DetailNewArrivalsActivity : AppCompatActivity() {
 
             viewModel.error.observe(this@DetailNewArrivalsActivity) { errorMessage ->
                 Toast.makeText(this@DetailNewArrivalsActivity, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+            viewModel.addRatingsResult.observe(this@DetailNewArrivalsActivity) { response ->
+                Toast.makeText(this@DetailNewArrivalsActivity, response.msg, Toast.LENGTH_SHORT).show()
             }
 
             ratingButtons.forEachIndexed { index, button ->

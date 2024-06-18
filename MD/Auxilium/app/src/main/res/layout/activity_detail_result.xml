@@ -81,9 +81,8 @@
             android:id="@+id/scroll_table_specs"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginTop="40dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@id/btn_add_wishlist"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_result_title2">
@@ -500,8 +499,72 @@
             app:icon="@drawable/ic_wishlist"
             app:iconGravity="textStart"
             app:iconTint="@color/start_icon_tint"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scroll_table_specs" />
+
+        <TextView
+            android:id="@+id/tv_rate_phones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="29dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/clash_grotesk_regular"
+            android:text="What would you rate Pixel 8?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_wishlist" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="79.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/ic_star_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_star2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_rate_phones" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_star_border"
+            app:layout_constraintEnd_toStartOf="@id/btn_star3"
+            app:layout_constraintStart_toEndOf="@id/btn_star1"
+            app:layout_constraintTop_toTopOf="@id/btn_star1" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_star_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_star1" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_star_border"
+            app:layout_constraintEnd_toStartOf="@id/btn_star5"
+            app:layout_constraintStart_toEndOf="@id/btn_star3"
+            app:layout_constraintTop_toTopOf="@id/btn_star1" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="79.5dp"
+            android:background="@drawable/ic_star_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_star4"
+            app:layout_constraintTop_toTopOf="@id/btn_star1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

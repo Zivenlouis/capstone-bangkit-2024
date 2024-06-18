@@ -1,5 +1,9 @@
 Model 2 Done User Click & User Rating
 
+Additional Fix
+- Add Result rating and user clicks
+- Forum format date
+
 Done :
 - Model 2 userclicks in new arrival and user rating in
 - New Arrivals sorted by released date
