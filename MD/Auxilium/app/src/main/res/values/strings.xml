@@ -154,6 +154,6 @@
     <string name="team_roles">Team Roles</string>
     <string name="reply_text">Reply Text</string>
     <string name="delete_wishlist">Delete from Wishlist</string>
-
+    <string name="history_number">History Number</string>
 
 </resources>

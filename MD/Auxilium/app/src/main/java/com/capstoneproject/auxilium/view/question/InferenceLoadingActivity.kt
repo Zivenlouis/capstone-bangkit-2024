@@ -6,9 +6,13 @@ import android.os.Handler
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.capstoneproject.auxilium.api.UserSurveyRequest
 import com.capstoneproject.auxilium.databinding.ActivityInferenceLoadingBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
+import com.capstoneproject.auxilium.history.History
+import com.capstoneproject.auxilium.history.HistoryDatabase
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 class InferenceLoadingActivity : AppCompatActivity() {
@@ -64,6 +68,7 @@ class InferenceLoadingActivity : AppCompatActivity() {
     private fun observeViewModel() {
         questionnaireViewModel.recommendations.observe(this) { recommendations ->
             if (recommendations.isNotEmpty()) {
+                saveRecommendationsToDatabase(recommendations)
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putIntegerArrayListExtra(
                     "recommendations",
@@ -72,6 +77,28 @@ class InferenceLoadingActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+    }
+
+    private fun saveRecommendationsToDatabase(recommendations: List<Int>) {
+        if (recommendations.size >= 10) {
+            val history = History(
+                id1 = recommendations.getOrElse(0) { 0 },
+                id2 = recommendations.getOrElse(1) { 0 },
+                id3 = recommendations.getOrElse(2) { 0 },
+                id4 = recommendations.getOrElse(3) { 0 },
+                id5 = recommendations.getOrElse(4) { 0 },
+                id6 = recommendations.getOrElse(5) { 0 },
+                id7 = recommendations.getOrElse(6) { 0 },
+                id8 = recommendations.getOrElse(7) { 0 },
+                id9 = recommendations.getOrElse(8) { 0 },
+                id10 = recommendations.getOrElse(9) { 0 }
+            )
+
+            val historyDatabase = HistoryDatabase.getDatabase(this)
+            val historyDao = historyDatabase.historyDao()
+
+            lifecycleScope.launch { historyDao.insert(history) }
         }
     }
 

@@ -39,9 +39,6 @@
             android:name=".ui.forum.DetailForumActivity"
             android:exported="false" />
         <activity
-            android:name=".history.DetailHistoryActivity"
-            android:exported="false" />
-        <activity
             android:name=".history.HistoryActivity"
             android:exported="false" />
         <activity

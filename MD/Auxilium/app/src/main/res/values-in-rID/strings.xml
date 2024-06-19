@@ -84,9 +84,9 @@
     <string name="settings">Pengaturan</string>
     <string name="edit_profile">Sunting profil</string>
     <string name="language">Bahasa</string>
-    <string name="email_gmail_com">email\@gmail.com</string>
+    <string name="email_gmail_com">email@gmail.com</string>
     <string name="joined_dated">Bergabung Tanggal</string>
-    <string name="language_typed">di dalam</string>
+    <string name="language_typed">id</string>
     <string name="reset_password">Atur Ulang Kata Sandi</string>
     <string name="logout">Keluar</string>
     <string name="copyright">2024 © Auxilium</string>
