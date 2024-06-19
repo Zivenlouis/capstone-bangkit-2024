@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="64dp"
             android:fontFamily="@font/clash_grotesk_regular"
             android:justificationMode="inter_word"
             android:text="@string/profile_quotes"

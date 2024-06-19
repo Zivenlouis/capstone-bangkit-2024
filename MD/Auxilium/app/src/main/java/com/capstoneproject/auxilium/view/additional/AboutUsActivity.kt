@@ -27,43 +27,43 @@ class AboutUsActivity : AppCompatActivity() {
                 R.drawable.profile_filbert_wijaya,
                 "Filbert Wijaya",
                 "Machine Learning Engineer",
-                "Stay wired to innovate, stay wireless to dream."
+                "\"Stay wired to innovate, stay wireless to dream.\""
             ),
             Team(
                 R.drawable.profile_jason_tjoa,
                 "Jason Tjoa",
                 "Machine Learning Engineer",
-                "In a world of bytes and pixels, dare to innovate beyond boundaries."
+                "\"In a world of bytes and pixels, dare to innovate beyond boundaries.\""
             ),
             Team(
                 R.drawable.profile_ziven_louis,
                 "Ziven Louis",
                 "Machine Learning Engineer",
-                "From gadgets to goals, elevate every aspect of your journey."
+                "\"Gadgets to goals, elevate every aspect of your journey.\""
             ),
             Team(
                 R.drawable.profile_nur_aisyah_aswari,
                 "Nur Aisyah Aswari",
                 "Cloud Computing Engineer",
-                "Design your life with the precision of a UI/UX expert."
+                "\"Design your life with the precision of a UI/UX expert.\""
             ),
             Team(
                 R.drawable.profile_abednego_sirait,
                 "Abednego Sirait",
                 "Cloud Computing Engineer",
-                "In tech we trust, in lifestyle we thrive."
+                "\"In tech we trust, in lifestyle we thrive.\""
             ),
             Team(
                 R.drawable.profile_harry_sion_tarigan,
                 "Harry Sion Tarigan",
                 "Mobile Apps Developer",
-                "Tech is the canvas; creativity is your brushstroke."
+                "\"Tech is the canvas, creativity is your brushstroke.\""
             ),
             Team(
                 R.drawable.profile_pieter_tanoto,
                 "Pieter Tanoto",
                 "Mobile Apps Developer",
-                "Explore the digital frontier with fearless curiosity."
+                "\"Explore the digital frontier with fearless curiosity.\""
             )
 
         )
