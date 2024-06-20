@@ -36,7 +36,7 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
             savedStateHandle[QUESTION_6_KEY] = 0
         }
         if (!savedStateHandle.contains(QUESTION_7_KEY)) {
-            savedStateHandle[QUESTION_7_KEY] = ""
+            savedStateHandle[QUESTION_7_KEY] = "lainnya/tidak ada"
         }
     }
 
@@ -93,7 +93,7 @@ class SharedViewModel(private val savedStateHandle: SavedStateHandle) : ViewMode
     }
 
     fun getQuestion7Response(): String {
-        return savedStateHandle.get<String>(QUESTION_7_KEY) ?: ""
+        return savedStateHandle.get<String>(QUESTION_7_KEY) ?: "lainnya/tidak ada"
     }
 
     fun getAllResponses(): UserSurveyRequest {

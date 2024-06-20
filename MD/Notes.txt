@@ -6,6 +6,7 @@ Additional Fix
 - Add Result rating and user clicks
 - Forum format date
 - Fix Hardcoded String and Add Localize Indonesia
+- fix model 1 error & community back button
 
 Done :
 - Model 2 userclicks in new arrival and user rating in

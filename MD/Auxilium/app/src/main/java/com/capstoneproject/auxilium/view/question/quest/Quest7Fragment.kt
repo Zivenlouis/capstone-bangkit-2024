@@ -42,6 +42,11 @@ class Quest7Fragment : Fragment() {
         }
 
         binding.btnFinish.setOnClickListener {
+            val selectedRadioButtonId = binding.radioGroup.checkedRadioButtonId
+            if (selectedRadioButtonId == View.NO_ID) {
+                sharedViewModel.setQuestion7Response("lainnya/tidak ada")
+            }
+
             val responses = arrayListOf(
                 sharedViewModel.getQuestion1Response(),
                 sharedViewModel.getQuestion2Response(),
@@ -76,7 +81,7 @@ class Quest7Fragment : Fragment() {
             "Huawei" -> binding.radio9.isChecked = true
             "Poco" -> binding.radio10.isChecked = true
             "lainnya/tidak ada" -> binding.radio11.isChecked = true
-            else -> View.NO_ID.toString()
+            else -> binding.radio11.isChecked = true
         }
     }
 
@@ -93,7 +98,7 @@ class Quest7Fragment : Fragment() {
             "Huawei" -> "Huawei"
             "Poco" -> "Poco"
             "None of the Options" -> "lainnya/tidak ada"
-            else -> ""
+            else -> "lainnya/tidak ada"
         }
     }
 }

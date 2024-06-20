@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.capstoneproject.auxilium.R
 import com.capstoneproject.auxilium.databinding.FragmentForumBinding
 import com.capstoneproject.auxilium.datastore.UserPreference
 import kotlinx.coroutines.flow.firstOrNull
@@ -50,6 +52,10 @@ class ForumFragment : Fragment() {
         binding.btnAddPost.setOnClickListener {
             val addPostFragment = AddPostFragment()
             addPostFragment.show(childFragmentManager, "AddPostFragment")
+        }
+
+        binding.btnBackForum.setOnClickListener {
+            findNavController().navigate(R.id.action_forumFragment_to_homeFragment)
         }
 
         initializeViewModelAndFetchData()
