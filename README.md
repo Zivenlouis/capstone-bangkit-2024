@@ -27,7 +27,7 @@
 Auxilium is a mobile phone recommendation application that offers tailored suggestions based on specifications and ratings. Users complete a preference survey regarding general specifications, enabling the application to generate personalized recommendations. Additionally, Auxillium employs collaborative filtering methods to suggest new phones, allowing users to explore diverse options. The app also features a community page where users can seek advice, share experiences, and read authentic reviews, fostering a supportive environment for informed decision-making. This comprehensive approach ensures users receive suggestions tailored to their preferences, enhancing satisfaction with their purchases.
 
 ## Download APK Link
-[Download Auxilium APK Link](https://github.com/Zivenlouis/capstone-bangkit-2024/releases/download/beta-version/auxilium.apk)
+[Download Auxilium APK Link](https://github.com/Zivenlouis/capstone-bangkit-2024/releases/download/release/Auxilium.apk)
 
 ## Tech Used
 Auxilium app is developed with:
