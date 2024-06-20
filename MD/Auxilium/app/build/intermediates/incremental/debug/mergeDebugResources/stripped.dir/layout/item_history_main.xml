@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_history_item_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/clash_grotesk_regular"
+        android:text="@string/history_number"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:id="@+id/btn_delete_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:src="@drawable/ic_delete"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_history_item_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_history_item_number"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_history_item_number">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item1"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images1"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names1"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names1"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item2"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images2"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names2"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names2"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names2"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item3"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images3"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names3"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names3"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names3"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item4"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item3"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images4"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names4"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images4"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names4"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names4"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item5"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item4"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images5"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names5"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names5"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names5"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item6"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item5"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images6"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names6"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images6"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names6"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names6"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item7"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item6"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images7"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names7"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images7"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names7"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names7"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item8"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item7"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images8"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names8"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images8"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names8"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names8"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item9"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item8"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images9"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names9"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images9"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names9"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names9"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_phone_item10"
+                android:layout_width="wrap_content"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@color/light_peach"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_phone_item9"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv_phone_images10"
+                        android:layout_width="90dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="42dp"
+                        android:src="@drawable/ic_image"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_names10"
+                        android:layout_width="98dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/clash_grotesk_regular"
+                        android:text="@string/phone_names"
+                        android:textAlignment="viewEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_phone_images10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_os10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/clash_grotesk_light"
+                        android:text="@string/phone_os"
+                        android:textAlignment="viewEnd"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_phone_names10"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_names10"
+                        tools:ignore="TextContrastCheck" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

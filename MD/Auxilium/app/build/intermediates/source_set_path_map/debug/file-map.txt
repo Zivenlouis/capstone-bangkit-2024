@@ -1,0 +1,75 @@
+com.capstoneproject.auxilium.app-constraintlayout-2.1.4-0 C:\Users\USER\.gradle\caches\transforms-3\0243dc8099febadaa018ad567afce26d\transformed\constraintlayout-2.1.4\res
+com.capstoneproject.auxilium.app-lifecycle-viewmodel-savedstate-2.8.2-1 C:\Users\USER\.gradle\caches\transforms-3\054d3c54baace26a582fb5d588c37269\transformed\lifecycle-viewmodel-savedstate-2.8.2\res
+com.capstoneproject.auxilium.app-paging-runtime-3.3.0-2 C:\Users\USER\.gradle\caches\transforms-3\10a94a7d8866798e8194b232c6985377\transformed\paging-runtime-3.3.0\res
+com.capstoneproject.auxilium.app-viewpager2-1.1.0-3 C:\Users\USER\.gradle\caches\transforms-3\12344ed1ed53faf76f4f89ccb3dc9634\transformed\viewpager2-1.1.0\res
+com.capstoneproject.auxilium.app-lifecycle-livedata-ktx-2.8.2-4 C:\Users\USER\.gradle\caches\transforms-3\1468419158489306d3a597a1c15bd51d\transformed\lifecycle-livedata-ktx-2.8.2\res
+com.capstoneproject.auxilium.app-lifecycle-service-2.8.2-5 C:\Users\USER\.gradle\caches\transforms-3\1617ba5301313bc40987d51bff58857d\transformed\lifecycle-service-2.8.2\res
+com.capstoneproject.auxilium.app-circleimageview-3.1.0-6 C:\Users\USER\.gradle\caches\transforms-3\1dc3844e075b30de61233335b259c758\transformed\circleimageview-3.1.0\res
+com.capstoneproject.auxilium.app-rive-android-8.7.0-7 C:\Users\USER\.gradle\caches\transforms-3\208e050a686584342003f84783b257d5\transformed\rive-android-8.7.0\res
+com.capstoneproject.auxilium.app-lifecycle-runtime-release-8 C:\Users\USER\.gradle\caches\transforms-3\25302c7178c2c22139794d94af623f06\transformed\lifecycle-runtime-release\res
+com.capstoneproject.auxilium.app-room-runtime-2.6.1-9 C:\Users\USER\.gradle\caches\transforms-3\258b732b34a889fcc39eb816d578fd25\transformed\room-runtime-2.6.1\res
+com.capstoneproject.auxilium.app-datastore-core-release-10 C:\Users\USER\.gradle\caches\transforms-3\293502e237c4bce6670c66ad7e7b2b15\transformed\datastore-core-release\res
+com.capstoneproject.auxilium.app-window-1.0.0-11 C:\Users\USER\.gradle\caches\transforms-3\2cb299d452751b2787e5cc27fdf161ff\transformed\window-1.0.0\res
+com.capstoneproject.auxilium.app-work-runtime-ktx-2.9.0-12 C:\Users\USER\.gradle\caches\transforms-3\2fcefc472fe28362d75ed4382aef1be7\transformed\work-runtime-ktx-2.9.0\res
+com.capstoneproject.auxilium.app-lifecycle-livedata-core-2.8.2-13 C:\Users\USER\.gradle\caches\transforms-3\3f6a8bc79f95d2d26f48d14778790d6d\transformed\lifecycle-livedata-core-2.8.2\res
+com.capstoneproject.auxilium.app-navigation-ui-ktx-2.7.7-14 C:\Users\USER\.gradle\caches\transforms-3\4081750d6c09ca713e3d7d9e5a57b5a0\transformed\navigation-ui-ktx-2.7.7\res
+com.capstoneproject.auxilium.app-activity-1.8.0-15 C:\Users\USER\.gradle\caches\transforms-3\45a85bf31d05709adc7319c4e05b6315\transformed\activity-1.8.0\res
+com.capstoneproject.auxilium.app-firebase-common-21.0.0-16 C:\Users\USER\.gradle\caches\transforms-3\4c1e186cb4a4e599d714891ae38701c0\transformed\firebase-common-21.0.0\res
+com.capstoneproject.auxilium.app-play-services-basement-18.4.0-17 C:\Users\USER\.gradle\caches\transforms-3\4eed0ecd7371274484a358781ad8c267\transformed\play-services-basement-18.4.0\res
+com.capstoneproject.auxilium.app-datastore-release-18 C:\Users\USER\.gradle\caches\transforms-3\50a92c8d37d12e034c11ca3ac90e6305\transformed\datastore-release\res
+com.capstoneproject.auxilium.app-emoji2-1.3.0-19 C:\Users\USER\.gradle\caches\transforms-3\51ee23ac18352f5d95b990650cc709ec\transformed\emoji2-1.3.0\res
+com.capstoneproject.auxilium.app-room-ktx-2.6.1-20 C:\Users\USER\.gradle\caches\transforms-3\520807aa5c297e531041f39c9148efa8\transformed\room-ktx-2.6.1\res
+com.capstoneproject.auxilium.app-paging-runtime-ktx-3.3.0-21 C:\Users\USER\.gradle\caches\transforms-3\53d3d1c9790c58bdb37ec8d26928687c\transformed\paging-runtime-ktx-3.3.0\res
+com.capstoneproject.auxilium.app-core-1.13.1-22 C:\Users\USER\.gradle\caches\transforms-3\53fc979c24fc519185ff2dc103a9ef80\transformed\core-1.13.1\res
+com.capstoneproject.auxilium.app-drawerlayout-1.1.1-23 C:\Users\USER\.gradle\caches\transforms-3\55e70033d7cc0bc81cd9c676a72a3f45\transformed\drawerlayout-1.1.1\res
+com.capstoneproject.auxilium.app-datastore-preferences-release-24 C:\Users\USER\.gradle\caches\transforms-3\585848726a14a608fa4545e26a18b71f\transformed\datastore-preferences-release\res
+com.capstoneproject.auxilium.app-core-ktx-1.13.1-25 C:\Users\USER\.gradle\caches\transforms-3\5ceb2b57849c5649d06c385475ecb8c5\transformed\core-ktx-1.13.1\res
+com.capstoneproject.auxilium.app-lifecycle-viewmodel-release-26 C:\Users\USER\.gradle\caches\transforms-3\61236eebed339d8c5f0f0f096da641af\transformed\lifecycle-viewmodel-release\res
+com.capstoneproject.auxilium.app-transition-1.5.0-27 C:\Users\USER\.gradle\caches\transforms-3\62977270747495120ff9243eaa03745e\transformed\transition-1.5.0\res
+com.capstoneproject.auxilium.app-slidingpanelayout-1.2.0-28 C:\Users\USER\.gradle\caches\transforms-3\62a1e71b689f6b702f4210e1e0b59537\transformed\slidingpanelayout-1.2.0\res
+com.capstoneproject.auxilium.app-navigation-ui-2.7.7-29 C:\Users\USER\.gradle\caches\transforms-3\652dad318c1940f31904c2438fbc4145\transformed\navigation-ui-2.7.7\res
+com.capstoneproject.auxilium.app-navigation-runtime-ktx-2.7.7-30 C:\Users\USER\.gradle\caches\transforms-3\6e2c1b05bfd49fbfaaba524993279eca\transformed\navigation-runtime-ktx-2.7.7\res
+com.capstoneproject.auxilium.app-savedstate-ktx-1.2.1-31 C:\Users\USER\.gradle\caches\transforms-3\7638df7b5d52a2d7824bc4e42674774b\transformed\savedstate-ktx-1.2.1\res
+com.capstoneproject.auxilium.app-play-services-base-18.5.0-32 C:\Users\USER\.gradle\caches\transforms-3\7656c185c3119648a2d5cd8a91634516\transformed\play-services-base-18.5.0\res
+com.capstoneproject.auxilium.app-navigation-runtime-2.7.7-33 C:\Users\USER\.gradle\caches\transforms-3\7f2ee5ced1872ed576c1c9e98f492b6c\transformed\navigation-runtime-2.7.7\res
+com.capstoneproject.auxilium.app-navigation-fragment-ktx-2.7.7-34 C:\Users\USER\.gradle\caches\transforms-3\8113bb3166d902e00003081adf88323b\transformed\navigation-fragment-ktx-2.7.7\res
+com.capstoneproject.auxilium.app-lifecycle-viewmodel-ktx-2.8.2-35 C:\Users\USER\.gradle\caches\transforms-3\8775d06eec19c3b26ce51c15f38ac04f\transformed\lifecycle-viewmodel-ktx-2.8.2\res
+com.capstoneproject.auxilium.app-recyclerview-1.3.2-36 C:\Users\USER\.gradle\caches\transforms-3\8dd8b70c5f836fd69fbbabaf11a9e5ca\transformed\recyclerview-1.3.2\res
+com.capstoneproject.auxilium.app-core-runtime-2.2.0-37 C:\Users\USER\.gradle\caches\transforms-3\931fc9e177cf94b8e2d2f2e25d512ce8\transformed\core-runtime-2.2.0\res
+com.capstoneproject.auxilium.app-appcompat-1.7.0-38 C:\Users\USER\.gradle\caches\transforms-3\97b51e69e794f7ca9206d58c93522fcf\transformed\appcompat-1.7.0\res
+com.capstoneproject.auxilium.app-fragment-1.6.2-39 C:\Users\USER\.gradle\caches\transforms-3\981e77b03b967aeed521f33fb3c82cac\transformed\fragment-1.6.2\res
+com.capstoneproject.auxilium.app-emoji2-views-helper-1.3.0-40 C:\Users\USER\.gradle\caches\transforms-3\a06349a88911252363b9b9d504ec08ab\transformed\emoji2-views-helper-1.3.0\res
+com.capstoneproject.auxilium.app-sqlite-framework-2.4.0-41 C:\Users\USER\.gradle\caches\transforms-3\a27ffb54d9de892ec97f6f495462720d\transformed\sqlite-framework-2.4.0\res
+com.capstoneproject.auxilium.app-fragment-ktx-1.6.2-42 C:\Users\USER\.gradle\caches\transforms-3\a6c3ff396fb7bbf2264649d1d9025a03\transformed\fragment-ktx-1.6.2\res
+com.capstoneproject.auxilium.app-play-services-maps-18.2.0-43 C:\Users\USER\.gradle\caches\transforms-3\a9255d701455581d52494e2e6ec28974\transformed\play-services-maps-18.2.0\res
+com.capstoneproject.auxilium.app-lifecycle-runtime-ktx-release-44 C:\Users\USER\.gradle\caches\transforms-3\a93f9b941963cdfafbec7e8c74f48623\transformed\lifecycle-runtime-ktx-release\res
+com.capstoneproject.auxilium.app-shimmer-0.5.0-45 C:\Users\USER\.gradle\caches\transforms-3\b284f7400627e729c35bee0cabbeed53\transformed\shimmer-0.5.0\res
+com.capstoneproject.auxilium.app-coordinatorlayout-1.2.0-46 C:\Users\USER\.gradle\caches\transforms-3\b73f52c043531b9d1990645d8cb09fd0\transformed\coordinatorlayout-1.2.0\res
+com.capstoneproject.auxilium.app-lifecycle-livedata-2.8.2-47 C:\Users\USER\.gradle\caches\transforms-3\bd25ba7a16ec97e8920f117c2c882ee8\transformed\lifecycle-livedata-2.8.2\res
+com.capstoneproject.auxilium.app-work-runtime-2.9.0-48 C:\Users\USER\.gradle\caches\transforms-3\bf779e790643a8136ff1f5fa1cfec74c\transformed\work-runtime-2.9.0\res
+com.capstoneproject.auxilium.app-sqlite-2.4.0-49 C:\Users\USER\.gradle\caches\transforms-3\c2705423a1e6589d23c4c6be0ae4d1da\transformed\sqlite-2.4.0\res
+com.capstoneproject.auxilium.app-material-1.12.0-50 C:\Users\USER\.gradle\caches\transforms-3\ca802450cc30b4cbdaf5bca4fe45cc20\transformed\material-1.12.0\res
+com.capstoneproject.auxilium.app-media-1.0.0-51 C:\Users\USER\.gradle\caches\transforms-3\caa0b7a32871246625074fbf66b2eb12\transformed\media-1.0.0\res
+com.capstoneproject.auxilium.app-lifecycle-process-2.8.2-52 C:\Users\USER\.gradle\caches\transforms-3\d1d516c93278f7ddcef0915a3bc5864b\transformed\lifecycle-process-2.8.2\res
+com.capstoneproject.auxilium.app-customview-poolingcontainer-1.0.0-53 C:\Users\USER\.gradle\caches\transforms-3\d3f90ca7ba643f9edd2487e9841a88bd\transformed\customview-poolingcontainer-1.0.0\res
+com.capstoneproject.auxilium.app-cardview-1.0.0-54 C:\Users\USER\.gradle\caches\transforms-3\d48f4e243e17f46ae2765ed0fb32e102\transformed\cardview-1.0.0\res
+com.capstoneproject.auxilium.app-lifecycle-livedata-core-ktx-2.8.2-55 C:\Users\USER\.gradle\caches\transforms-3\d57bb920e85b40eb5a584588265674a3\transformed\lifecycle-livedata-core-ktx-2.8.2\res
+com.capstoneproject.auxilium.app-navigation-common-ktx-2.7.7-56 C:\Users\USER\.gradle\caches\transforms-3\d84970ea831093772820729486b1b530\transformed\navigation-common-ktx-2.7.7\res
+com.capstoneproject.auxilium.app-activity-ktx-1.8.0-57 C:\Users\USER\.gradle\caches\transforms-3\dc2b95cf4ecc1dc71bf6c4c4b072434a\transformed\activity-ktx-1.8.0\res
+com.capstoneproject.auxilium.app-appcompat-resources-1.7.0-58 C:\Users\USER\.gradle\caches\transforms-3\e52f57c14cfcb96ba3b37c2c18b4519f\transformed\appcompat-resources-1.7.0\res
+com.capstoneproject.auxilium.app-startup-runtime-1.1.1-59 C:\Users\USER\.gradle\caches\transforms-3\e77bb8bf9c8e7c6919f04fb8a5200c32\transformed\startup-runtime-1.1.1\res
+com.capstoneproject.auxilium.app-paging-common-release-60 C:\Users\USER\.gradle\caches\transforms-3\e95096253087bd1e03ed1053794197bb\transformed\paging-common-release\res
+com.capstoneproject.auxilium.app-glide-4.16.0-61 C:\Users\USER\.gradle\caches\transforms-3\ec2fff5e76831413d1a2a4e351161d7a\transformed\glide-4.16.0\res
+com.capstoneproject.auxilium.app-profileinstaller-1.3.1-62 C:\Users\USER\.gradle\caches\transforms-3\ef20d694dbadca3711a27ec2bd2242f1\transformed\profileinstaller-1.3.1\res
+com.capstoneproject.auxilium.app-annotation-experimental-1.4.0-63 C:\Users\USER\.gradle\caches\transforms-3\ef62cd9193162af7c16d8ef059625cc8\transformed\annotation-experimental-1.4.0\res
+com.capstoneproject.auxilium.app-navigation-common-2.7.7-64 C:\Users\USER\.gradle\caches\transforms-3\f18e54f591563a1f2b120cfb0440acd0\transformed\navigation-common-2.7.7\res
+com.capstoneproject.auxilium.app-room-paging-2.6.1-65 C:\Users\USER\.gradle\caches\transforms-3\f3965d97dd5b7c38dd2b403d7a9af56c\transformed\room-paging-2.6.1\res
+com.capstoneproject.auxilium.app-navigation-fragment-2.7.7-66 C:\Users\USER\.gradle\caches\transforms-3\f606a5186d338105865c6cbcc8307059\transformed\navigation-fragment-2.7.7\res
+com.capstoneproject.auxilium.app-savedstate-1.2.1-67 C:\Users\USER\.gradle\caches\transforms-3\feb75d4366938c9e3b169a7b0426b996\transformed\savedstate-1.2.1\res
+com.capstoneproject.auxilium.app-swiperefreshlayout-1.2.0-alpha01-68 C:\Users\USER\.gradle\caches\transforms-3\ff31dd29c8e88d7ade40bad0efcf1c5f\transformed\swiperefreshlayout-1.2.0-alpha01\res
+com.capstoneproject.auxilium.app-resValues-69 D:\0-TESTING PLACES\Auxilium\app\build\generated\res\resValues\debug
+com.capstoneproject.auxilium.app-packageDebugResources-70 D:\0-TESTING PLACES\Auxilium\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.capstoneproject.auxilium.app-packageDebugResources-71 D:\0-TESTING PLACES\Auxilium\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.capstoneproject.auxilium.app-merged_res-72 D:\0-TESTING PLACES\Auxilium\app\build\intermediates\merged_res\debug
+com.capstoneproject.auxilium.app-debug-73 D:\0-TESTING PLACES\Auxilium\app\src\debug\res
+com.capstoneproject.auxilium.app-main-74 D:\0-TESTING PLACES\Auxilium\app\src\main\res
