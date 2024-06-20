@@ -1,3 +1,5 @@
+![Slide 1](https://github.com/Zivenlouis/capstone-bangkit-2024/assets/106805563/a9bd8755-9e38-4e0b-a0e6-c85038f39eca)
+
 ﻿# Auxillium - Your Personal Mobile Phone Recommendation App
  ## Bangkit Capstone Project 2024 Batch 1
  Bangkit Capstone Team ID : C241 - PS060
