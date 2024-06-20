@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="124dp"
+    android:layout_gravity="center"
+    android:id="@+id/cv_phone_item"
+    android:layout_marginEnd="15dp"
+    android:layout_marginVertical="10dp"
+    android:backgroundTint="@color/light_peach"
+    app:cardCornerRadius="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_phone_images"
+            android:layout_width="110dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tv_phone_names"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/clash_grotesk_regular"
+            android:text="@string/phone_names"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_phone_images"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/tv_phone_os"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/clash_grotesk_light"
+            android:text="@string/phone_os"
+            android:textAlignment="viewEnd"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_phone_names"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_names"
+            tools:ignore="TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
