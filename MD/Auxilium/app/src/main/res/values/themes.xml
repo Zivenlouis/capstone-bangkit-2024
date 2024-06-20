@@ -3,6 +3,7 @@
 
     <style name="Theme.Auxilium" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="android:statusBarColor">@color/statusbar</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>

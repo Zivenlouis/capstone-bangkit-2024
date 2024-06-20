@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/forum_card_view"
     android:layout_width="match_parent"
+    android:layout_marginTop="16dp"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/transparent"
     android:clickable="true">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cv_forum"
         android:layout_width="match_parent"
@@ -17,10 +16,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_forum_post_profile"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="31dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:src="@drawable/image_small_circle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +30,7 @@
             android:fontFamily="@font/clash_grotesk_regular"
             android:text="@string/username"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/civ_forum_post_profile"
             app:layout_constraintTop_toTopOf="@id/civ_forum_post_profile"
             tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -45,7 +42,7 @@
             android:fontFamily="@font/clash_grotesk_light"
             android:text="@string/post_time"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/forum_photo_card_view"
             app:layout_constraintTop_toTopOf="@id/tv_forum_username"
             tools:ignore="TextSizeCheck,TextContrastCheck" />
@@ -53,36 +50,35 @@
 
         <TextView
             android:id="@+id/tv_forum_description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/clash_grotesk_light"
             android:justificationMode="inter_word"
             android:text="@string/post_description"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_forum_username"
             app:layout_constraintTop_toBottomOf="@id/tv_forum_username"
             tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/forum_photo_card_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="29dp"
             android:backgroundTint="@color/transparent"
             app:cardCornerRadius="5dp"
             app:cardElevation="0dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_forum_username"
             app:layout_constraintTop_toBottomOf="@id/tv_forum_description">
 
             <ImageView
                 android:id="@+id/iv_forum_photo"
                 android:layout_width="match_parent"
-                android:layout_height="173dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/forum_picture"
                 android:src="@drawable/ic_image" />
@@ -90,8 +86,8 @@
 
         <ImageView
             android:id="@+id/iv_like_forum"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_like_border"
             app:layout_constraintStart_toStartOf="@id/forum_photo_card_view"
@@ -106,15 +102,15 @@
             android:fontFamily="@font/clash_grotesk_light"
             android:text="@string/post_likes"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@id/iv_like_forum"
             app:layout_constraintTop_toTopOf="@id/iv_like_forum"
             tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_reply_forum"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_reply"
             app:layout_constraintBottom_toBottomOf="@id/iv_like_forum"
@@ -130,7 +126,7 @@
             android:fontFamily="@font/clash_grotesk_light"
             android:text="@string/post_replies"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@id/iv_reply_forum"
             app:layout_constraintTop_toTopOf="@id/iv_reply_forum"
             tools:ignore="TextSizeCheck,TextContrastCheck" />

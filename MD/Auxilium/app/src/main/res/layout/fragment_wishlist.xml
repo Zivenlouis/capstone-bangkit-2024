@@ -16,21 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_wishlist" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_empty_wishlist"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/clash_grotesk_medium"
-        android:text="@string/add_your_current_wishlist_here"
-        android:textAlignment="center"
-        android:textColor="@color/light_peach"
-        android:textSize="40sp"
+        android:src="@drawable/illust_empty"
         android:visibility="gone"
+        android:layout_marginTop="-32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/dark_background"
+    android:background="@color/transparent"
     tools:context=".view.question.quest.Quest5Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

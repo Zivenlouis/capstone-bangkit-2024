@@ -112,7 +112,7 @@
     <string name="the_latest_phones_have_landed">The latest phones have landed.</string>
     <string name="recommended_for_you">Recommended For You</string>
     <string name="howdy">Howdy,</string>
-    <string name="excited_to_find_yout_dream_phone_today">Excited to find yout dream phone today?</string>
+    <string name="excited_to_find_yout_dream_phone_today">Excited to find your dream phone today?</string>
     <string name="userphones">UserPhones</string>
     <string name="wishlist_items">10 item(s)</string>
     <string name="next">Next</string>
@@ -136,7 +136,7 @@
     <string name="how_important_is_storage">How important is storage ?</string>
     <string name="finish">Finish</string>
     <string name="question_7">Question 7</string>
-    <string name="favorite_brand">Favorite Brand ?</string>
+    <string name="favorite_brand">Favorite Brand?</string>
     <string name="apple">Apple</string>
     <string name="poco">Poco</string>
     <string name="lainnya_tidak_ada">None of the Options</string>
@@ -155,5 +155,7 @@
     <string name="reply_text">Reply Text</string>
     <string name="delete_wishlist">Delete from Wishlist</string>
     <string name="history_number">History Number</string>
+    <string name="tv_replies">Replies</string>
+    <string name="tv_aboutDesc">Auxilium is your personalized mobile phone recommendation app. By using advanced machine learning and user feedback, we provide tailored phone suggestions. Our features include user authentication, a wishlist, a community forum, and local data storage. With seamless cloud integration, Auxilium makes choosing your next phone easy and confident.</string>
 
 </resources>

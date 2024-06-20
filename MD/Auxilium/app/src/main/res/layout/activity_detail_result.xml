@@ -46,7 +46,7 @@
                     android:fontFamily="@font/clash_grotesk_regular"
                     android:text="@string/phone_names"
                     android:textAlignment="viewEnd"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_phone_images"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/clash_grotesk_light"
                     android:text="@string/phone_os"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@id/tv_phone_names"
                     app:layout_constraintTop_toBottomOf="@id/tv_phone_names" />
 
@@ -74,7 +74,7 @@
             android:fontFamily="@font/clash_grotesk_regular"
             android:text="@string/support_text_get_ready"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/cv_detail_phone"
             app:layout_constraintTop_toBottomOf="@id/cv_detail_phone" />
 
@@ -496,6 +496,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:paddingVertical="12dp"
             app:cornerRadius="18dp"
             app:icon="@drawable/ic_wishlist"
             app:iconGravity="textStart"

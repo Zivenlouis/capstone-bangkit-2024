@@ -7,6 +7,7 @@
     <color name="auth_card_bg_color">#282A62</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="light_peach">#EFCABF</color>
+    <color name="statusbar">#4046E3</color>
     <color name="gold">#FFD700</color>
     <color name="dark_peach">#D6A393</color>
     <color name="start_icon_tint">#1E1E1E</color>

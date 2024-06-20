@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Auxilium</string>
-    <string name="title_home">Rumah</string>
+    <string name="title_home">Beranda</string>
     <string name="title_dashboard">Dasbor</string>
     <string name="title_notifications">Pemberitahuan</string>
-    <string name="title_activity_register">Daftarkan Aktivitas</string>
+    <string name="title_activity_register">RegisterActivity</string>
     <string name="action_sign_in">Masuk atau daftar</string>
     <string name="action_sign_in_short">Masuk</string>
     <string name="invalid_username">Bukan nama pengguna yang valid</string>
@@ -14,23 +14,23 @@
     <string name="login_tv_email">Surel</string>
     <string name="login_tv_password">Kata sandi</string>
     <string name="login_btn_signin">Masuk</string>
-    <string name="login_tv_title">Halo !\nSiap</string>
-    <string name="login_tv_title2">menyelam ke dalam?</string>
+    <string name="login_tv_title">Hai !\nSiap untuk</string>
+    <string name="login_tv_title2">memulai?</string>
     <string name="tv_login_createaccountprompt">Belum punya akun?</string>
-    <string name="register_tv_username">Nama belakang</string>
-    <string name="register_tv_confirmpass">konfirmasi sandi</string>
+    <string name="register_tv_username">Nama pengguna</string>
+    <string name="register_tv_confirmpass">Konfirmasi sandi</string>
     <string name="btn_signup">Mendaftar</string>
     <string name="tv_register_loginprompt">Sudah memiliki akun?</string>
-    <string name="tv_quotes">Dengarkan!</string>
+    <string name="tv_quotes">Perhatikan!</string>
     <string name="crunching_data_just_for_you">Mengolah data hanya untuk Anda</string>
     <string name="tv_pro_tips">Pro Tips</string>
-    <string name="auxilium_team">Tim pendukung</string>
+    <string name="auxilium_team">Tim Auxilium</string>
     <string name="logo_about_us">Logo Tentang Kami</string>
     <string name="capture_image">Ambil Gambar</string>
     <string name="switch_camera">Ganti Kamera</string>
     <string name="button_add_reply">Tombol Tambah Balasan</string>
     <string name="username_s_post">Postingan nama pengguna</string>
-    <string name="reply_to_this_post">Membalas posting ini</string>
+    <string name="reply_to_this_post">Kirim balasan</string>
     <string name="forum_picture">Gambar Forum</string>
     <string name="post_time">3 jam</string>
     <string name="username">Nama belakang</string>
@@ -66,7 +66,7 @@
     <string name="price_label">Label Harga</string>
     <string name="ram">RAM</string>
     <string name="ram_label">Label RAM</string>
-    <string name="released_date">Tanggal Dirilis</string>
+    <string name="released_date">Tanggal Rilis</string>
     <string name="release_date_label">Label Tanggal Rilis</string>
     <string name="resolution">Resolusi</string>
     <string name="resolution_label">Label Resolusi</string>
@@ -85,7 +85,7 @@
     <string name="edit_profile">Sunting profil</string>
     <string name="language">Bahasa</string>
     <string name="email_gmail_com">email@gmail.com</string>
-    <string name="joined_dated">Bergabung Tanggal</string>
+    <string name="joined_dated">Bergabung pada</string>
     <string name="language_typed">id</string>
     <string name="reset_password">Atur Ulang Kata Sandi</string>
     <string name="logout">Keluar</string>
@@ -139,7 +139,7 @@
     <string name="favorite_brand">Merek Favorit?</string>
     <string name="apple">Apple</string>
     <string name="poco">Poco</string>
-    <string name="lainnya_tidak_ada">Tidak ada Opsi</string>
+    <string name="lainnya_tidak_ada">Tidak satu pun</string>
     <string name="samsung">Samsung</string>
     <string name="asus">Asus</string>
     <string name="oppo">Oppo</string>
@@ -151,8 +151,11 @@
     <string name="add_your_current_wishlist_here">Tambahkan Wishlist Anda Saat Ini Di Sini....</string>
     <string name="profile_names">Nama Profil</string>
     <string name="profile_quotes">Kutipan Profil</string>
-    <string name="team_roles">Peranan Tim</string>
-    <string name="reply_text">Teks Balasan</string>
+    <string name="team_roles">Peran Tim</string>
+    <string name="reply_text">Balasan</string>
     <string name="delete_wishlist">Hapus dari Daftar Keinginan</string>
+    <string name="history_number">Riwayat nomor</string>
+    <string name="tv_replies">Balasan</string>
+    <string name="tv_aboutDesc">Auxilium adalah aplikasi rekomendasi ponsel pribadi Anda. Dengan menggunakan pembelajaran mesin canggih dan umpan balik pengguna, kami memberikan saran ponsel yang disesuaikan. Fitur-fitur kami meliputi otentikasi pengguna, daftar keinginan, forum komunitas, dan penyimpanan data lokal. Dengan integrasi cloud yang mulus, Auxilium membuat pemilihan ponsel berikutnya menjadi mudah dan penuh percaya diri.</string>
 
 </resources>

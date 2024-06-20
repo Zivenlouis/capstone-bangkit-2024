@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dark_background"
+    android:padding="16dp"
     tools:context=".view.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_marginTop="33dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/transparent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:elevation="0dp"
@@ -22,8 +23,9 @@
             android:id="@+id/custom_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:logo="@drawable/ic_auxilium_white"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="-64dp"
+            app:logo="@drawable/apps_logo_icon"
+
             app:menu="@menu/upper_menu" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -32,8 +34,7 @@
         android:id="@+id/nav_card_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="24dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,11 +46,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/light_peach"
+            app:itemIconSize="24dp"
             app:menu="@menu/bottom_nav_menu" />
-
     </com.google.android.material.card.MaterialCardView>
 
     <fragment
+        android:layout_marginTop="16dp"
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -60,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/mobile_navigation"
         tools:ignore="FragmentTagUsage" />
 

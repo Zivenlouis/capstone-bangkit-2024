@@ -24,6 +24,7 @@ class ForumFragment : Fragment() {
     private lateinit var forumAdapter: ForumAdapter
     private var userProfileImage: String? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -34,7 +35,6 @@ class ForumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         forumAdapter = ForumAdapter(
             onItemClick = { forumPost ->
                 openDetailForumActivity(forumPost)

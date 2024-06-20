@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/clash_grotesk_medium"
+        android:fontFamily="@font/clash_grotesk_regular"
         android:text="@string/history_number"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
