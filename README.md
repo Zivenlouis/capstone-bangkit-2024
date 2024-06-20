@@ -1,4 +1,4 @@
-![Slide 1](https://github.com/Zivenlouis/capstone-bangkit-2024/assets/106805563/a9bd8755-9e38-4e0b-a0e6-c85038f39eca)
+![Slide 1](https://github.com/Zivenlouis/capstone-bangkit-2024/assets/106805563/156100f9-bb99-4097-8de5-8c336cafeef8)
 
 ﻿# Auxillium - Your Personal Mobile Phone Recommendation App
  ## Bangkit Capstone Project 2024 Batch 1
