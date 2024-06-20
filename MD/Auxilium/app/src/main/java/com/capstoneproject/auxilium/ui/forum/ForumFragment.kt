@@ -26,7 +26,7 @@ class ForumFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentForumBinding.inflate(inflater, container, false)
         return binding.root
@@ -70,7 +70,10 @@ class ForumFragment : Fragment() {
             try {
                 val userPreference = UserPreference.getInstance(requireContext())
                 val repository = ForumRepository(userPreference)
-                viewModel = ViewModelProvider(this@ForumFragment, ForumViewModelFactory(repository))[ForumViewModel::class.java]
+                viewModel = ViewModelProvider(
+                    this@ForumFragment,
+                    ForumViewModelFactory(repository)
+                )[ForumViewModel::class.java]
                 observeViewModel()
 
                 val userId = userPreference.getUserId().firstOrNull()
@@ -86,7 +89,11 @@ class ForumFragment : Fragment() {
 
                 viewModel.refreshPosts()
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Error initializing ViewModel or fetching data: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Error initializing ViewModel or fetching data: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -129,7 +136,11 @@ class ForumFragment : Fragment() {
                     viewModel.likePost(forumPost.communityId)
                 }
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Error liking/unliking post: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Error liking/unliking post: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

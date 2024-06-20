@@ -95,6 +95,13 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         editProfileFragment.show(supportFragmentManager, editProfileFragment.tag)
+
+        supportFragmentManager.setFragmentResultListener("editProfileKey", this) { _, resultBundle ->
+            val isProfileUpdated = resultBundle.getBoolean("isProfileUpdated")
+            if (isProfileUpdated) {
+                viewModel?.fetchUserProfile()
+            }
+        }
     }
 
     private fun observeViewModel() {

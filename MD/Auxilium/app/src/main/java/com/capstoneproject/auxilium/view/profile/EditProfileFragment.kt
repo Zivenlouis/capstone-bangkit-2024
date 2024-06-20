@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import androidx.core.os.bundleOf
 import com.capstoneproject.auxilium.databinding.FragmentEditProfileBinding
 import com.capstoneproject.auxilium.helper.getImageUri
 import com.capstoneproject.auxilium.helper.reduceFileImage
 import com.capstoneproject.auxilium.helper.uriToFile
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,7 +36,6 @@ class EditProfileFragment : BottomSheetDialogFragment() {
     private var selectedImageFile: File? = null
     private lateinit var email: RequestBody
 
-    // Activity result launcher for gallery
     private val launcherGallery =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
@@ -45,7 +45,6 @@ class EditProfileFragment : BottomSheetDialogFragment() {
             } ?: Toast.makeText(requireContext(), "No media selected", Toast.LENGTH_SHORT).show()
         }
 
-    // Activity result launcher for camera
     private val launcherIntentCamera =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
@@ -90,22 +89,8 @@ class EditProfileFragment : BottomSheetDialogFragment() {
         }
 
         binding.btnSaveProfile.setOnClickListener {
-            val name = binding.edEditUsername.text.toString().trim()
-            if (name.isNotEmpty()) {
-                val nameRequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
-                var profileImagePart: MultipartBody.Part? = null
-
-                selectedImageFile?.let {
-                    val imageRequestBody = it.asRequestBody("image/jpeg".toMediaTypeOrNull())
-                    profileImagePart = MultipartBody.Part.createFormData("file", it.name, imageRequestBody)
-                }
-
-                viewModel.editProfile(nameRequestBody, email, profileImagePart)
-            } else {
-                Toast.makeText(requireContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show()
-            }
+            saveProfile()
         }
-
 
         binding.edEditUsername.doOnTextChanged { text, _, _, _ ->
             if (text != null) {
@@ -116,8 +101,6 @@ class EditProfileFragment : BottomSheetDialogFragment() {
                 }
             }
         }
-
-
         observeViewModel()
     }
 
@@ -133,30 +116,37 @@ class EditProfileFragment : BottomSheetDialogFragment() {
 
     private fun saveProfile() {
         val name = binding.edEditUsername.text.toString().trim()
-        if (name.isEmpty()) {
+        if (name.isNotEmpty()) {
+            val nameRequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
+            var profileImagePart: MultipartBody.Part? = null
+
+            selectedImageFile?.let {
+                val imageRequestBody = it.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                profileImagePart = MultipartBody.Part.createFormData("file", it.name, imageRequestBody)
+            }
+
+            viewModel.editProfile(nameRequestBody, email, profileImagePart)
+
+            viewModel.editProfileResponse.observe(viewLifecycleOwner) { response ->
+                if (response.isSuccessful) {
+                    setFragmentResult("editProfileKey", bundleOf("isProfileUpdated" to true))
+                    dismiss()
+                } else {
+                    Toast.makeText(requireContext(), "Failed to update profile", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
             Toast.makeText(requireContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show()
-            return
         }
-
-        val nameRequestBody = name.toRequestBody("text/plain".toMediaTypeOrNull())
-        var profileImagePart: MultipartBody.Part? = null
-
-        selectedImageFile?.let {
-            val imageRequestBody = it.asRequestBody("image/jpeg".toMediaTypeOrNull())
-            profileImagePart = MultipartBody.Part.createFormData("file", it.name, imageRequestBody)
-        }
-
-        viewModel.editProfile(nameRequestBody, email, profileImagePart)
     }
 
     private fun observeViewModel() {
-        viewModel.editProfileResponse.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT)
-                .show()
-        }
-
-        viewModel.error.observe(viewLifecycleOwner) { error ->
-            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+        viewModel.editProfileResponse.observe(viewLifecycleOwner) { response ->
+            if (response.isSuccessful) {
+                Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), response.message(), Toast.LENGTH_SHORT).show()
+            }
         }
 
         viewModel.isProfileUpdated.observe(viewLifecycleOwner) { isUpdated ->

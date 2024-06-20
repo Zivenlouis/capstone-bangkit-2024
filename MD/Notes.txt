@@ -1,9 +1,9 @@
 Model 2 Done User Click & User Rating
 
 Additional Fix
-- Add Result rating and user clicks
+- auto update profile done
 - fix about us
-
+- Add Result rating and user clicks
 - Forum format date
 - Fix Hardcoded String and Add Localize Indonesia
 

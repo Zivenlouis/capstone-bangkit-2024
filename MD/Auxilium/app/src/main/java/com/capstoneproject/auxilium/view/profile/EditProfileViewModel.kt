@@ -18,8 +18,8 @@ class EditProfileViewModel(context: Context) : ViewModel() {
 
     private val userPreference = UserPreference.getInstance(context)
 
-    private val _editProfileResponse = MutableLiveData<EditProfileResponse>()
-    val editProfileResponse: LiveData<EditProfileResponse> get() = _editProfileResponse
+    private val _editProfileResponse = MutableLiveData<Response<EditProfileResponse>>()
+    val editProfileResponse: LiveData<Response<EditProfileResponse>> get() = _editProfileResponse
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
@@ -36,8 +36,8 @@ class EditProfileViewModel(context: Context) : ViewModel() {
                 try {
                     val apiService = ApiConfig.getApiService(token)
                     val response: Response<EditProfileResponse> = apiService.editProfile(userId, name, email, profileImage)
+                    _editProfileResponse.postValue(response)
                     if (response.isSuccessful) {
-                        _editProfileResponse.postValue(response.body())
                         _isProfileUpdated.postValue(true)
                     } else {
                         _error.postValue(response.message())
