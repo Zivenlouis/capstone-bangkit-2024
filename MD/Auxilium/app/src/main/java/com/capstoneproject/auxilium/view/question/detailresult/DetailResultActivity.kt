@@ -66,6 +66,7 @@ class DetailResultActivity : AppCompatActivity() {
                     tvColorsLabel.text = it.colors
                     tvNfcLabel.text = FormatterUtil.formatYesNo(it.nfc)
                     tvPriceLabel.text = FormatterUtil.formatPrice(it.price)
+                    tvRatePhones.text = "What would you rate ${it.name}?"
                     Glide.with(this@DetailResultActivity).load(it.image).into(ivPhoneImages)
                 }
             }

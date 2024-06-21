@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -66,12 +67,11 @@ class ResetPasswordActivity : AppCompatActivity() {
                     }
 
                     is ResetPasswordViewModel.ResetPasswordState.Success -> {
-                        showError(binding.tiEmailReset, state.message)
-                        // Navigate to another activity or update UI
+                        Toast.makeText(this@ResetPasswordActivity, state.message, Toast.LENGTH_LONG).show()
                     }
 
                     is ResetPasswordViewModel.ResetPasswordState.Error -> {
-                        showError(binding.tiEmailReset, state.error)
+                        Toast.makeText(this@ResetPasswordActivity, state.error, Toast.LENGTH_LONG).show()
                     }
                 }
             }
